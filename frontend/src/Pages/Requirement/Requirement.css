@@ -1,0 +1,22 @@
+.list-property-container{
+    background-color: white;
+    width:60vw;
+    margin:auto;
+    padding-top: 20px;
+  
+   
+}
+.outer-box{
+    background-color: #f5f5f5;
+
+}
+.upper-div{
+    background-color: #494949;
+    color:white;
+    padding:10px;
+}
+@media only screen and (max-width:450px){
+    .list-property-container{
+     width: 90vw;
+    }
+}
