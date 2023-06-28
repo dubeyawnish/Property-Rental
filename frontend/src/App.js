@@ -9,15 +9,17 @@ import PlotSignup from './Pages/PlotSignup/PlotSignup';
 function App() {
   return (
     <>
-    <Navbar />
+      <Navbar />
+      <Home />
 
-    <PlotSignup />
 
-    
- {/* {   <PropertySignup />}  */}
-    <Footer />
+      {/* { <PlotSignup />} */}
+
+
+      {/* {   <PropertySignup />}  */}
+      <Footer />
     </>
-    
+
   );
 }
 

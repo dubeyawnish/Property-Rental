@@ -1,11 +1,12 @@
 import React from 'react'
+import './Navbar.css'
 
 const Navbar = () => {
     return (
         <div className="App">
 
 
-            <nav className="navbar navbar-expand-lg bg-body-tertiary shadow p-3 mb-5 bg-body-tertiary rounded">
+            <nav className="navbar-fixed  navbar navbar-expand-lg bg-body-tertiary shadow p-3  bg-body-tertiary rounded">
                 <div className="container mt-2">
                     <a className="navbar-brand me-5 " href="#"> <img src='https://www.dharnigroup.com/wp-content/uploads/2021/10/cropped-Logo-on-for-Dilwai-27-Oct-2019-1-1.jpg' /></a>
                     
@@ -44,4 +45,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar;
