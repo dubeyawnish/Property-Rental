@@ -6,15 +6,16 @@ import PropertySignup from './Pages/PropertySignup/PropertySignup';
 import Home from './Pages/Home/Home';
 import PlotSignup from './Pages/PlotSignup/PlotSignup';
 import Requirement from './Pages/Requirement/Requirement';
+import ListedProperties from './Pages/Listed Properties/ListedProperties';
 
 function App() {
   return (
     <>
       <Navbar />
-     {/* { <Home />} */}
-     <Requirement />
+      {/* { <Home />}  */}
+   {/* {  <Requirement />} */}
 
-
+    { <ListedProperties />}
       {/* { <PlotSignup />} */}
 
 
