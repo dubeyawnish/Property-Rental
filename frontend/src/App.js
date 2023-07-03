@@ -9,6 +9,10 @@ import PlotSignup from './Pages/PlotSignup/PlotSignup';
 import Requirement from './Pages/Requirement/Requirement';
 import ListedProperties from './Pages/Listed Properties/ListedProperties';
 import PropertyDetails from './Pages/PropertyDetails/PropertyDetails';
+import ServiceFee from './Pages/Service and Fee/ServiceFee';
+import ContactUs from './Pages/ContactUs/ContactUs';
+import Carrier from './Pages/Carrier/Carrier';
+import AboutUs from './Pages/AboutUs/AboutUs';
 
 function App() {
   return (
@@ -17,14 +21,19 @@ function App() {
       <Router>
         <Navbar />
 
-
-        <Routes>
+         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/propertySignup' element={<PropertySignup />} />
           <Route exact path='/plotSignup' element={<PlotSignup />} />
           <Route exact path='/propertylist' element={<ListedProperties />} />
           <Route exact path='/propertyDetails' element={<PropertyDetails />} />
           <Route exact path='/requirement' element={<Requirement />} />
+          <Route exact path='/serviceFee' element={<ServiceFee />} />
+          <Route exact path='/contactUs' element={<ContactUs />} />
+          <Route exact path='/carrier' element={<Carrier />} />
+          <Route exact path='/aboutus' element={<AboutUs />} />
+          
+
 
 
           {/* {<PropertyDetails />} */}
@@ -36,7 +45,7 @@ function App() {
 
 
           {/* {<PropertySignup />} */}
-        </Routes>
+        </Routes> 
         <Footer />
       </Router>
     </>

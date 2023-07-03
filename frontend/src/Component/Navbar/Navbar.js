@@ -20,6 +20,13 @@ const Navbar = () => {
 
                                 <div class="dropdown">
                                     <Link to='/' >  <button class="dropbtn">Home</button></Link>
+                                    <div class="dropdown-content">
+                                        <Link to="/serviceFee">Service & Fee</Link>
+                                        <Link to="/contactUs">Contact Us</Link>
+                                        <Link to="/carrier">Careers</Link>
+                                        <Link to="/aboutus">About Us</Link>
+                                        
+                                    </div>
 
                                 </div>
                             </li>
