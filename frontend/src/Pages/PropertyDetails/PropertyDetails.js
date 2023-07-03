@@ -4,7 +4,7 @@ const PropertyDetails = () => {
     return (
         <div className='container'>
             <div className='row'>
-                <div className='col-lg-8 col-md-8 col-sm-12 border border-danger '>
+                <div className='col-lg-8 col-md-8 col-sm-12  '>
                     <h3 className='my-5'>3 BHK Villa Adarsh Palm Meadows, Whitefield</h3>
 
                     <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
@@ -181,7 +181,7 @@ const PropertyDetails = () => {
                     </div>
 
                 </div>
-                <div className='col-lg-4 col-md-4 col-sm-12 border border-danger'>
+                <div className='col-lg-4 col-md-4 col-sm-12 '>
                     <div className='container'>
                         <h3 className='my-5'>₹ 1,20,000 per month</h3>
 
@@ -189,7 +189,7 @@ const PropertyDetails = () => {
                             <h6 className='mt-2 fw-bold text-muted text-center'>Interested?</h6>
                             <p className=' fw-bold '>Schedule a showing?</p>
                             <form>
-                                <div className="mb-3 col-lg-8 ">
+                                <div className="mb-3 col-lg-12 ">
 
                                     <input type="date" placeholder='day' className="form-control" id="date" aria-describedby="emailHelp" required />
                                     <input type="time" placeholder='time' className=" mt-3 form-control" id="time" aria-describedby="emailHelp" required />
@@ -202,13 +202,48 @@ const PropertyDetails = () => {
                                     </div>
                                     <div className='d-flex'>
                                         <div className=' mt-1 mb-2 me-2 col-6'>
-                                            <button type="submit" className=" form-control btn btn-primary ">Call</button>
+                                            <button type="submit" className=" form-control btn btn-secondary "><i class="fa-solid fa-phone"></i> Call</button>
                                         </div>
                                         <div className=' mt-1 mb-2 col-6'>
-                                            <button type="submit" className=" form-control btn btn-primary ">Whatsapp</button>
-                                        </div>
+                                            <button type="submit" className=" form-control btn btn-secondary "><i class="fa-brands fa-whatsapp"></i> Whatsapp</button>
                                         </div>
                                     </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
+                            <h6 className='mt-2 fw-bold text-muted text-center'>Contact Us</h6>
+                            <h6><i class="fa-solid fa-phone"></i> 1234567890</h6>
+                            <h6><i class="fa-regular fa-envelope"></i> dharniproperty@gmail.com</h6>
+                        </div>
+
+                        <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
+                            <h6 className='mt-2 fw-bold text-muted text-center'>Share your Requirement</h6>
+                            <form  >
+                                <div className="mb-3 col-lg-8 ">
+                                    <label for="ownername" className="form-label">Name</label>
+                                    <input type="email" className="form-control" id="ownername" aria-describedby="emailHelp" required />
+                                </div>
+                                <div className="mb-3 col-lg-8">
+                                    <label for="mobileNumber" className="form-label">Mobile number</label>
+                                    <input type="tel" className="form-control" id="mobileNumber" required />
+                                </div>
+                                <div className="mb-3 col-lg-8">
+                                    <label for="email" className="form-label">Email address</label>
+                                    <input type="email" className="form-control" id="email" required />
+                                </div>
+
+
+                                <label for="details " className="  form-label">Requirement</label>
+                                <div className='col-lg-8'>
+                                    <textarea class="form-control " id="details"></textarea>
+                                </div>
+
+
+                                <div className=' mt-5 '>
+                                    <button type="submit" className="btn btn-primary ">Submit</button>
+                                </div>
                             </form>
                         </div>
 
@@ -222,4 +257,4 @@ const PropertyDetails = () => {
     )
 }
 
-export default PropertyDetails
+export default PropertyDetails;
