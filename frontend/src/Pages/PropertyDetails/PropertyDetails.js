@@ -202,10 +202,10 @@ const PropertyDetails = () => {
                                     </div>
                                     <div className='d-flex'>
                                         <div className=' mt-1 mb-2 me-2 col-6'>
-                                            <button type="submit" className=" form-control btn btn-secondary "><i class="fa-solid fa-phone"></i> Call</button>
+                                            <button type="submit" className=" form-control btn btn-secondary "><i className="fa-solid fa-phone"></i> Call</button>
                                         </div>
                                         <div className=' mt-1 mb-2 col-6'>
-                                            <button type="submit" className=" form-control btn btn-secondary "><i class="fa-brands fa-whatsapp"></i> Whatsapp</button>
+                                            <button type="submit" className=" form-control btn btn-secondary "><i className="fa-brands fa-whatsapp"></i> Whatsapp</button>
                                         </div>
                                     </div>
                                 </div>
@@ -214,8 +214,8 @@ const PropertyDetails = () => {
 
                         <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                             <h6 className='mt-2 fw-bold text-muted text-center'>Contact Us</h6>
-                            <h6><i class="fa-solid fa-phone"></i> 1234567890</h6>
-                            <h6><i class="fa-regular fa-envelope"></i> dharniproperty@gmail.com</h6>
+                            <h6><i className="fa-solid fa-phone"></i> 1234567890</h6>
+                            <h6><i className="fa-regular fa-envelope"></i> dharniproperty@gmail.com</h6>
                         </div>
 
                         <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
@@ -237,7 +237,7 @@ const PropertyDetails = () => {
 
                                 <label for="details " className="  form-label">Requirement</label>
                                 <div className='col-lg-8'>
-                                    <textarea class="form-control " id="details"></textarea>
+                                    <textarea className="form-control " id="details"></textarea>
                                 </div>
 
 

@@ -13,6 +13,7 @@ import ServiceFee from './Pages/Service and Fee/ServiceFee';
 import ContactUs from './Pages/ContactUs/ContactUs';
 import Carrier from './Pages/Carrier/Carrier';
 import AboutUs from './Pages/AboutUs/AboutUs';
+import Interested from './Pages/Interested/Interested';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route exact path='/contactUs' element={<ContactUs />} />
           <Route exact path='/carrier' element={<Carrier />} />
           <Route exact path='/aboutus' element={<AboutUs />} />
+          <Route exact path='/interested' element={<Interested />} />
           
 
 

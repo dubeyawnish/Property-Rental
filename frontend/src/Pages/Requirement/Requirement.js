@@ -25,7 +25,7 @@ const Requirement = () => {
 
                     <label for="details " className="  form-label">Requirement</label>
                     <div className='col-lg-8'>
-                        <textarea class="form-control " id="details"></textarea>
+                        <textarea className="form-control " id="details"></textarea>
                     </div>
 
 

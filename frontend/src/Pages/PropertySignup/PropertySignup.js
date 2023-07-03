@@ -40,11 +40,11 @@ const PropertySignup = () => {
                 <div id="emailHelp" className="form-text">Project name (or Address)</div>
                 <div className=' row mt-3'>
 
-                  <div className='col-lg-6' >
+                  <div className='col-lg-6 col-md-6 col-sm-12' >
                     <input type="text" className="form-control" id="propertybasics" />
                     <div id="emailHelp" className="form-text">Location</div>
                   </div>
-                  <div className='col-lg-6'>
+                  <div className='col-lg-6 col-md-6 col-sm-12'>
                     <input type="text" className="form-control" id="propertybasics" />
                     <div id="emailHelp" className="form-text">Year of Completion</div>
                   </div>
@@ -61,17 +61,17 @@ const PropertySignup = () => {
 
                 <div className=' row mt-3'>
 
-                  <div className='col-lg-6' >
+                  <div className='col-lg-6 col-md-6 col-sm-12' >
                     <input type="text" className="form-control" id="propertybasics" />
                     <div id="emailHelp" className="form-text">Monthly maintenance</div>
                   </div>
-                  <div className='col-lg-6'>
+                  <div className='col-lg-6 col-md-6 col-sm-12'>
                     <input type="text" className="form-control" id="propertybasics" />
                     <div id="emailHelp" className="form-text">Built up (sq.ft.)</div>
                   </div>
                 </div>
 
-                <div className='col-lg-6'>
+                <div className='col-lg-6 col-md-6 col-sm-12'>
                   <input type="text" className="form-control" id="propertybasics" />
                   <div id="emailHelp" className="form-text">Plot size (sq.ft.)</div>
                 </div>
@@ -88,24 +88,24 @@ const PropertySignup = () => {
 
                 <div className=' row mt-3'>
 
-                  <div className='col-lg-6' >
+                  <div className='col-lg-6 col-md-6 col-sm-12' >
                     <input type="text" className="form-control" id="propertybasics" />
                     <div id="emailHelp" className="form-text">No. of balconies</div>
                   </div>
-                  <div className='col-lg-6'>
+                  <div className='col-lg-6 col-md-6 col-sm-12'>
                     <input type="text" className="form-control" id="propertybasics" />
                     <div id="emailHelp" className="form-text">No. of car parks</div>
                   </div>
                 </div>
 
-                <div className='col-lg-6'>
+                <div className='col-lg-6 col-md-6 col-sm-12'>
                   <input type="text" className="form-control" id="propertybasics" />
                   <div id="emailHelp" className="form-text">Direction of main door</div>
                 </div>
 
 
                 <label for="propertyfeatures " className=" mt-5 form-label">Property Features </label>
-                <div className='d-flex'>
+                <div className='d-flex '>
                   <div className="mb-3 form-check">
                     <input type="checkbox" className="form-check-input" id="studyroom" value='studyroom' />
                     <label className=" me-4 form-check-label" for="studyroom">Study Room</label>
@@ -283,7 +283,7 @@ const PropertySignup = () => {
 
                 <label for="details " className=" mt-5 form-label">Additional information, if any</label>
                 <div>
-                  <textarea class="form-control" id="details"></textarea>
+                  <textarea className="form-control" id="details"></textarea>
                 </div>
                 <p className='text-muted fst-italic '>Example: Khata, Key information, Date of availability, etc</p>
 

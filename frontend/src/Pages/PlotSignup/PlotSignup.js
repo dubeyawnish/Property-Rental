@@ -73,7 +73,7 @@ const PlotSignup = () => {
 
                             <label for="details " className=" mt-5 form-label">Additional information, if any</label>
                             <div>
-                                <textarea class="form-control" id="details"></textarea>
+                                <textarea className="form-control" id="details"></textarea>
                             </div>
                             <p className='text-muted fst-italic '>Example: Khata, Key information, Date of availability, etc</p>
 
