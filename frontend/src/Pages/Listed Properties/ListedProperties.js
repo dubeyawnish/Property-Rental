@@ -37,7 +37,7 @@ const ListedProperties = () => {
               <h5 className="card-title">3 BHK Villa Adarsh Palm Meadows, Whitefield</h5>
               <h5 className="card-title">₹ 1,20,000 per month</h5>
               <p className="card-text">PR20465005: A 3BHK Fully-furnished West facing 1520 Sq.ft Villa – Adarsh Palm Meadow ...</p>
-              <p><i className="fa-solid fa-bed"></i> 3 &nbsp; &nbsp;<span > <i className="fa-solid fa-droplet"></i> 3 &nbsp; &nbsp;</span> <span className=''><i className="fa-solid fa-map"></i>1520 ft<sup>2</sup></span> </p>
+              <p><i className="fa-solid fa-bed"></i> 3 &nbsp; &nbsp;<span > <i className="fa-solid fa-droplet "></i> 3 &nbsp; &nbsp;</span> <span className=''><i className="fa-solid fa-map"></i>1520 ft<sup>2</sup></span> </p>
               <p className='text-center'><a href='' className='text-muted text-decoration-none'>Interested?</a></p>
             </div>
           </div>
