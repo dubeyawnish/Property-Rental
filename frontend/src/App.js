@@ -14,13 +14,16 @@ import ContactUs from './Pages/ContactUs/ContactUs';
 import Carrier from './Pages/Carrier/Carrier';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import Interested from './Pages/Interested/Interested';
+import ScrollToTop from './Pages/ScrollToTop';
 
 function App() {
   return (
 
     <>
       <Router>
+        
         <Navbar />
+        <ScrollToTop />
 
          <Routes>
           <Route exact path='/' element={<Home />} />

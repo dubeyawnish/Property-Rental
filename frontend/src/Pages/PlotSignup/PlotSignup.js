@@ -1,6 +1,60 @@
 import React from 'react'
+import { API_BASE_URL } from '../../config';
+import { useState } from 'react';
+import Swal from 'sweetalert2'
+import axios from 'axios';
 
 const PlotSignup = () => {
+
+    const [ownerName, setOwnerName] = useState('');
+    const [mobileNumbers, setMobileNumbers] = useState('');
+    const [emailAddresses, setEmailAddresses] = useState('');
+    const [plotNumber, setPlotNumber] = useState('');
+    const [projectName, setProjectName] = useState('');
+    const [location, setLocation] = useState('');
+    const [direction, setDirection] = useState('');
+
+    const [expectedSalePrice, setExpectedSalePrice] = useState('');
+    const [plotSize, setPlotSize] = useState('');
+    const [plotDimensions, setPlotDimensions] = useState('');
+    const [khataType, setKhataType] = useState('');
+    const [additionalInformation, setAdditionalInformation] = useState('');
+
+
+
+     
+
+    const formSubmit = (e) => {
+        e.preventDefault();
+    
+        const reqData = { ownerName, mobileNumbers, emailAddresses,plotNumber, projectName ,location ,direction,expectedSalePrice,plotSize,plotDimensions,khataType,additionalInformation  };
+        axios.post(`${API_BASE_URL}/plotSignup`, reqData)
+          .then((result) => {
+            if (result.status === 201) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Successfully Registered'
+              });
+             
+            }
+            
+          })
+          .catch((err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Some error occured plzz try later'
+            })
+    
+          })
+    
+      }
+
+
+
+
+
+
+
     return (
         <div className='container'>
             <h3 className='text-muted mt-5'>Plot Signup</h3>
@@ -14,35 +68,35 @@ const PlotSignup = () => {
                         <h6>Dharni Property specializes in renting and selling premium homes across Bangalore</h6>
                     </div>
                     <div className='mt-3 p-4'>
-                        <form >
+                        <form onSubmit={formSubmit} >
                             <div className="mb-3">
                                 <label for="ownername" className="form-label">Owner Name(s)</label>
-                                <input type="email" className="form-control" id="ownername" aria-describedby="emailHelp" required />
+                                <input value={ownerName} onChange={(e) => setOwnerName(e.target.value)} type="text" className="form-control" id="ownername" aria-describedby="emailHelp" required />
                             </div>
                             <div className="mb-3">
                                 <label for="mobileNumber" className="form-label">Mobile number(s)</label>
-                                <input type="tel" className="form-control" id="mobileNumber" required />
+                                <input value={mobileNumbers} onChange={(e) => setMobileNumbers(e.target.value)} type="tel" className="form-control" id="mobileNumber" required />
                             </div>
                             <div className="mb-3">
                                 <label for="email" className="form-label">Email address(es)</label>
-                                <input type="email" className="form-control" id="email" required />
+                                <input value={emailAddresses} onChange={(e) => setEmailAddresses(e.target.value)} type="email" className="form-control" id="email" required />
                             </div>
                             <div className="mb-3">
                                 <label for="propertybasics" className="form-label">Property Basics</label>
-                                <input type="text" className="form-control" id="propertybasics" required />
+                                <input value={plotNumber} onChange={(e) => setPlotNumber(e.target.value)} type="text" className="form-control" id="propertybasics" required />
                                 <div id="emailHelp" className="form-text">Plot Number</div>
                             </div>
 
-                            <input type="text" className="form-control" id="propertybasics" />
+                            <input value={projectName} onChange={(e) => setProjectName(e.target.value)} type="text" className="form-control" id="propertybasics" />
                             <div id="emailHelp" className="form-text">Project name (or Address)</div>
                             <div className=' row mt-3'>
 
                                 <div  >
-                                    <input type="text" className="form-control" id="propertybasics" />
+                                    <input value={location} onChange={(e) => setLocation(e.target.value)} type="text" className="form-control" id="propertybasics" />
                                     <div id="emailHelp" className="form-text">Location</div>
                                 </div>
                                 <div>
-                                    <input type="text" className="form-control" id="propertybasics" />
+                                    <input value={direction} onChange={(e) => setDirection(e.target.value)} type="text" className="form-control" id="propertybasics" />
                                     <div id="emailHelp" className="form-text">Direction of plot</div>
                                 </div>
                             </div>
@@ -51,21 +105,21 @@ const PlotSignup = () => {
 
                             <div className="mt-5 mb-2">
                                 <label for="Propertypricing" className="form-label">Property Pricing</label>
-                                <input type="text" className="form-control" id="Propertypricing" required />
+                                <input value={expectedSalePrice} onChange={(e) => setExpectedSalePrice(e.target.value)} type="text" className="form-control" id="Propertypricing" required />
                                 <div id="emailHelp" className=" form-text">Expected Sale price</div>
                             </div>
-                            <input type="text" className="form-control" id="propertybasics" />
+                            <input value={plotSize} onChange={(e) => setPlotSize(e.target.value)} type="text" className="form-control" id="propertybasics" />
                             <div id="emailHelp" className=" mb-2 form-text">Plot Size (sq.ft.)</div>
 
 
                             <div className=' row mt-3'>
 
                                 <div className='col-lg-6' >
-                                    <input type="text" className="form-control" id="propertybasics" />
+                                    <input value={plotDimensions} onChange={(e) => setPlotDimensions(e.target.value)} type="text" className="form-control" id="propertybasics" />
                                     <div id="emailHelp" className="form-text">Plot Dimensions</div>
                                 </div>
                                 <div className='col-lg-6'>
-                                    <input type="text" className="form-control" id="propertybasics" />
+                                    <input value={khataType} onChange={(e) => setKhataType(e.target.value)} type="text" className="form-control" id="propertybasics" />
                                     <div id="emailHelp" className="form-text">Khata Type</div>
                                 </div>
                             </div>
@@ -73,7 +127,7 @@ const PlotSignup = () => {
 
                             <label for="details " className=" mt-5 form-label">Additional information, if any</label>
                             <div>
-                                <textarea className="form-control" id="details"></textarea>
+                                <textarea value={additionalInformation} onChange={(e) => setAdditionalInformation(e.target.value)} className="form-control" id="details"></textarea>
                             </div>
                             <p className='text-muted fst-italic '>Example: Khata, Key information, Date of availability, etc</p>
 
