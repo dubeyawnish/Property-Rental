@@ -5,8 +5,14 @@ const Connection = require('./database/db');
 const app = express();
 
 
+require('./Model/List_Property.js')
+
+
 app.use(cors());
 app.use(express.json());
+
+
+app.use(require('./Route/Property_Route.js'))
 
 
 
