@@ -440,7 +440,7 @@ const PropertySignup = () => {
 
 
                 <div className="mb-5 mt-4 form-check">
-                  <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                  <input type="checkbox" className="form-check-input" id="exampleCheck1" required />
                   <label className="form-check-label" for="exampleCheck1">I am the owner of the above property, or authorised to act on behalf of the owner.</label>
                 </div >
                 <div className='d-flex justify-content-center mt-5 mb-5'>

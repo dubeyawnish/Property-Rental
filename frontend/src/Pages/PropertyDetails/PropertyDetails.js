@@ -1,6 +1,47 @@
 import React from 'react'
+import Requirement from '../Requirement/Requirement';
+import { API_BASE_URL } from '../../config';
+import { useState } from 'react';
+import Swal from 'sweetalert2'
+import axios from 'axios';
 
 const PropertyDetails = () => {
+    const [name, setName] = useState('');
+    const [mobileNumber, setMobileNumber] = useState('');
+    const [emailAddress, setEmailAddress] = useState('');
+    const [requirements, setRequirements] = useState('');
+
+    const formSubmit = (e) => {
+        e.preventDefault();
+    
+        const reqData = { name, mobileNumber, emailAddress ,requirements};
+        axios.post(`${API_BASE_URL}/requirement`, reqData)
+          .then((result) => {
+            if (result.status === 201) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Requirement Send Successfully '
+              });
+             
+            }
+            setName('');
+            setMobileNumber('');
+            setEmailAddress('');
+            setRequirements('');
+
+            
+          })
+          .catch((err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Some error occured plzz try later'
+            })
+    
+          })
+    
+      }
+
+
     return (
         <div className='container'>
             <div className='row'>
@@ -218,26 +259,28 @@ const PropertyDetails = () => {
                             <h6><i className="fa-regular fa-envelope"></i> dharniproperty@gmail.com</h6>
                         </div>
 
+                        
+
                         <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                             <h6 className='mt-2 fw-bold text-muted text-center'>Share your Requirement</h6>
-                            <form  >
+                            <form  onSubmit={formSubmit}>
                                 <div className="mb-3 col-lg-8 ">
                                     <label for="ownername" className="form-label">Name</label>
-                                    <input type="email" className="form-control" id="ownername" aria-describedby="emailHelp" required />
+                                    <input value={name} onChange={(e) => setName(e.target.value)} type="text " className="form-control" id="ownername" aria-describedby="emailHelp" required />
                                 </div>
                                 <div className="mb-3 col-lg-8">
                                     <label for="mobileNumber" className="form-label">Mobile number</label>
-                                    <input type="tel" className="form-control" id="mobileNumber" required />
+                                    <input value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)}  type="tel" className="form-control" id="mobileNumber" required />
                                 </div>
                                 <div className="mb-3 col-lg-8">
                                     <label for="email" className="form-label">Email address</label>
-                                    <input type="email" className="form-control" id="email" required />
+                                    <input value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} type="email" className="form-control" id="email" required />
                                 </div>
 
 
                                 <label for="details " className="  form-label">Requirement</label>
                                 <div className='col-lg-8'>
-                                    <textarea className="form-control " id="details"></textarea>
+                                    <textarea value={requirements} onChange={(e) => setRequirements(e.target.value)} className="form-control " id="details"></textarea>
                                 </div>
 
 

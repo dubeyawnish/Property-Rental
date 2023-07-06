@@ -22,32 +22,45 @@ const PlotSignup = () => {
 
 
 
-     
+
 
     const formSubmit = (e) => {
         e.preventDefault();
-    
-        const reqData = { ownerName, mobileNumbers, emailAddresses,plotNumber, projectName ,location ,direction,expectedSalePrice,plotSize,plotDimensions,khataType,additionalInformation  };
+
+        const reqData = { ownerName, mobileNumbers, emailAddresses, plotNumber, projectName, location, direction, expectedSalePrice, plotSize, plotDimensions, khataType, additionalInformation };
         axios.post(`${API_BASE_URL}/plotSignup`, reqData)
-          .then((result) => {
-            if (result.status === 201) {
-              Swal.fire({
-                icon: 'success',
-                title: 'Successfully Registered'
-              });
-             
-            }
-            
-          })
-          .catch((err) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Some error occured plzz try later'
+            .then((result) => {
+                if (result.status === 201) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successfully Registered'
+                    });
+
+                }
+                setOwnerName('');
+                setMobileNumbers('');
+                setEmailAddresses('');
+                setPlotNumber('');
+                setProjectName('');
+                setLocation('');
+                setDirection('');
+                setExpectedSalePrice('');
+                setPlotSize('');
+                setPlotDimensions('');
+                setKhataType('');
+                setAdditionalInformation('');
+
+
             })
-    
-          })
-    
-      }
+            .catch((err) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Some error occured plzz try later'
+                })
+
+            })
+
+    }
 
 
 
@@ -140,7 +153,7 @@ const PlotSignup = () => {
 
 
                             <div className="mb-5 mt-4 form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                                <input type="checkbox" className="form-check-input" id="exampleCheck1" required />
                                 <label className="form-check-label" for="exampleCheck1">I am the owner of the above plot, or authorised to act on behalf of the owner.</label>
                             </div >
                             <div className='d-flex justify-content-center mt-5 mb-5'>
