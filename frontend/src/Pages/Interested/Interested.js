@@ -12,16 +12,19 @@ const Interested = () => {
                     </div>
                     <div className=' ms-5 mt-2 col-lg-8 col-md-8 col-sm-12'>
                         <h5 className='fw-bold'> Interested?</h5>
-                        <p className='mt-3'><i className="fa-solid fa-phone"></i> 1234567890</p>
-                        <p className='mt-3 '><i className="fa-solid fa-mobile"></i> 123467890</p>
-                        <p className='mt-3 '><i className="fa-solid fa-envelope"></i> dharniproperty@gmail.com</p>
+                        <p className='mt-3'><a className='text-decoration-none text-muted ' href="tel:9453416152"><i className="fa-solid fa-phone"></i> 1234567890</a></p>
+                        <p className='mt-3 '><a className='text-decoration-none text-muted ' href="tel:9453416152"><i className="fa-solid fa-mobile"></i> 123467890</a></p>
+                        <p className='mt-3 '><a className='text-decoration-none text-muted ' href="mailto:dubeyawnish6@gmail.com"><i className="fa-solid fa-envelope"></i> dharniproperty@gmail.com</a></p>
                     </div>
 
                 </div>
                 <div className='d-flex'>
-                    <button type="button" className=" me-2 btn btn-success">Send Email</button>
-                    <button type="button" className=" me-2 btn btn-success"><i className="fa-solid fa-phone"></i> call +91-1234567890</button>
-                    <button type="button" className="btn btn-success"><i class="fa-brands fa-whatsapp"></i> Whatsapp</button>
+                    <a href="mailto:dubeyawnish6@gmail.com">
+                        <button type="button" className=" me-2 btn btn-success">Send Email</button></a>
+                    <a target='_blank' href="tel:9453416152">
+                        <button type="button" className=" me-2 btn btn-success"><i className="fa-solid fa-phone"></i> call +91-1234567890</button></a>
+                    <a target='_blank' href="https://wa.me/9453416152?text=Hello!">
+                        <button type="button" className="btn btn-success"><i class="fa-brands fa-whatsapp"></i> Whatsapp</button></a>
 
                 </div>
 

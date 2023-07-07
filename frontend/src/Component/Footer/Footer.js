@@ -11,8 +11,8 @@ const Footer = () => {
                     </div>
                     <div className='mt-3 footer-center text-muted '>
 
-                        <p><i className="me-1 fa-solid fa-envelope "></i>dharniproperties@gmail.com</p>
-                        <p><i className="me-1 fa-solid fa-phone"></i>1234567890</p>
+                        <p><a className='text-decoration-none text-muted ' href="mailto:dubeyawnish6@gmail.com"><i className="me-1 fa-solid fa-envelope "></i>dharniproperties@gmail.com </a></p>
+                        <p><a className='text-decoration-none text-muted ' href="tel:9453416152"><i className="me-1 fa-solid fa-phone"></i>1234567890</a></p>
 
                     </div>
 

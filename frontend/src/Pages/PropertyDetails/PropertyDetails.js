@@ -1,9 +1,11 @@
 import React from 'react'
-import Requirement from '../Requirement/Requirement';
+
 import { API_BASE_URL } from '../../config';
 import { useState } from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const PropertyDetails = () => {
     const [name, setName] = useState('');
@@ -40,6 +42,28 @@ const PropertyDetails = () => {
           })
     
       }
+
+
+
+
+
+
+      const form = useRef();
+
+      const sendEmail = (e) => {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_vyplnzz', 'template_dbeyttu', form.current, '24fN1jM0eumXcxJ50')
+          .then((result) => {
+              console.log(result.text);
+             // console.log("message sent")
+          }, (error) => {
+              console.log(error.text);
+          });
+      };
+
+
+
 
 
     return (
@@ -229,34 +253,38 @@ const PropertyDetails = () => {
                         <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                             <h6 className='mt-2 fw-bold text-muted text-center'>Interested?</h6>
                             <p className=' fw-bold '>Schedule a showing?</p>
-                            <form>
+                            <form ref={form} onSubmit={sendEmail}>
                                 <div className="mb-3 col-lg-12 ">
 
-                                    <input type="date" placeholder='day' className="form-control" id="date" aria-describedby="emailHelp" required />
-                                    <input type="time" placeholder='time' className=" mt-3 form-control" id="time" aria-describedby="emailHelp" required />
-                                    <input type="text" placeholder='Your Name' className=" mt-3 form-control" id="date" aria-describedby="emailHelp" required />
-                                    <input type="text" placeholder='Your Email' className=" mt-3 form-control" id="date" aria-describedby="emailHelp" required />
-                                    <input type="tel" placeholder='Your Number' className=" mt-3 form-control" id="date" aria-describedby="emailHelp" required />
+                                    <input type="date" name='user_date' placeholder='day' className="form-control" id="date" aria-describedby="emailHelp" required />
+                                    <input type="time" name='user_time' placeholder='time' className=" mt-3 form-control" id="time" aria-describedby="emailHelp" required />
+                                    <input type="text" name='user_name' placeholder='Your Name' className=" mt-3 form-control" id="date" aria-describedby="emailHelp" required />
+                                    <input type="text" name='user_email' placeholder='Your Email' className=" mt-3 form-control" id="date" aria-describedby="emailHelp" required />
+                                    <input type="tel" name='user_mobileno' placeholder='Your Number' className=" mt-3 form-control" id="date" aria-describedby="emailHelp" required />
 
                                     <div className=' mt-3 '>
-                                        <button type="submit" className=" form-control btn btn-primary ">Send Email</button>
+                                        <button type="submit" value='send' className=" form-control btn btn-primary ">Send Email</button>
                                     </div>
-                                    <div className='d-flex'>
-                                        <div className=' mt-1 mb-2 me-2 col-6'>
-                                            <button type="submit" className=" form-control btn btn-secondary "><i className="fa-solid fa-phone"></i> Call</button>
-                                        </div>
-                                        <div className=' mt-1 mb-2 col-6'>
-                                            <button type="submit" className=" form-control btn btn-secondary "><i className="fa-brands fa-whatsapp"></i> Whatsapp</button>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </form>
+                            <div className='d-flex'>
+                                        <div className='  me-2 col-6'>
+                                        <a href="tel:9453416152">
+
+                                            <button type="submit" className=" form-control btn btn-secondary "><i className="fa-solid fa-phone"></i> Call</button></a>
+                                        </div>
+                                        <div className='  col-6'>
+                                        <a href="https://wa.me/9453416152?text=Hello!">
+                                            <button type="submit" className=" form-control btn btn-secondary "><i className="fa-brands fa-whatsapp"></i> Whatsapp</button> </a>
+                                        </div>
+                                    </div>
                         </div>
 
                         <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                             <h6 className='mt-2 fw-bold text-muted text-center'>Contact Us</h6>
-                            <h6><i className="fa-solid fa-phone"></i> 1234567890</h6>
-                            <h6><i className="fa-regular fa-envelope"></i> dharniproperty@gmail.com</h6>
+                            <a className='text-decoration-none text-muted fw-bold' href="tel:9453416152"> <i className="fa-solid fa-phone"></i> 1234567890</a> <br/>
+                            <a className='text-decoration-none text-muted fw-bold' href="mailto:dubeyawnish6@gmail.com"><i className="fa-regular fa-envelope"></i> dharniproperty@gmail.com</a>
                         </div>
 
                         
