@@ -7,19 +7,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-
-
-
-
-
-
-
-
-
-
-
 const PropertySignup = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [ownerName, setOwnerName] = useState('');
   const [mobileNumbers, setMobileNumbers] = useState('');
@@ -87,7 +76,7 @@ const PropertySignup = () => {
             icon: 'success',
             title: 'Successfully Registered'
           });
-         
+
         }
         setOwnerName('');
         setMobileNumbers('');
@@ -264,8 +253,8 @@ const PropertySignup = () => {
 
                   </div>
                   <div className="mb-3 form-check">
-                    <input onChange={(e) => setPrivatePool(e.target.value)} type="checkbox" className="form-check-input" id="privatepool" value='privatepool' />
-                    <label className=" me-4 form-check-label" for="Private Pool">Private Pool</label>
+                    <input onChange={(e) => setPrivatePool(e.target.value)} type="checkbox" className="form-check-input" id="privatepool" value='Private Pool' />
+                    <label className=" me-4 form-check-label" for="privatepool">Private Pool</label>
                   </div>
                   <div className="mb-3 form-check">
                     <input onChange={(e) => setPrivateGarden(e.target.value)} type="checkbox" className="form-check-input" id="privategarden" value='Private Garden' />
@@ -341,7 +330,7 @@ const PropertySignup = () => {
                     <label className=" me-4 form-check-label" for="hob">Hob</label>
                   </div>
                   <div className="mb-3 form-check">
-                    <input onChange={(e) => setMattress(e.target.value)} type="checkbox" className="form-check-input" id="Mattress" value='mattress' />
+                    <input onChange={(e) => setMattress(e.target.value)} type="checkbox" className="form-check-input" id="mattress" value='Mattress' />
                     <label className=" me-4 form-check-label" for="mattress">Mattress</label>
 
                   </div>

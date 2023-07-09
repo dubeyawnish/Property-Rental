@@ -1,5 +1,6 @@
 import React from 'react'
 import './Footer.css'
+import Logo from '../../Images/Logo/logo.jpg'
 
 const Footer = () => {
     return (
@@ -23,7 +24,7 @@ const Footer = () => {
                     </div>
                     <div className='mt-3 d-flex '>
                         <div>
-                            <a href='/'><img className='border border-secondary' src='https://www.dharnigroup.com/wp-content/uploads/2021/10/cropped-Logo-on-for-Dilwai-27-Oct-2019-1-1.jpg' height='50' width='50'></img></a>
+                            <a href='/'><img className='border border-secondary' src={Logo} height='50' width='50'></img></a>
                         </div>
                         <div className='ms-1'>
                             <div>
@@ -59,7 +60,7 @@ const Footer = () => {
 
             </div>
             <div className=' mt-5' style={{ minHeight: '4rem' }}>
-                <h6 className='text-dark fw-4 text-center fw-bold'>Copyright © 2023 Dharni Property. All rights reserved</h6>
+                <h6 className='text-dark fw-4 text-center fw-bold'>Copyright © 2023 Dharni Capital Service Limited. All rights reserved</h6>
 
 
             </div>

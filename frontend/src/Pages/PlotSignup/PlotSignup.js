@@ -143,15 +143,6 @@ const PlotSignup = () => {
                                 <textarea value={additionalInformation} onChange={(e) => setAdditionalInformation(e.target.value)} className="form-control" id="details"></textarea>
                             </div>
                             <p className='text-muted fst-italic '>Example: Khata, Key information, Date of availability, etc</p>
-
-
-
-
-
-
-
-
-
                             <div className="mb-5 mt-4 form-check">
                                 <input type="checkbox" className="form-check-input" id="exampleCheck1" required />
                                 <label className="form-check-label" for="exampleCheck1">I am the owner of the above plot, or authorised to act on behalf of the owner.</label>
@@ -159,10 +150,6 @@ const PlotSignup = () => {
                             <div className='d-flex justify-content-center mt-5 mb-5'>
                                 <button type="submit" className="btn btn-primary ">Submit</button>
                             </div>
-
-
-
-
                         </ form >
 
                     </div>
