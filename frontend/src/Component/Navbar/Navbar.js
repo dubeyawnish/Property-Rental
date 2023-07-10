@@ -15,7 +15,7 @@ const Navbar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="ms-2 collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
 
@@ -37,6 +37,7 @@ const Navbar = () => {
                                     <button className="dropbtn">Rent by Project</button>
                                     <div className="dropdown-content">
                                         <Link to="/propertylist">Adarsh Vista</Link>
+                                        
                                         <Link to="/propertylist">Apollo Greens</Link>
                                     </div>
                                 </div>

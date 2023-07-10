@@ -1,6 +1,7 @@
 import React from 'react'
 import './Footer.css'
 import Logo from '../../Images/Logo/logo.jpg'
+import Symbol from  '../../Images/Logo/symbol.jpg'
 
 const Footer = () => {
     return (
@@ -12,8 +13,8 @@ const Footer = () => {
                     </div>
                     <div className='mt-3 footer-center text-muted '>
 
-                        <p><a className='text-decoration-none text-muted ' href="mailto:dubeyawnish6@gmail.com"><i className="me-1 fa-solid fa-envelope "></i>dharniproperties@gmail.com </a></p>
-                        <p><a className='text-decoration-none text-muted ' href="tel:9453416152"><i className="me-1 fa-solid fa-phone"></i>1234567890</a></p>
+                        <p><a className='text-decoration-none text-muted ' href="mailto:properties@dharnigroup.com"><i className="me-1 fa-solid fa-envelope "></i>properties@dharnigroup.com </a></p>
+                        <p><a className='text-decoration-none text-muted ' href="tel:9945608407"><i className="me-1 fa-solid fa-phone"></i>9945608407</a></p>
 
                     </div>
 
@@ -24,7 +25,7 @@ const Footer = () => {
                     </div>
                     <div className='mt-3 d-flex '>
                         <div>
-                            <a href='/'><img className='border border-secondary' src={Logo} height='50' width='50'></img></a>
+                            <a href='/'><img className='border border-secondary' src={Symbol} height='50' width='50'></img></a>
                         </div>
                         <div className='ms-1'>
                             <div>
@@ -60,7 +61,7 @@ const Footer = () => {
 
             </div>
             <div className=' mt-5' style={{ minHeight: '4rem' }}>
-                <h6 className='text-dark fw-4 text-center fw-bold'>Copyright © 2023 Dharni Capital Service Limited. All rights reserved</h6>
+                <h6 className='text-dark fw-4 text-center fw-bold'>Copyright © 2023 Dharni Capital Services Limited. All rights reserved</h6>
 
 
             </div>

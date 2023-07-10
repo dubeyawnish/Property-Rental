@@ -270,12 +270,12 @@ const PropertyDetails = () => {
                             </form>
                             <div className='d-flex'>
                                         <div className='  me-2 col-6'>
-                                        <a href="tel:9453416152">
+                                        <a href="tel:9945608407">
 
                                             <button type="submit" className=" form-control btn btn-secondary "><i className="fa-solid fa-phone"></i> Call</button></a>
                                         </div>
                                         <div className='  col-6'>
-                                        <a href="https://wa.me/9453416152?text=Hello!">
+                                        <a href="https://wa.me/9945608407?text=Hello!">
                                             <button type="submit" className=" form-control btn btn-secondary "><i className="fa-brands fa-whatsapp"></i> Whatsapp</button> </a>
                                         </div>
                                     </div>
@@ -283,8 +283,8 @@ const PropertyDetails = () => {
 
                         <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                             <h6 className='mt-2 fw-bold text-muted text-center'>Contact Us</h6>
-                            <a className='text-decoration-none text-muted fw-bold' href="tel:9453416152"> <i className="fa-solid fa-phone"></i> 1234567890</a> <br/>
-                            <a className='text-decoration-none text-muted fw-bold' href="mailto:dubeyawnish6@gmail.com"><i className="fa-regular fa-envelope"></i> dharniproperty@gmail.com</a>
+                            <a className='text-decoration-none text-muted fw-bold' href="tel:9945608407"> <i className="fa-solid fa-phone"></i> 9945608407</a> <br/>
+                            <a className='text-decoration-none text-muted fw-bold' href="mailto:properties@dharnigroup.com"><i className="fa-regular fa-envelope"></i> properties@dharnigroup.com</a>
                         </div>
 
                         

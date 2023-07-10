@@ -9,8 +9,8 @@ const ContactUs = () => {
                     <h4 className='mt-4'>226 Brigade Metropolis Arcade, Whitefield Main Road, Garudacharpalya, Bangalore – 560048 </h4>
                 </div>
 
-                <p className='fw-bold mt-3'>Phone No:&nbsp; <a className='text-decoration-none text-muted' href="tel:9453416152">1234567890 </a></p>
-                <p className='fw-bold mt-3'>Email: &nbsp; <a className='text-decoration-none text-muted ' href="mailto:dubeyawnish6@gmail.com">dharniproperty@gmail.com </a></p>
+                <p className='fw-bold mt-3'>Phone No:&nbsp; <a className='text-decoration-none text-muted' href="tel:9945608407">9945608407 </a></p>
+                <p className='fw-bold mt-3'>Email: &nbsp; <a className='text-decoration-none text-muted ' href="mailto:properties@dharnigroup.com">properties@dharnigroup.com </a></p>
 
 
             </div>

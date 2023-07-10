@@ -1,4 +1,5 @@
 import React from 'react'
+import Symbol from '../../Images/Logo/logo.jpg'
 
 const Interested = () => {
     return (
@@ -7,23 +8,23 @@ const Interested = () => {
                 <div className='row mt-5 ms-5'>
 
                     <div className=' col-lg-2 col-md-2 col-sm-8'>
-                        <img className='img-fluid' src='https://www.dharnigroup.com/wp-content/uploads/2021/10/cropped-Logo-on-for-Dilwai-27-Oct-2019-1-1.jpg' alt='image'></img>
+                        <img className='img-fluid' src={Symbol} alt='image'></img>
 
                     </div>
                     <div className=' ms-5 mt-2 col-lg-8 col-md-8 col-sm-12'>
                         <h5 className='fw-bold'> Interested?</h5>
-                        <p className='mt-3'><a className='text-decoration-none text-muted ' href="tel:9453416152"><i className="fa-solid fa-phone"></i> 1234567890</a></p>
+                        <p className='mt-3'><a className='text-decoration-none text-muted ' href="tel:9945608407"><i className="fa-solid fa-phone"></i> 9945608407</a></p>
                         <p className='mt-3 '><a className='text-decoration-none text-muted ' href="tel:9453416152"><i className="fa-solid fa-mobile"></i> 123467890</a></p>
-                        <p className='mt-3 '><a className='text-decoration-none text-muted ' href="mailto:dubeyawnish6@gmail.com"><i className="fa-solid fa-envelope"></i> dharniproperty@gmail.com</a></p>
+                        <p className='mt-3 '><a className='text-decoration-none text-muted ' href="mailto:properties@dharnigroup.com"><i className="fa-solid fa-envelope"></i> properties@dharnigroup.com</a></p>
                     </div>
 
                 </div>
                 <div className='d-flex'>
-                    <a href="mailto:dubeyawnish6@gmail.com">
+                    <a href="mailto:properties@dharnigroup.com">
                         <button type="button" className=" me-2 btn btn-success">Send Email</button></a>
-                    <a target='_blank' href="tel:9453416152">
-                        <button type="button" className=" me-2 btn btn-success"><i className="fa-solid fa-phone"></i> call +91-1234567890</button></a>
-                    <a target='_blank' href="https://wa.me/9453416152?text=Hello!">
+                    <a target='_blank' href="tel:9945608407">
+                        <button type="button" className=" me-2 btn btn-success"><i className="fa-solid fa-phone"></i> call +91-9945608407</button></a>
+                    <a target='_blank' href="https://wa.me/9945164270?text=Hello!">
                         <button type="button" className="btn btn-success"><i class="fa-brands fa-whatsapp"></i> Whatsapp</button></a>
 
                 </div>
