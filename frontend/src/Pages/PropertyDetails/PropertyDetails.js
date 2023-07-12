@@ -22,7 +22,7 @@ const PropertyDetails = () => {
             if (result.status === 201) {
               Swal.fire({
                 icon: 'success',
-                title: 'Requirement Send Successfully '
+                title: 'Requirement Send Successfully'
               });
              
             }

@@ -1,14 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { API_BASE_URL } from '../../config';
+
 
 const ListedProperties = () => {
+  const {projectId} =useParams();
+  const [properties, setProperties] = useState([]);
+
+
+  
+
+
+  
+
+  //console.log(projectId)
+  useEffect = (() => {
+    const fetchProperty = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
+        debugger;
+        setProperties(response.data);
+        console.log(properties)
+      }
+      catch (error) {
+        console.error(error);
+      }
+  
+    }
+
+    fetchProperty();
+    debugger;
+  }, []);
+
+
+
   return (
     <div className='  container '>
       <h3 className='text-muted my-5'>Properties listed in Adarsh Palm Meadows Rentals</h3>
       <div className='row mb-2'>
-
-
-
         <div className='col-lg-3 col-sm-12'>
           <div className="card" style={{ width: '20rem' }}>
             <Link to='/propertyDetails'>

@@ -7,6 +7,8 @@ const app = express();
 
 require('./Model/List_Property.js')
 require('./Model/List_Plot.js')
+require('./Model/ProjectName.model.js')
+require('./Model/ListProperty.model.js')
 require('./Model/List_Requirement.js')
 
 
@@ -17,6 +19,8 @@ app.use(express.json());
 app.use(require('./Route/Property_Route.js'))
 app.use(require('./Route/Plot_Route.js'))
 app.use(require('./Route/Requirement_Route.js'))
+app.use(require('./Route/Project_Route.js'))
+app.use(require('./Route/Property_Route.js'))
 
 
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import './Footer.css'
-import Logo from '../../Images/Logo/logo.jpg'
 import Symbol from  '../../Images/Logo/symbol.jpg'
 
 const Footer = () => {
@@ -25,14 +24,14 @@ const Footer = () => {
                     </div>
                     <div className='mt-3 d-flex '>
                         <div>
-                            <a href='/'><img className='border border-secondary' src={Symbol} height='50' width='50'></img></a>
+                            <a href='https://www.facebook.com/dharnigroup'><img className='border border-secondary' src={Symbol} height='50' width='50'></img></a>
                         </div>
                         <div className='ms-1'>
                             <div>
-                                <a style={{ textDecoration: 'none' }} href='/' className=''>Dharni Property </a>
+                                <a style={{ textDecoration: 'none' }} href='https://www.facebook.com/dharnigroup' className=''>Dharni Property </a>
                             </div>
                             <div>
-                                <a style={{ textDecoration: 'none' }} href='/' className='text-muted'> <i className="fa-brands fa-square-facebook"></i> Follow Page </a>
+                                <a style={{ textDecoration: 'none' }} href='https://www.facebook.com/dharnigroup' className='text-muted'> <i className="fa-brands fa-square-facebook"></i> Follow Page </a>
                             </div>
 
                         </div>
@@ -48,13 +47,10 @@ const Footer = () => {
                     <div className=' mt-4 d-flex align-items-center '>
 
                         <a className='' target='_blank' href=''><i className=" me-3 fa-brands fa-google"></i></a>
-                        <a target='_blank' href=''><i className="mx-3 fa-brands fa-facebook"></i></a>
+                        <a target='_blank' href='https://www.facebook.com/dharnigroup'><i className="mx-3 fa-brands fa-facebook"></i></a>
                         <a target='_blank' href=''><i className=" mx-3 fa-brands fa-instagram"></i></a>
-                        <a target='_blank' href=''><i className="mx-3 fa-brands fa-linkedin"></i></a>
-                        <a target='_blank' href=''><i className="mx-3  fa-brands fa-twitter"></i></a>
-
-
-
+                        <a target='_blank' href='https://www.linkedin.com/company/dharni-group/about/'><i className="mx-3 fa-brands fa-linkedin"></i></a>
+                        <a target='_blank' href='https://twitter.com/DHARNIgroup'><i className="mx-3  fa-brands fa-twitter"></i></a>
                     </div>
 
                 </div>

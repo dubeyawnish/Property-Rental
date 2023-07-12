@@ -1,49 +1,242 @@
-.navbar-fixed {
-  
-  background-color: #666666;
-  position: fixed;
-  top: 0;
-  width: 100%;
+/* .navbar-fixed {
+
+background-color: #666666;
+position: fixed;
+top: 0;
+width: 100%;
 }
 
-/* Dropdown Button #04AA6D */
+
+
+/* Dropdown Button #04AA6D
 .dropbtn {
-        background-color: #052e66;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-      }
-      
-      /* The container <div> - needed to position the dropdown content */
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-      
-      /* Dropdown Content (Hidden by Default) */
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-      }
-      
-      /* Links inside the dropdown */
-      .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-      }
-      
-      /* Change color of dropdown links on hover */
-      .dropdown-content a:hover {background-color: #ddd;}
-      
-      /* Show the dropdown menu on hover */
-      .dropdown:hover .dropdown-content {display: block;}
-      
-      /* Change the background color of the dropdown button when the dropdown content is shown */
-      .dropdown:hover .dropbtn {background-color: #07002b;}
+      background-color: #052e66;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+    
+    /* The container <div> - needed to position the dropdown content 
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    /* Dropdown Content (Hidden by Default) 
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    /* Links inside the dropdown 
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    /* Change color of dropdown links on hover 
+    .dropdown-content a:hover {background-color: #ddd;}
+    
+    /* Show the dropdown menu on hover 
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    /* Change the background color of the dropdown button when the dropdown content is shown 
+    .dropdown:hover .dropbtn {background-color: #07002b;} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     h1 {
+      margin-top: 100px;
+      text-align: center;
+      font-size: 40px;
+      line-height: 70px;
+      font-family: 'roboto', sans-serif;
+    }
+    #container {
+      margin: 0 auto;
+      max-width: 890px;
+    }
+    
+
+
+     .toggle, [id^=drop] {
+     display: none;
+    } 
+    nav {
+      margin: 0;
+      padding: 0;
+      background-color: #052e66;
+    }
+    
+    #logo {
+      display: block;
+      padding: 0 30px;
+      float: left;
+      font-size: 20px;
+      line-height: 60px;
+    }
+    
+    nav:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    nav ul {
+      float: left;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      position: relative;
+    }
+    
+    nav ul li {
+      margin: 0px;
+      display: inline-block;
+      float: left;
+      background-color: #052e66;
+    }
+    
+    nav a {
+      display: block;
+      padding: 0 20px;
+      color: #FFF;
+      font-size: 20px;
+      line-height: 60px;
+      text-decoration: none;
+    }
+    
+    nav ul li ul li:hover { background: #07002b; }
+    
+    nav a:hover { background-color: #07002b; }
+    
+    nav ul ul {
+      display: none;
+      position: absolute;
+      top: 60px;
+    }
+    
+    nav ul li:hover > ul { display: inherit; }
+    
+    nav ul ul li {
+      width: 170px;
+      float: none;
+      display: list-item;
+      position: relative;
+    }
+    
+    nav ul ul ul li {
+      position: relative;
+      top: -60px;
+      left: 170px;
+    }
+    
+    li > a:after { content: ' +'; }
+    
+    li > a:only-child:after { content: ''; }
+    
+    
+    /* Media Queries
+    --------------------------------------------- */
+    
+    @media all and (max-width : 410px) {
+    
+    #logo {
+      display: block;
+      padding: 0;
+      width: 100%;
+      text-align: center;
+      float: none;
+    }
+    
+    nav { margin: 0; }
+    
+    .toggle + a,
+     .menu { display: none; }
+    
+    .toggle {
+      display: block;
+      background-color: #052e66;
+      padding: 0 20px;
+      color: #FFF;
+      font-size: 22px;
+      font-weight:bold;
+      line-height: 60px;
+      text-decoration: none;
+      border: none;
+    }
+    
+    .toggle:hover { background-color: #07002b; }
+    
+    [id^=drop]:checked + ul { display: block; }
+    
+    nav ul li {
+      display: block;
+      width: 100%;
+    }
+    
+    nav ul ul .toggle,
+     nav ul ul a { padding: 0 40px; }
+    
+    nav ul ul ul a { padding: 0 80px; }
+    
+    nav a:hover,
+     nav ul ul ul a { background-color: #07002b; }
+    
+    nav ul li ul li .toggle,
+     nav ul ul a { background-color: #212121; }
+    
+    nav ul ul {
+      float: none;
+      position: static;
+      color: #ffffff;
+    }
+    
+    nav ul ul li:hover > ul,
+    nav ul li:hover > ul { display: none; }
+    
+    nav ul ul li {
+      display: block;
+      width: 100%;
+    }
+    
+    nav ul ul ul li { position: static;
+    
+    }
+    }
+    
+    @media all and (max-width : 330px) {
+    
+    nav ul li {
+      display: block;
+      width: 94%;
+    }
+    
+    }
+
+
+
+
+
+
+ 
