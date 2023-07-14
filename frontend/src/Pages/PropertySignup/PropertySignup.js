@@ -235,7 +235,7 @@ const PropertySignup = () => {
                 <div className="mb-3 ">
                   {image.preview && <img src={image.preview} width='100' height='100' />}
                   <hr></hr>
-                  <input type='file' name='file' onChange={handleImgChange}></input>
+                  <input type='file' name='file'  onChange={handleImgChange}></input>
                 </div>
 
 
