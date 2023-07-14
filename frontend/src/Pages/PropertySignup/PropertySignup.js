@@ -187,7 +187,7 @@ const PropertySignup = () => {
                 <div className="mb-3">
                   <label for="propertybasics" className="form-label">Property Basics</label>
                   <input value={villaApartmentNumber} onChange={(e) => setVillaApartmentNumber(e.target.value)} type="text" className="form-control" id="propertybasics" required />
-                  <div id="emailHelp" className="form-text">Villa/Apartment Number</div>
+                  <div id="emailHelp" className="form-text">Villa/Apartment</div>
                 </div>
 
 

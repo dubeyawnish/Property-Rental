@@ -30,7 +30,7 @@ function App() {
           <Route exact path='/propertySignup' element={<PropertySignup />} />
           <Route exact path='/plotSignup' element={<PlotSignup />} />
           <Route exact path='/getPropertiesByProject/:projectId' element={<ListedProperties />} />
-          <Route exact path='/propertyDetails' element={<PropertyDetails />} />
+          <Route exact path='/propertyDetails/:propertyId' element={<PropertyDetails />} />
           <Route exact path='/requirement' element={<Requirement />} />
           <Route exact path='/serviceFee' element={<ServiceFee />} />
           <Route exact path='/contactUs' element={<ContactUs />} />

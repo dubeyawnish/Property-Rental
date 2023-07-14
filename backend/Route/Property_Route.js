@@ -70,10 +70,10 @@ router.get('/getPropertiesByProject/:projectId', async (req, res) => {
 
 
 
-router.get('/getPropertyById/:propertyId', async (req, res) => {
+router.get('/propertyDetails/:propertyId', async (req, res) => {
   try {
     const { propertyId } = req.params;
-    console.log(propertyId);
+    //console.log(propertyId);
     const property = await Property.findOne({ _id: propertyId });
     //console.log(propertyId);
 

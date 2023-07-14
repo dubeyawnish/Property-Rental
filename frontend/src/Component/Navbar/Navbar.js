@@ -18,6 +18,8 @@ const Navbar = () => {
             try {
                 const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
                 setProjects(response.data);
+
+                //console.log(projects);
             }
             catch (error) {
                 console.error(error);

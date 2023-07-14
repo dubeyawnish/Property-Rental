@@ -1,17 +1,23 @@
 import React from 'react'
 
 import { API_BASE_URL } from '../../config';
-import { useState } from 'react';
+import { useState ,useEffect } from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { useParams } from 'react-router-dom';
 
 const PropertyDetails = () => {
+
+
+    const {propertyId}=useParams();
+
     const [name, setName] = useState('');
     const [mobileNumber, setMobileNumber] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
     const [requirements, setRequirements] = useState('');
+    const [propertyDetails,setPropertyDetails] =useState({});
 
     const formSubmit = (e) => {
         e.preventDefault();
@@ -48,6 +54,32 @@ const PropertyDetails = () => {
 
 
 
+      useEffect(() => {
+        fetchProperty();
+        //debugger;
+      }, []);
+    
+    
+    
+      const fetchProperty = async () => {
+        try {
+          const response = await axios.get(`${API_BASE_URL}/propertyDetails/${propertyId}`);
+          //debugger;
+          console.log("Response Data", response.data);
+          setPropertyDetails(response.data);
+    
+          //console.log(properties);
+        }
+        catch (error) {
+          console.error(error);
+        }
+      }
+
+
+
+
+
+
       const form = useRef();
 
       const sendEmail = (e) => {
@@ -75,7 +107,7 @@ const PropertyDetails = () => {
                     <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                         <img src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1175&q=80' className='img-fluid' alt='' />
 
-                        <h6 className=' fw-bold mt-5'>Overview</h6>
+                        <h6 className=' fw-bold mt-5'>Overview  {propertyDetails.ownerName}</h6>
                         <div className='d-flex '>
                             <div className='col-lg-3 col-sm-4 p-3 '>
                                 <h6 className=''>Updated On:</h6>
