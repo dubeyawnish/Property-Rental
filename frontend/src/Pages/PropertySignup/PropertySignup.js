@@ -22,6 +22,8 @@ const PropertySignup = () => {
   const [monthlyMaintenance, setMonthlyMaintenance] = useState('');
   const [builtUpArea, setBuiltUpArea] = useState('');
   const [plotSize, setPlotSize] = useState('');
+  const [image, setImage] = useState({ preview: '', data: '' })
+ 
   const [bedrooms, setBedrooms] = useState('');
   const [bathrooms, setBathrooms] = useState('');
   const [balconies, setBalconies] = useState('');
@@ -65,10 +67,11 @@ const PropertySignup = () => {
 
 
 
-  const formSubmit = (e) => {
+  const formSubmit = async(e) => {
     e.preventDefault();
+    const imgResponse = await uploadImage();
 
-    const reqData = { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, plotSize, bedrooms, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation };
+    const reqData = { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, plotSize,propertyImgName: imgResponse.data.fileName, bedrooms, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation };
     axios.post(`${API_BASE_URL}/propertySignup`, reqData)
       .then((result) => {
         if (result.status === 201) {
@@ -90,6 +93,7 @@ const PropertySignup = () => {
         setMonthlyMaintenance('');
         setBuiltUpArea('');
         setPlotSize('');
+        setImage('');
         setBedrooms('');
         setBathrooms('');
         setBalconies('');
@@ -129,6 +133,25 @@ const PropertySignup = () => {
 
       })
 
+  }
+
+
+
+
+  const handleImgChange = (e) => {
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    }
+    setImage(img)
+  }
+
+
+  const uploadImage = async () => {
+    let formData = new FormData()
+    formData.append('file', image.data)
+    const response = await axios.post(`${API_BASE_URL}/uploadFile`, formData)
+    return response
   }
 
 
@@ -207,6 +230,12 @@ const PropertySignup = () => {
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                   <input value={plotSize} onChange={(e) => setPlotSize(e.target.value)} type="text" className="form-control" id="propertybasics" />
                   <div id="emailHelp" className="form-text">Plot size (sq.ft.)</div>
+                </div>
+
+                <div className="mb-3 ">
+                  {image.preview && <img src={image.preview} width='100' height='100' />}
+                  <hr></hr>
+                  <input type='file' name='file' onChange={handleImgChange}></input>
                 </div>
 
 

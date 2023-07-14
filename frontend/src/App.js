@@ -34,7 +34,7 @@ function App() {
           <Route exact path='/requirement' element={<Requirement />} />
           <Route exact path='/serviceFee' element={<ServiceFee />} />
           <Route exact path='/contactUs' element={<ContactUs />} />
-          <Route exact path='/carrier' element={<Carrier />} />
+          <Route exact path='/careers' element={<Carrier />} />
           <Route exact path='/aboutus' element={<AboutUs />} />
           <Route exact path='/interested' element={<Interested />} />
           

@@ -1,5 +1,5 @@
 import React from 'react'
-import Profile from  '../../Images/Profile/profile.png'
+import Profile from  '../../Images/Profile/profile.jpg'
 const AboutUs = () => {
     return (
         <>
@@ -17,7 +17,7 @@ const AboutUs = () => {
                         <div className='col-lg-9 col-md-9 col-sm-12'>
                             <h5>Hemant Dharnidharka – Founder</h5>
                             <p className='mt-4 text-muted fw-bold'>Hemant Dharnidharka as Founder of Dharni Properties, is heading the overall operations of the Group. He has been responsible for developing large strategic business endeavors for Dharni Properties and has been very successful with collaborating and creating relationships.</p>
-                            <p className='mt-5 text-muted fw-bold'>Hemant is a Commerce Graduate from St. Xavier’s College, Kolkata and MBA (Finance and Strategy) From IIM-Lucknow. He has also completed Chartered Accountancy and Company Secretary Courses. He also possesses Certification from Association of Mutual Funds of India (AMFI) in Mutual Funds, NCFM Certification in Derivatives. He has an overall Experience of 10 years in the Finance Industry. He was last working as Managing Director with SJS Markets in Bangalore. He has previously worked with YL eServices, Frontline Analysts, Cadbury and Citibank.</p>
+                            <p className='mt-4 text-muted fw-bold'>Hemant is a Commerce Graduate from St. Xavier’s College, Kolkata and MBA (Finance and Strategy) From IIM-Lucknow. He has also completed Chartered Accountancy and Company Secretary Courses. He also possesses Certification from Association of Mutual Funds of India (AMFI) in Mutual Funds, NCFM Certification in Derivatives. He has an overall Experience of 10 years in the Finance Industry. He was last working as Managing Director with SJS Markets in Bangalore. He has previously worked with YL eServices, Frontline Analysts, Cadbury and Citibank.</p>
 
 
                         </div>

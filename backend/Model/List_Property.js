@@ -56,6 +56,10 @@ const propertySchema = new mongoose.Schema({
             type: Number,
             
         },
+        propertyImgName: {
+            type: String,
+            
+        },
     //propertyOverview: {
         bedrooms: {
             type: Number,

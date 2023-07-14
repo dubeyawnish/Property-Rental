@@ -71,7 +71,7 @@ const ServiceFee = () => {
                     <div className='col-lg-9 col-md-19 col-sm-12'>
                         <h3>Property Management</h3>
                         <p className='mt-3'>Hassle-free end to end care and representation of the property with best practices, on behalf of the owner.</p>
-                        <h6>Fee<sup>*</sup>:<span>Rs. 80,000 + GST, for 12 months, to be paid by the Owner, for properties within a banglore of Dharni Properties registered address. The service includes day to day interaction with the tenant, resolving issues in the property which are the landlords responsibility. Finding a tenant is not part of the service and is chargeable at One month’s rental value + GST over and above the Property Management fee. </span></h6>
+                        <h6>Fee<sup>*</sup>:<span>Rs. 80,000 + GST, for 12 months, to be paid by the Owner, for properties within  banglore . The service includes day to day interaction with the tenant, resolving issues in the property which are the landlords responsibility. Finding a tenant is not part of the service and is chargeable at One month’s rental value + GST over and above the Property Management fee. </span></h6>
                         <p>*Terms and Conditions applicable, as mutually agreed upon and given in detail in signed contract.</p>
                         <hr className='mt-2' />
 

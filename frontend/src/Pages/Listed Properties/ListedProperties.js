@@ -5,36 +5,40 @@ import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 
 
+
+
+
 const ListedProperties = () => {
   const {projectId} =useParams();
+  //console.log(projectId);
   const [properties, setProperties] = useState([]);
 
 
-  
 
 
-  
-
-  //console.log(projectId)
-  useEffect = (() => {
-    const fetchProperty = async () => {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
-        debugger;
-        setProperties(response.data);
-        console.log(properties)
-      }
-      catch (error) {
-        console.error(error);
-      }
-  
-    }
-
+  useEffect(() => {
     fetchProperty();
-    debugger;
+    //debugger;
   }, []);
 
 
+
+  const fetchProperty = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
+      //debugger;
+      console.log("Response Data",response.data)
+      setProperties(response.data);
+    
+      console.log(properties);
+    }
+    catch (error) {
+      console.error(error);
+    }
+  
+  }
+
+  //console.log(projectId)
 
   return (
     <div className='  container '>
