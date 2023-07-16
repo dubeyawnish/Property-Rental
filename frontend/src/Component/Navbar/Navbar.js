@@ -10,12 +10,22 @@ import { API_BASE_URL } from '../../config';
 const Navbar = () => {
 
     const [projects, setProjects] = useState([]);
+    const [locations, setLocations] = useState([]);
+    const [plotPorject,setPlotProject]=useState([]);
+    const [plotLocation,setPlotLocation]=useState([]);
 
 
     const fetchData = async () => {
         try {
             const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
+            const res = await axios.get(`${API_BASE_URL}/getByLocation`);
+            const resProjectPlot = await axios.get(`${API_BASE_URL}/getAllPlotProjects`);
+            const resLocationPlot = await axios.get(`${API_BASE_URL}/getPlotByLocation`);
+
             setProjects(response.data);
+            setLocations(res.data);
+            setPlotProject(resProjectPlot.data);
+            setPlotLocation(resLocationPlot.data);
 
             //console.log(projects);
         }
@@ -36,7 +46,7 @@ const Navbar = () => {
 
     return (
         <div className="App">
-            <nav className="  navbar navbar-expand-lg bg-body-tertiary shadow p-3  bg-body-tertiary rounded">
+            <nav className="z-3   navbar navbar-expand-lg bg-body-tertiary shadow p-3  bg-body-tertiary rounded">
                 <div className="container ">
                     <Link className=" me-5 " to="/"> <img src={Logo} /></Link>
                     <label for="drop" className="toggle">&#8801; Menu</label>
@@ -53,39 +63,48 @@ const Navbar = () => {
                             </ul>
                         </li>
                         <li >
-                            <label for="drop-2" className="toggle">Commercial</label>
-                            <a href="#">Commercial</a>
+                            <label for="drop-2" className="toggle">Residential</label>
+                            <a href="/">Residential</a>
                             <input type="checkbox" id="drop-2" />
                             <ul>
                                 <li>
-                                    <label for="drop-3" className="toggle">Buy </label>
-                                    <a href="#">Buy</a>
+                                    <label for="drop-3" className="toggle">Buy by Project </label>
+                                    <a href="#">Buy by Project</a>
                                     <input type="checkbox" id="drop-3" />
                                     <ul>
                                         {projects.map(project => (
                                             <li><Link to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
                                         ))}
+                                        {plotPorject.map(project => (
+                                            <li><Link to={`/getPlotByProject/${project._id}`}>{project.projectName}</Link></li>
+                                        ))}
+
+                                        
                                     </ul>
                                 </li>
                                 <li>
-                                    <label for="drop-4" className="toggle">Sell </label>
-                                    <a href="#">Sell</a>
+                                    <label for="drop-4" className="toggle">Buy by Location </label>
+                                    <a href="#">Buy by Location</a>
                                     <input type="checkbox" id="drop-4" />
                                     <ul>
-                                        <li><Link to='/propertylist'>Shobha</Link></li>
-                                        <li><Link to='/propertylist'>Admas</Link></li>
+                                        {locations.map(location => (
+                                            <li><Link to={`/getPropertiesByLocation/${location._id}`}>{location.location}</Link></li>
+                                        ))}
+                                        {plotLocation.map(location => (
+                                            <li><Link to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
+                                        ))}
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <label for="drop-5" className="toggle">Residential </label>
-                            <a href="#">Residential</a>
+                            <label for="drop-5" className="toggle">Commercial </label>
+                            <a href="/">Commercial</a>
                             <input type="checkbox" id="drop-5" />
                             <ul>
                                 <li>
-                                    <label for="drop-6" className="toggle">Buy </label>
-                                    <a href="#">Buy</a>
+                                    <label for="drop-6" className="toggle">Buy by Project </label>
+                                    <a href="#">Buy by Project</a>
                                     <input type="checkbox" id="drop-6" />
                                     <ul>
                                         <li><Link to='/propertylist'>Shobha</Link></li>
@@ -93,8 +112,8 @@ const Navbar = () => {
                                     </ul>
                                 </li>
                                 <li>
-                                    <label for="drop-7" className="toggle">Sell </label>
-                                    <a href="#">Sell</a>
+                                    <label for="drop-7" className="toggle">Buy by location </label>
+                                    <a href="#">Buy by location</a>
                                     <input type="checkbox" id="drop-7" />
                                     <ul>
                                         <li><Link to='/propertylist'>Shobha</Link></li>
@@ -105,25 +124,36 @@ const Navbar = () => {
                         </li>
                         <li>
                             <label for="drop-8" className="toggle">Search By Type</label>
-                            <a href="#">Search By Type</a>
+                            <a href="/">Search By Type</a>
                             <input type="checkbox" id="drop-8" />
                             <ul>
                                 <li>
-                                    <label for="drop-9" className="toggle">Buy </label>
-                                    <a href="#">Buy</a>
+                                    <label for="drop-9" className="toggle">Buy Apartment </label>
+                                    <a href="#">Buy Apartment</a>
                                     <input type="checkbox" id="drop-9" />
+                                    <ul>
+                                    {locations.map(location => (
+                                            <li><Link to={`/getPropertiesByLocation/${location._id}`}>{location.location}</Link></li>
+                                        ))}
+                                    </ul>
+                                </li>
+                                <li>
+                                    <label for="drop-10" className="toggle">Buy Villa </label>
+                                    <a href="#">Buy Villa</a>
+                                    <input type="checkbox" id="drop-10" />
                                     <ul>
                                         <li><Link to='/propertylist'>Shobha</Link></li>
                                         <li><Link to='/propertylist'>Admas</Link></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <label for="drop-10" className="toggle">Sell </label>
-                                    <a href="#">Sell</a>
-                                    <input type="checkbox" id="drop-10" />
+                                    <label for="drop-12" className="toggle">Buy Plot </label>
+                                    <a href="#">Buy Plot</a>
+                                    <input type="checkbox" id="drop-12" />
                                     <ul>
-                                        <li><Link to='/propertylist'>Shobha</Link></li>
-                                        <li><Link to='/propertylist'>Admas</Link></li>
+                                    {plotLocation.map(location => (
+                                            <li><Link to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
+                                        ))}
                                     </ul>
                                 </li>
                             </ul>
@@ -132,16 +162,15 @@ const Navbar = () => {
                             <Link to='/' > List Property</Link>
                             <input type="checkbox" id="drop-11" />
                             <ul>
-                                <li><Link to="/propertySignup">List Property</Link></li>
+                                <li><Link to="/propertySignup">List a Property</Link></li>
                                 <li> <Link to="/plotSignup">List a Plot</Link></li>
                             </ul>
                         </li>
                         <li>
-                        
+
                             <Link to="/aboutus">About</Link>
-                            
-                            
-                            </li>
+
+                        </li>
                     </ul>
                 </div>
             </nav>

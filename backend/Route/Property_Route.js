@@ -50,6 +50,32 @@ router.get('/getAllProjects', async (req, res) => {
 
 })
 
+router.get('/getByLocation', async (req, res) => {
+  try {
+    const allLocation = await Property.find({}, 'location');
+    const uniqueProjects = [];
+    const projectNames = [];
+
+    for (let i = 0; i < allLocation.length; i++) {
+      const location = allLocation[i].location;
+
+      if (!projectNames.includes(location)) {
+        uniqueProjects.push(allLocation[i]);
+        projectNames.push(location);
+      }
+    }
+    // If there are errors, return Bad request and the errors
+    //console.log(allProject)
+    res.json(uniqueProjects)
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+
 
 
 router.get('/getPropertiesByProject/:projectId', async (req, res) => {
@@ -58,6 +84,23 @@ router.get('/getPropertiesByProject/:projectId', async (req, res) => {
     const project = await Property.find({_id: projectId });
 
     const properties = await Property.find({projectName : project[0].projectName})
+
+
+    res.json(properties);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
+
+router.get('/getPropertiesByLocation/:locationId', async (req, res) => {
+  try {
+    const {locationId}=req.params;
+    const project = await Property.find({_id: locationId });
+
+    const properties = await Property.find({location : project[0].location})
 
 
     res.json(properties);

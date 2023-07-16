@@ -27,6 +27,10 @@ const plotSchema = new mongoose.Schema({
       type: String,
       
     },
+    propertyImgName :{
+      type: String,
+
+    },
     direction: {
       type: String,
      

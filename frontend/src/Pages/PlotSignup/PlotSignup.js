@@ -13,7 +13,7 @@ const PlotSignup = () => {
     const [projectName, setProjectName] = useState('');
     const [location, setLocation] = useState('');
     const [direction, setDirection] = useState('');
-
+    const [image, setImage] = useState({ preview: '', data: '' })
     const [expectedSalePrice, setExpectedSalePrice] = useState('');
     const [plotSize, setPlotSize] = useState('');
     const [plotDimensions, setPlotDimensions] = useState('');
@@ -24,10 +24,11 @@ const PlotSignup = () => {
 
 
 
-    const formSubmit = (e) => {
+    const formSubmit = async(e) => {
         e.preventDefault();
+        const imgResponse = await uploadImage();
 
-        const reqData = { ownerName, mobileNumbers, emailAddresses, plotNumber, projectName, location, direction, expectedSalePrice, plotSize, plotDimensions, khataType, additionalInformation };
+        const reqData = { ownerName, mobileNumbers, emailAddresses, plotNumber, projectName,propertyImgName: imgResponse.data.fileName, location, direction, expectedSalePrice, plotSize, plotDimensions, khataType, additionalInformation };
         axios.post(`${API_BASE_URL}/plotSignup`, reqData)
             .then((result) => {
                 if (result.status === 201) {
@@ -61,6 +62,22 @@ const PlotSignup = () => {
             })
 
     }
+
+    const handleImgChange = (e) => {
+        const img = {
+          preview: URL.createObjectURL(e.target.files[0]),
+          data: e.target.files[0],
+        }
+        setImage(img)
+      }
+    
+    
+      const uploadImage = async () => {
+        let formData = new FormData()
+        formData.append('file', image.data)
+        const response = await axios.post(`${API_BASE_URL}/uploadFile`, formData)
+        return response
+      }
 
 
 
@@ -101,7 +118,7 @@ const PlotSignup = () => {
                             </div>
 
                             <input value={projectName} onChange={(e) => setProjectName(e.target.value)} type="text" className="form-control" id="propertybasics" />
-                            <div id="emailHelp" className="form-text">Project name (or Address)</div>
+                            <div id="emailHelp" className="form-text">Project name </div>
                             <div className=' row mt-3'>
 
                                 <div  >
@@ -111,6 +128,11 @@ const PlotSignup = () => {
                                 <div>
                                     <input value={direction} onChange={(e) => setDirection(e.target.value)} type="text" className="form-control" id="propertybasics" />
                                     <div id="emailHelp" className="form-text">Direction of plot</div>
+                                </div>
+                                <div className="mb-3 ">
+                                    {image.preview && <img src={image.preview} width='100' height='100' />}
+                                    <hr></hr>
+                                    <input type='file' name='file' onChange={handleImgChange}></input>
                                 </div>
                             </div>
 
