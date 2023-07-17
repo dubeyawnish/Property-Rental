@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 // Define the property schema
 const propertySchema = new mongoose.Schema({
     ownerName: {
-        type: String,
-        
+        type: String,    
     },
     mobileNumbers:
     {

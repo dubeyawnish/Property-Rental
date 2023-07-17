@@ -50,7 +50,7 @@ const Requirement = () => {
         <div className='container mt-5'>
             <h3 className='text-muted'>Share Your Requirement</h3>
             <p className='mt-4'>Tell us what kind of a home you have in mind. We will be happy to share a customized list of recommended homes, with actual pictures and verified details.</p>
-            <p>For any issues with the form, please mail us on property@dharnigroup.com</p>
+            <p>For any issues with the form, please mail us on properties@dharnigroup.com</p>
 
             <div className='mt-3 p-4'>
                 <form  onSubmit={formSubmit}>

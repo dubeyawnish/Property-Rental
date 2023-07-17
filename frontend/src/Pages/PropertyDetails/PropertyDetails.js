@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { useParams } from 'react-router-dom';
+import Map from '../DetailsMap/Map.js'
 
 
 
@@ -136,8 +137,21 @@ const PropertyDetails = () => {
 
     const center = {
         lat: 12.94831979154639,
-        lng: 77.6780633460285
+        lng: 77.6780633460285 
     };
+
+    // const center = {
+    //          lat: propertyDetails.expectedRentPrice,
+    //          lng: propertyDetails.monthlyMaintenance
+    //        };
+
+
+    // const center = {
+    //     lat: parseFloat(propertyDetails.expectedRentPrice),
+    //     lng: parseFloat(propertyDetails.monthlyMaintenance)
+    //   };
+
+    //   console.log(parseFloat(propertyDetails.expectedRentPrice))
 
 
 
@@ -209,7 +223,7 @@ const PropertyDetails = () => {
                                 <h6 className='mt-2'>Property Size: {propertyDetails.builtUpArea} ft<sup>2</sup></h6>
                             </div>
                             <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Property Plot Size: {propertyDetails.builtUpArea} <sup>2</sup></h6>
+                                <h6 className='mt-2'>Property Plot Size: {propertyDetails.builtUpArea}ft <sup>2</sup></h6>
                             </div>
                         </div>
                         <div className='row'>
@@ -267,7 +281,7 @@ const PropertyDetails = () => {
                         </div>
                     </div>
 
-                    <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
+                    {/* <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                         <h6 className='mt-2 fw-bold'>Property Details</h6>
                         <h6 className='mt-3 fw-bold'>Amenities</h6>
                         <div className='row'>
@@ -325,7 +339,7 @@ const PropertyDetails = () => {
 
                         </div>
 
-                    </div>
+                    </div> */}
 
                     <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                         <h6 className='mt-2 fw-bold'>Map</h6>
@@ -350,6 +364,7 @@ const PropertyDetails = () => {
 
 
                     </div >
+                   
 
                 </div>
                 <div className='col-lg-4 col-md-4 col-sm-12 '>
