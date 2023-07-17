@@ -145,7 +145,7 @@ width: 100%;
     nav ul li:hover > ul { display: inherit; }
     
     nav ul ul li {
-      width: 170px;
+      width: 190px;
       float: none;
       display: list-item;
       position: relative;
@@ -154,7 +154,7 @@ width: 100%;
     nav ul ul ul li {
       position: relative;
       top: -55px;
-      left: 170px;
+      left: 190px;
     }
     
     li > a:after { content: ' '; }

@@ -73,10 +73,10 @@ const Navbar = () => {
                                     <input type="checkbox" id="drop-3" />
                                     <ul>
                                         {projects.map(project => (
-                                            <li><Link to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
+                                            <li><a href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a></li>
                                         ))}
                                         {plotPorject.map(project => (
-                                            <li><Link to={`/getPlotByProject/${project._id}`}>{project.projectName}</Link></li>
+                                            <li><a href={`/getPlotByProject/${project._id}`}>{project.projectName}</a></li>
                                         ))}
 
                                         
@@ -88,7 +88,7 @@ const Navbar = () => {
                                     <input type="checkbox" id="drop-4" />
                                     <ul>
                                         {locations.map(location => (
-                                            <li><Link to={`/getPropertiesByLocation/${location._id}`}>{location.location}</Link></li>
+                                            <li><a  href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
                                         ))}
                                         {plotLocation.map(location => (
                                             <li><Link to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
@@ -107,8 +107,8 @@ const Navbar = () => {
                                     <a href="#">Buy by Project</a>
                                     <input type="checkbox" id="drop-6" />
                                     <ul>
-                                        <li><Link to='/propertylist'>Shobha</Link></li>
-                                        <li><Link to='/propertylist'>Admas</Link></li>
+                                        <li><Link to='/propertylist'></Link></li>
+                                        <li><Link to='/propertylist'></Link></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -116,8 +116,8 @@ const Navbar = () => {
                                     <a href="#">Buy by location</a>
                                     <input type="checkbox" id="drop-7" />
                                     <ul>
-                                        <li><Link to='/propertylist'>Shobha</Link></li>
-                                        <li><Link to='/propertylist'>Admas</Link></li>
+                                        <li><Link to='/propertylist'></Link></li>
+                                        <li><Link to='/propertylist'></Link></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -133,7 +133,7 @@ const Navbar = () => {
                                     <input type="checkbox" id="drop-9" />
                                     <ul>
                                     {locations.map(location => (
-                                            <li><Link to={`/getPropertiesByLocation/${location._id}`}>{location.location}</Link></li>
+                                            <li><a href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
                                         ))}
                                     </ul>
                                 </li>
@@ -142,8 +142,8 @@ const Navbar = () => {
                                     <a href="#">Buy Villa</a>
                                     <input type="checkbox" id="drop-10" />
                                     <ul>
-                                        <li><Link to='/propertylist'>Shobha</Link></li>
-                                        <li><Link to='/propertylist'>Admas</Link></li>
+                                        <li><Link to='/propertylist'></Link></li>
+                                        <li><Link to='/propertylist'></Link></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -166,10 +166,10 @@ const Navbar = () => {
                                 <li> <Link to="/plotSignup">List a Plot</Link></li>
                             </ul>
                         </li>
+
+                        
                         <li>
-
                             <Link to="/aboutus">About</Link>
-
                         </li>
                     </ul>
                 </div>

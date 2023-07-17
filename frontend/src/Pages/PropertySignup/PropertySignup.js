@@ -174,15 +174,15 @@ const PropertySignup = () => {
               <form onSubmit={formSubmit}>
                 <div className="mb-3">
                   <label for="ownername" className="form-label">Owner Name(s)</label>
-                  <input value={ownerName} onChange={(e) => setOwnerName(e.target.value)} type="text" className="form-control" id="ownername" aria-describedby="emailHelp" required />
+                  <input value={ownerName} onChange={(e) => setOwnerName(e.target.value)} type="text" className="form-control" id="ownername" aria-describedby="emailHelp"  />
                 </div>
                 <div className="mb-3">
                   <label for="mobileNumber" className="form-label">Mobile number(s)</label>
-                  <input value={mobileNumbers} onChange={(e) => setMobileNumbers(e.target.value)} type="tel" className="form-control" id="mobileNumber" required />
+                  <input value={mobileNumbers} onChange={(e) => setMobileNumbers(e.target.value)} type="tel" className="form-control" id="mobileNumber"  />
                 </div>
                 <div className="mb-3">
                   <label for="email" className="form-label">Email address(es)</label>
-                  <input value={emailAddresses} onChange={(e) => setEmailAddresses(e.target.value)} type="email" className="form-control" id="email" required />
+                  <input value={emailAddresses} onChange={(e) => setEmailAddresses(e.target.value)} type="email" className="form-control" id="email"  />
                 </div>
                 <div className="mb-3">
                   <label for="propertybasics" className="form-label">Property Basics</label>
@@ -193,7 +193,7 @@ const PropertySignup = () => {
 
 
                 <input value={projectName} onChange={(e) => setProjectName(e.target.value)} type="text" className="form-control" id="propertybasics" />
-                <div id="emailHelp" className="form-text">Project name (or Address)</div>
+                <div id="emailHelp" className="form-text">Project name </div>
                 <div className=' row mt-3'>
 
                   <div className='col-lg-6 col-md-6 col-sm-12' >
@@ -208,7 +208,7 @@ const PropertySignup = () => {
 
                 <div className="mt-5 mb-2">
                   <label for="Propertypricing" className="form-label">Property Pricing</label>
-                  <input value={expectedRentPrice} onChange={(e) => setExpectedRentPrice(e.target.value)} type="text" className="form-control" id="Propertypricing" required />
+                  <input value={expectedRentPrice} onChange={(e) => setExpectedRentPrice(e.target.value)} type="text" className="form-control" id="Propertypricing"  />
                   <div id="emailHelp" className=" form-text">Expected Rent price (if applicable)</div>
                 </div>
                 <input value={expectedSalePrice} onChange={(e) => setExpectedSalePrice(e.target.value)} type="text" className="form-control" id="propertybasics" />

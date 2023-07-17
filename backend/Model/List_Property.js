@@ -4,18 +4,18 @@ const mongoose = require('mongoose');
 const propertySchema = new mongoose.Schema({
     ownerName: {
         type: String,
-        required: true
+        
     },
     mobileNumbers:
     {
         type: Number,
-        required: true
+        
     }
     ,
     emailAddresses:
     {
         type: String,
-        required: true
+        
     }
     ,
     //propertyBasics: {
@@ -37,23 +37,23 @@ const propertySchema = new mongoose.Schema({
         },
     //propertyPricing: {
         expectedRentPrice: {
-            type: Number,
+            type: String,
             
         },
         expectedSalePrice: {
-            type: Number,
+            type: String,
             
         },
         monthlyMaintenance: {
-            type: Number,
+            type: String,
             
         },
         builtUpArea: {
-            type: Number,
+            type: String,
            
         }
         , plotSize: {
-            type: Number,
+            type: String,
             
         },
         propertyImgName: {

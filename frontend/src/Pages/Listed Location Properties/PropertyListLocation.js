@@ -42,31 +42,35 @@ const ListedProperties = () => {
 
   return (
     <div className='  container '>
-      <h3 className='text-muted my-5'>Properties listed in Bellendur Rentals</h3>
+      
       <div className='row mb-2'>
 
 
 
 
-        {properties.map(property => (
+      {properties.map(property => (
+        <>
+        <h3 className='text-muted my-5'>Properties listed in {property.location} sales</h3>
+        
           <div className='col-lg-3 col-sm-12'>
             <div className="card" style={{ width: '20rem' }}>
             <Link to={`/propertyDetails/${property._id}`}>
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8SG91c2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
-              className="card-img-top" alt="House-iamge" />
+              <img src={`${API_BASE_URL}/files/${property.propertyImgName}`}  height={250}
+              className="card-img-top " alt="House-iamge" />
               </Link>
 
               <div className="card-body">
               <Link className='text-decoration-none'  to={`/propertyDetails/${property._id}`}>
-                <h5 className="card-title">{property.bedrooms} BHK Villa {property.projectName} {property.location}</h5>
+                <h5 className="card-title">{property.bedrooms} BHK {property.villaApartmentNumber} {property.projectName} {property.location}</h5>
               </Link>
-                <h5 className="card-title">₹ {property.expectedSalePrice} per month</h5>
-                <p className="card-text">PR20465005: {property.additionalInformation} 3 BHK apartment available in the white field region area of 1520 sqft...</p>
-                <p><i className="fa-solid fa-bed"></i> 3 &nbsp; &nbsp;<span > <i className="fa-solid fa-droplet "></i> 3 &nbsp; &nbsp;</span> <span className=''><i className="fa-solid fa-map"></i>{property.builtUpArea} ft<sup>2</sup></span> </p>
-                <p className='text-center'><a href='' className='text-muted text-decoration-none'>Interested?</a></p>
+                <h5 className="card-title">₹ {property.expectedSalePrice} </h5>
+                <p className="card-text"> {property.additionalInformation} ...</p>
+                <p><i className="fa-solid fa-bed"></i> {property.bedrooms} &nbsp; &nbsp;<span > <i className="fa-solid fa-droplet "></i> {property.bathrooms} &nbsp; &nbsp;</span> <span className=''><i className="fa-solid fa-map"></i>{property.builtUpArea} ft<sup>2</sup></span> </p>
+                <p className='text-center'><Link to='/interested' className='text-muted text-decoration-none'><i class="fa-sharp fa-regular fa-face-smile"></i> Interested?</Link></p>
               </div>
             </div>
           </div>
+          </>
         ))}
 
 
@@ -74,8 +78,7 @@ const ListedProperties = () => {
 
 
 
-
-
+{/* 
         <div className='col-lg-3 col-sm-12 mb-2'>
           <div className="card" style={{ width: '20rem' }}>
             <Link to='/propertyDetails'>
@@ -138,7 +141,7 @@ const ListedProperties = () => {
               <p className='text-center'><a href='' className='text-muted text-decoration-none'>Interested?</a></p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
     </div>

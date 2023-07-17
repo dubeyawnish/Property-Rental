@@ -13,16 +13,13 @@ const ListedProperties = () => {
   //console.log(projectId);
   const [properties, setProperties] = useState([]);
 
-
-
-
   useEffect(() => {
     fetchProperty();
     //debugger;
   }, []);
 
 
-
+  
   const fetchProperty = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/getPlotByProject/${projectId}`);
@@ -52,13 +49,13 @@ const ListedProperties = () => {
           <div className='col-lg-3 col-sm-12'>
             <div className="card" style={{ width: '20rem' }}>
               <Link to={`/plotDetails/${property._id}`}>
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8SG91c2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                <img src={`${API_BASE_URL}/files/${property.propertyImgName}`}
                   className="card-img-top" alt="House-iamge" />
               </Link>
 
               <div className="card-body">
                 <Link className='text-decoration-none' to={`/plotDetails/${property._id}`}>
-                  <h5 className="card-title">{property.bedrooms} BHK Villa {property.projectName} {property.location}</h5>
+                  <h5 className="card-title">{property.bedrooms} BHK  {property.projectName} , {property.location}</h5>
                 </Link>
                 <h5 className="card-title">₹ {property.expectedSalePrice} per month</h5>
                 <p className="card-text">PR20465005: {property.additionalInformation} 3 BHK apartment available in the white field region area of 1520 sqft...</p>
