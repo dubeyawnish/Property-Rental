@@ -54,7 +54,7 @@ const ListedProperties = () => {
 
         {properties.map(property => (
           <>
-           <h3 className='text-muted my-5'>Properties listed in {property.projectName} Rentals</h3>
+           <h3 className='text-muted my-5'>Properties listed in {property.projectName} </h3>
           
           <div className='col-lg-3 col-sm-12'>
             <div className="card" style={{ width: '20rem' }}>

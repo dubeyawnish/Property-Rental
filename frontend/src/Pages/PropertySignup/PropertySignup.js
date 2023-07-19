@@ -15,15 +15,17 @@ const PropertySignup = () => {
   const [emailAddresses, setEmailAddresses] = useState('');
   const [villaApartmentNumber, setVillaApartmentNumber] = useState('');
   const [projectName, setProjectName] = useState('');
+  const [builderName, setBuilderName] = useState('');
   const [location, setLocation] = useState('');
   const [yearOfCompletion, setYearOfCompletion] = useState('');
   const [expectedRentPrice, setExpectedRentPrice] = useState('');
   const [expectedSalePrice, setExpectedSalePrice] = useState('');
   const [monthlyMaintenance, setMonthlyMaintenance] = useState('');
   const [builtUpArea, setBuiltUpArea] = useState('');
+  const [carpetArea, setCarpetArea] = useState('');
   const [plotSize, setPlotSize] = useState('');
   const [image, setImage] = useState({ preview: '', data: '' })
- 
+
   const [bedrooms, setBedrooms] = useState('');
   const [bathrooms, setBathrooms] = useState('');
   const [balconies, setBalconies] = useState('');
@@ -56,6 +58,7 @@ const PropertySignup = () => {
   const [tv, setTv] = useState('');
   const [wardrobe, setWardrobe] = useState('');
   const [washingMachine, setWashingMachine] = useState('');
+
   const [waterPurifier, setWaterPurifier] = useState('');
   const [granite, setGranite] = useState('');
   const [italianMarble, setItalianMarble] = useState('');
@@ -66,15 +69,19 @@ const PropertySignup = () => {
   const [additionalInformation, setAdditionalInformation] = useState('');
 
 
+  const [loader, setLoader] = useState(false);
 
-  const formSubmit = async(e) => {
+
+  const formSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
     const imgResponse = await uploadImage();
 
-    const reqData = { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, plotSize,propertyImgName: imgResponse.data.fileName, bedrooms, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation };
+    const reqData = { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, builderName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, carpetArea, plotSize, propertyImgName: imgResponse.data.fileName, bedrooms, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation };
     axios.post(`${API_BASE_URL}/propertySignup`, reqData)
       .then((result) => {
         if (result.status === 201) {
+          setLoader(false);
           Swal.fire({
             icon: 'success',
             title: 'Successfully Registered'
@@ -86,12 +93,14 @@ const PropertySignup = () => {
         setEmailAddresses('');
         setVillaApartmentNumber('');
         setProjectName('');
+        setBuilderName('');
         setLocation('');
         setYearOfCompletion('');
         setExpectedRentPrice('');
         setExpectedSalePrice('');
         setMonthlyMaintenance('');
         setBuiltUpArea('');
+        setCarpetArea('');
         setPlotSize('');
         setImage('');
         setBedrooms('');
@@ -151,7 +160,7 @@ const PropertySignup = () => {
     let formData = new FormData()
     formData.append('file', image.data)
     const response = await axios.post(`${API_BASE_URL}/uploadFile`, formData)
-    return response
+    return response;
   }
 
 
@@ -163,7 +172,7 @@ const PropertySignup = () => {
       <div className='container'>
         <h3 className='text-muted mt-5'>Property Signup</h3>
         <p className='mt-4'>We request you to please share the below details for us begin working on your property.</p>
-        <p>For any issues with the form, please mail us on property@dharnigroup.com</p>
+        <p>For any issues with the form, please mail us on properties@dharnigroup.com</p>
         <div className=' container outer-box '>
           <div className=' list-property-container'>
             <div className=' upper-div'>
@@ -172,20 +181,22 @@ const PropertySignup = () => {
             </div>
             <div className='mt-3 p-4'>
               <form onSubmit={formSubmit}>
+                <h3 className='mb-3 textColor'>Owner Details</h3>
                 <div className="mb-3">
                   <label for="ownername" className="form-label">Owner Name(s)</label>
-                  <input value={ownerName} onChange={(e) => setOwnerName(e.target.value)} type="text" className="form-control" id="ownername" aria-describedby="emailHelp"  />
+                  <input value={ownerName} onChange={(e) => setOwnerName(e.target.value)} type="text" className="form-control" id="ownername" aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
                   <label for="mobileNumber" className="form-label">Mobile number(s)</label>
-                  <input value={mobileNumbers} onChange={(e) => setMobileNumbers(e.target.value)} type="tel" className="form-control" id="mobileNumber"  />
+                  <input value={mobileNumbers} onChange={(e) => setMobileNumbers(e.target.value)} type="tel" className="form-control" id="mobileNumber" />
                 </div>
                 <div className="mb-3">
                   <label for="email" className="form-label">Email address(es)</label>
-                  <input value={emailAddresses} onChange={(e) => setEmailAddresses(e.target.value)} type="email" className="form-control" id="email"  />
+                  <input value={emailAddresses} onChange={(e) => setEmailAddresses(e.target.value)} type="email" className="form-control" id="email" />
                 </div>
+                <h3 className='mb-3 mt-5 textColor'>Property Basics</h3>
                 <div className="mb-3">
-                  <label for="propertybasics" className="form-label">Property Basics</label>
+
                   <input value={villaApartmentNumber} onChange={(e) => setVillaApartmentNumber(e.target.value)} type="text" className="form-control" id="propertybasics" required />
                   <div id="emailHelp" className="form-text">Villa/Apartment</div>
                 </div>
@@ -194,6 +205,14 @@ const PropertySignup = () => {
 
                 <input value={projectName} onChange={(e) => setProjectName(e.target.value)} type="text" className="form-control" id="propertybasics" />
                 <div id="emailHelp" className="form-text">Project name </div>
+
+
+                <input value={builderName} onChange={(e) => setBuilderName(e.target.value)} type="text" className="form-control" id="propertybasics" />
+                <div id="emailHelp" className="form-text">Builder Name </div>
+
+
+
+
                 <div className=' row mt-3'>
 
                   <div className='col-lg-6 col-md-6 col-sm-12' >
@@ -206,41 +225,60 @@ const PropertySignup = () => {
                   </div>
                 </div>
 
-                <div className="mt-5 mb-2">
-                  <label for="Propertypricing" className="form-label">Property Pricing</label>
-                  <input value={expectedRentPrice} onChange={(e) => setExpectedRentPrice(e.target.value)} type="text" className="form-control" id="Propertypricing"  />
+
+                <h3 className=' mt-5 textColor'>Property Pricing</h3>
+
+                <div className="mt-3 mb-2">
+
+                  <input value={expectedRentPrice} onChange={(e) => setExpectedRentPrice(e.target.value)} type="text" className="form-control" id="Propertypricing" />
                   <div id="emailHelp" className=" form-text">Expected Rent price (if applicable)</div>
                 </div>
                 <input value={expectedSalePrice} onChange={(e) => setExpectedSalePrice(e.target.value)} type="text" className="form-control" id="propertybasics" />
                 <div id="emailHelp" className=" mb-2 form-text">Expected Sale price (if applicable)</div>
 
 
-                <div className=' row mt-3'>
 
-                  <div className='col-lg-6 col-md-6 col-sm-12' >
-                    <input value={monthlyMaintenance} onChange={(e) => setMonthlyMaintenance(e.target.value)} type="text" className="form-control" id="propertybasics" />
-                    <div id="emailHelp" className="form-text">Monthly maintenance</div>
-                  </div>
-                  <div className='col-lg-6 col-md-6 col-sm-12'>
-                    <input value={builtUpArea} onChange={(e) => setBuiltUpArea(e.target.value)} type="text" className="form-control" id="propertybasics" />
-                    <div id="emailHelp" className="form-text">Built up (sq.ft.)</div>
-                  </div>
+
+                <div className='mt-3' >
+                  <input value={monthlyMaintenance} onChange={(e) => setMonthlyMaintenance(e.target.value)} type="text" className="form-control" id="propertybasics" />
+                  <div id="emailHelp" className="form-text">Monthly maintenance</div>
                 </div>
 
-                <div className='col-lg-6 col-md-6 col-sm-12'>
-                  <input value={plotSize} onChange={(e) => setPlotSize(e.target.value)} type="text" className="form-control" id="propertybasics" />
-                  <div id="emailHelp" className="form-text">Plot size (sq.ft.)</div>
-                </div>
+
+
+
+
+
+
+
+                <h3 className=' mt-5 textColor'>Property Overview</h3>
+
 
                 <div className="mb-3 ">
                   {image.preview && <img src={image.preview} width='100' height='100' />}
                   <hr></hr>
-                  <input type='file' name='file'  onChange={handleImgChange}></input>
+                  <input type='file' name='file' onChange={handleImgChange}></input>
                 </div>
 
 
-                <div className="mt-5 mb-2">
-                  <label for="PropertyOverview " className="form-label">Property Overview </label>
+                <div className='mt-3'>
+                  <input value={builtUpArea} onChange={(e) => setBuiltUpArea(e.target.value)} type="text" className="form-control" id="propertybasics" />
+                  <div id="emailHelp" className="form-text">Built up (sq.ft.)</div>
+                </div>
+                <div className='mt-3'>
+                  <input value={carpetArea} onChange={(e) => setCarpetArea(e.target.value)} type="text" className="form-control" id="propertybasics" />
+                  <div id="emailHelp" className="form-text">Carpet Area (sq.ft.)</div>
+                </div>
+
+
+                <div className='mt-3'>
+                  <input value={plotSize} onChange={(e) => setPlotSize(e.target.value)} type="text" className="form-control" id="propertybasics" />
+                  <div id="emailHelp" className="form-text">Plot size (sq.ft.)</div>
+                </div>
+
+
+                <div className="mt-3 mb-2">
+
                   <input value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} type="text" className="form-control" id="PropertyOverview " required />
                   <div id="emailHelp" className=" form-text">No. of bedrooms</div>
                 </div>
@@ -265,8 +303,8 @@ const PropertySignup = () => {
                   <div id="emailHelp" className="form-text">Direction of main door</div>
                 </div>
 
+                <h3 className='mb-5 mt-5 textColor'>Property Features</h3>
 
-                <label for="propertyfeatures " className=" mt-5 form-label">Property Features </label>
                 <div className='d-flex '>
                   <div className="mb-3 form-check">
                     <input onChange={(e) => setStudyRoom(e.target.value)} type="checkbox" className="form-check-input" id="studyroom" value='Study Room' />
@@ -306,15 +344,14 @@ const PropertySignup = () => {
                     <label className=" me-4 form-check-label" for="mediaroom">Media Room</label>
                   </div>
 
-                  <div className="mb-3 form-check">
-                    <input onChange={(e) => setModularKitchen(e.target.value)} type="checkbox" className="form-check-input" id="modulerkitchen" value='Modular Kitchen' />
-                    <label className=" me-4 form-check-label" for="modulerkitchen">Modular Kitchen</label>
-                  </div>
+
 
 
                 </div>
 
-                <label for="furnishingdetails " className=" mt-5 form-label">Furnishing Details </label>
+                <h3 className='mb-5 mt-5 textColor'>Furnishing Details (Yes/No)</h3>
+
+
                 <div className='d-flex'>
                   <div className="mb-3 form-check">
                     <input onChange={(e) => setAirConditioner(e.target.value)} type="checkbox" className="form-check-input" id="aircondition" value='Air conditioner' />
@@ -405,12 +442,17 @@ const PropertySignup = () => {
                     <input onChange={(e) => setWaterPurifier(e.target.value)} type="checkbox" className="form-check-input" id="waterpurifier" value='Water Purifier' />
                     <label className=" me-4 form-check-label" for="waterpurifier">Water Purifier</label>
                   </div>
+                  <div className="mb-3 form-check">
+                    <input onChange={(e) => setModularKitchen(e.target.value)} type="checkbox" className="form-check-input" id="modulerkitchen" value='Modular Kitchen' />
+                    <label className=" me-4 form-check-label" for="modulerkitchen">Modular Kitchen</label>
+                  </div>
 
 
                 </div>
 
 
-                <label for="flooringtype " className=" mt-5 form-label">Flooring Type </label>
+
+                <h3 className='mb-5 mt-5 textColor'>Flooring Type (Select Anyone)</h3>
 
                 <div className='d-flex'>
                   <div className="mb-3 form-check">
@@ -442,8 +484,8 @@ const PropertySignup = () => {
 
 
                 </div>
+                <h3 className='mb-3 mt-5 textColor'>Additional information, if any</h3>
 
-                <label for="details " className=" mt-5 form-label">Additional information, if any</label>
                 <div>
                   <textarea value={additionalInformation} onChange={(e) => setAdditionalInformation(e.target.value)} className="form-control" id="details"></textarea>
                 </div>
@@ -461,6 +503,14 @@ const PropertySignup = () => {
                   <input type="checkbox" className="form-check-input" id="exampleCheck1" required />
                   <label className="form-check-label" for="exampleCheck1">I am the owner of the above property, or authorised to act on behalf of the owner.</label>
                 </div >
+
+                {loader ?
+                  <div className='mb-3 col-md-12 text-center'>
+                    <div className="  spinner-border text-primary" role="status">
+                      <span className="visually-hidden"></span>
+                    </div>
+                  </div>
+                  : ""}
                 <div className='d-flex justify-content-center mt-5 mb-5'>
                   <button type="submit" className="btn btn-primary ">Submit</button>
                 </div>

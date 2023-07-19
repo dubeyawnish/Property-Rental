@@ -8,10 +8,10 @@ const Property = mongoose.model('Property');
 
 router.post('/propertySignup', (req, res) => {
 
-  const { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, plotSize,propertyImgName, bedrooms, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation } = req.body;
+  const { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName,builderName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea,carpetArea, plotSize,propertyImgName, bedrooms, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation } = req.body;
 
 
-  const property = new Property({ ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, plotSize,propertyImgName, bedrooms, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation });
+  const property = new Property({ ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName,builderName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea,carpetArea, plotSize,propertyImgName, bedrooms, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation });
 
   property.save()
     .then((newData) => {
@@ -49,6 +49,47 @@ router.get('/getAllProjects', async (req, res) => {
   }
 
 })
+
+
+router.get('/getAllBuilder', async (req, res) => {
+  try {
+    const allBuilder = await Property.find({}, 'builderName');
+    const uniqueBuilders = [];
+    const BuilderNames = [];
+
+    for (let i = 0; i < allBuilder.length; i++) {
+      const builderName = allBuilder[i].builderName;
+
+      if (!BuilderNames.includes(builderName)) {
+        uniqueBuilders.push(allBuilder[i]);
+        BuilderNames.push(builderName);
+      }
+    }
+    // If there are errors, return Bad request and the errors
+    //console.log(allProject)
+    res.json(uniqueBuilders)
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+router.get('/getAllProjectByBuilder/:builderId', async (req, res) => {
+  try {
+    const {builderId}=req.params;
+    const project = await Property.find({_id: builderId });
+
+    const Projects = await Property.find({builderName : project[0].builderName})
+
+
+    res.json(Projects);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 router.get('/getByLocation', async (req, res) => {
   try {

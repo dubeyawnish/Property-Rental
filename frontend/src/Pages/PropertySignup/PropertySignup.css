@@ -11,7 +11,7 @@
 
 }
 .upper-div{
-    background-color: #494949;
+    background-color: #052e66;
     color:white;
     padding:10px;
 }
@@ -19,4 +19,8 @@
     .list-property-container{
      width: 90vw;
     }
+}
+
+.textColor{
+    color:#07002b;
 }

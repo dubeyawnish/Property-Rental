@@ -26,6 +26,9 @@ const propertySchema = new mongoose.Schema({
             type: String,
             
         },
+        builderName:{
+
+        },
         location: {
             type: String,
             
@@ -50,6 +53,10 @@ const propertySchema = new mongoose.Schema({
         builtUpArea: {
             type: String,
            
+        },
+        carpetArea:{
+            type:String
+
         }
         , plotSize: {
             type: String,

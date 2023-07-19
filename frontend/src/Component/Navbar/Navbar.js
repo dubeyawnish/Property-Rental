@@ -11,21 +11,24 @@ const Navbar = () => {
 
     const [projects, setProjects] = useState([]);
     const [locations, setLocations] = useState([]);
-    const [plotPorject,setPlotProject]=useState([]);
-    const [plotLocation,setPlotLocation]=useState([]);
+    const [plotPorject, setPlotProject] = useState([]);
+    const [plotLocation, setPlotLocation] = useState([])
+    const [builders, setBuilders] = useState([]);
 
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
+            //const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
             const res = await axios.get(`${API_BASE_URL}/getByLocation`);
             const resProjectPlot = await axios.get(`${API_BASE_URL}/getAllPlotProjects`);
             const resLocationPlot = await axios.get(`${API_BASE_URL}/getPlotByLocation`);
+            const resBuild=await axios.get(`${API_BASE_URL}/getAllBuilder`);
 
-            setProjects(response.data);
+            //setProjects(response.data);
             setLocations(res.data);
             setPlotProject(resProjectPlot.data);
             setPlotLocation(resLocationPlot.data);
+            setBuilders(resBuild.data)
 
             //console.log(projects);
         }
@@ -37,6 +40,15 @@ const Navbar = () => {
     useEffect(() => {
         fetchData();
     }, []);
+
+
+    const projectCall =async (builderId)=>{
+
+        const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilder/${builderId}`);
+        setProjects(response.data);
+        console.log(projects);
+        
+    }
 
 
 
@@ -72,14 +84,24 @@ const Navbar = () => {
                                     <a href="#">Buy by Project</a>
                                     <input type="checkbox" id="drop-3" />
                                     <ul>
-                                        {projects.map(project => (
-                                            <li><a href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a></li>
-                                        ))}
-                                        {plotPorject.map(project => (
-                                            <li><a href={`/getPlotByProject/${project._id}`}>{project.projectName}</a></li>
-                                        ))}
-
-                                        
+                                        {  Array.isArray(builders) &&   builders.map(builder => (
+                                            <>
+                                        <li >
+                                            <label for="drop-12" onClick={() => projectCall(builder._id)} className="toggle">{builder.builderName} </label>
+                                            <a onMouseOver={() => projectCall(builder._id)} href="#">{builder.builderName}</a>
+                                            <input type="checkbox" id="drop-12" />
+                                            <ul>
+                                                {projects.map(project => (
+                                                    <li><a href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a></li>
+                                                ))}
+                                                {plotPorject.map(project => (
+                                                    <li><a href={`/getPlotByProject/${project._id}`}>{project.projectName}</a></li>
+                                                ))}
+                                            </ul>
+                                        </li>
+                                        </>
+                                        ))
+                                     }
                                     </ul>
                                 </li>
                                 <li>
@@ -88,7 +110,7 @@ const Navbar = () => {
                                     <input type="checkbox" id="drop-4" />
                                     <ul>
                                         {locations.map(location => (
-                                            <li><a  href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
+                                            <li><a href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
                                         ))}
                                         {plotLocation.map(location => (
                                             <li><Link to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
@@ -132,7 +154,7 @@ const Navbar = () => {
                                     <a href="#">Buy Apartment</a>
                                     <input type="checkbox" id="drop-9" />
                                     <ul>
-                                    {locations.map(location => (
+                                        {locations.map(location => (
                                             <li><a href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
                                         ))}
                                     </ul>
@@ -151,7 +173,7 @@ const Navbar = () => {
                                     <a href="#">Buy Plot</a>
                                     <input type="checkbox" id="drop-12" />
                                     <ul>
-                                    {plotLocation.map(location => (
+                                        {plotLocation.map(location => (
                                             <li><Link to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
                                         ))}
                                     </ul>
@@ -167,7 +189,7 @@ const Navbar = () => {
                             </ul>
                         </li>
 
-                        
+
                         <li>
                             <Link to="/aboutus">About</Link>
                         </li>
