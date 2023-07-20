@@ -41,11 +41,18 @@ const containerStyle = {
 };
 
 
-const Map = ({lat,log})=>{
+const Map = ({latitude,longitude})=>{
+
+  console.log("latitudde",(latitude));
+  console.log( "longitude", (longitude))
+
+
     const center = {
-        lat: parseFloat(lat), 
-        lng: parseFloat(log)
+        lat: parseFloat(latitude),  
+        lng: parseFloat(longitude)
       };
+
+      //console.log(center);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: `${MAP_API}`  //need to define your google api key 

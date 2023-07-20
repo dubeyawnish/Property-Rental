@@ -27,6 +27,7 @@ const propertySchema = new mongoose.Schema({
             
         },
         builderName:{
+            type: String,
 
         },
         location: {
@@ -80,12 +81,20 @@ const propertySchema = new mongoose.Schema({
             
         },
         carParks: {
-            type: Number,
+            type: String,
            
         },
         mainDoorDirection: {
             type: String,
             
+        },
+        latitude:{
+            type:String,
+
+        },
+        longitude:{
+            type:String,
+
         },
    // propertyFeatures: {
         studyRoom: {

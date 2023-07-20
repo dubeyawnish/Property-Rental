@@ -66,6 +66,8 @@ const PropertySignup = () => {
   const [marble, setMarble] = useState('');
   const [tiles, setTiles] = useState('');
   const [wood, setWood] = useState('');
+  const [latitude,setLatitude] =useState('');
+  const [longitude,setLongitude] =useState('');
   const [additionalInformation, setAdditionalInformation] = useState('');
 
 
@@ -77,7 +79,7 @@ const PropertySignup = () => {
     setLoader(true);
     const imgResponse = await uploadImage();
 
-    const reqData = { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, builderName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, carpetArea, plotSize, propertyImgName: imgResponse.data.fileName, bedrooms, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation };
+    const reqData = { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, builderName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, carpetArea, plotSize, propertyImgName: imgResponse.data.fileName, bedrooms,latitude,longitude, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation };
     axios.post(`${API_BASE_URL}/propertySignup`, reqData)
       .then((result) => {
         if (result.status === 201) {

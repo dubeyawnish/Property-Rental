@@ -12,36 +12,13 @@ import Map from '../DetailsMap/Map.js'
 
 
 
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { MAP_API } from "../../config";
 
 
 
 
 const PropertyDetails = () => {
     
-    const containerStyle = {
-        width: '100%',
-        height: '400px'
-    };
-
-
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: `${MAP_API}`  //need to define your google api key 
-    })
-
-    const [map, setMap] = React.useState(null)
-
-    const onLoad = React.useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds(center);
-        map.fitBounds(bounds);
-        setMap(map)
-    }, [])
-
-    const onUnmount = React.useCallback(function callback(map) {
-        setMap(null)
-    }, [])
+   
 
 
     const { propertyId } = useParams();
@@ -88,6 +65,20 @@ const PropertyDetails = () => {
 
 
     useEffect(() => {
+        const fetchProperty = async () => {
+            try {
+                const response = await axios.get(`${API_BASE_URL}/propertyDetails/${propertyId}`);
+                //debugger;
+                //console.log("Response Data", response.data);
+                setPropertyDetails(response.data);
+                
+    
+                //console.log(properties);
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }
         fetchProperty();
         //debugger;
     }, []);
@@ -98,20 +89,7 @@ const PropertyDetails = () => {
 
 
 
-    const fetchProperty = async () => {
-        try {
-            const response = await axios.get(`${API_BASE_URL}/propertyDetails/${propertyId}`);
-            //debugger;
-            console.log("Response Data", response.data);
-            setPropertyDetails(response.data);
-            
-
-            //console.log(properties);
-        }
-        catch (error) {
-            console.error(error);
-        }
-    }
+    
 
 
    
@@ -127,31 +105,14 @@ const PropertyDetails = () => {
 
         emailjs.sendForm('service_vyplnzz', 'template_dbeyttu', form.current, '24fN1jM0eumXcxJ50')
             .then((result) => {
-                console.log(result.text);
+               // console.log(result.text);
                 // console.log("message sent")
             }, (error) => {
                 console.log(error.text);
             });
     };
 
-
-    const center = {
-        lat: 12.94831979154639,
-        lng: 77.6780633460285 
-    };
-
-    // const center = {
-    //          lat: propertyDetails.expectedRentPrice,
-    //          lng: propertyDetails.monthlyMaintenance
-    //        };
-
-
-    // const center = {
-    //     lat: parseFloat(propertyDetails.expectedRentPrice),
-    //     lng: parseFloat(propertyDetails.monthlyMaintenance)
-    //   };
-
-    //   console.log(parseFloat(propertyDetails.expectedRentPrice))
+    
 
 
 
@@ -243,7 +204,7 @@ const PropertyDetails = () => {
                                 <h6 className='mt-2'>Security Deposit: 10 months</h6>
                             </div>
                             <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Balconies: 2</h6>
+                                <h6 className='mt-2'>Balconies: 1</h6>
                             </div>
                             <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Car Parks: 1</h6>
@@ -273,12 +234,12 @@ const PropertyDetails = () => {
                                 <h6 className='mt-2'>Modular Kitchen: Yes</h6>
                             </div>
                         </div>
-                        <div className='row'>
+                        {/* <div className='row'>
                             <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Brokerage: 1 month + GST</h6>
                             </div>
 
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
@@ -341,29 +302,17 @@ const PropertyDetails = () => {
 
                     </div> */}
 
+                    
+
                     <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                         <h6 className='mt-2 fw-bold'>Map</h6>
+                       
+
+                        <Map  latitude={propertyDetails.latitude ? propertyDetails.latitude:"12.9481"}  longitude={propertyDetails.longitude ?propertyDetails.longitude:"77.6780"} />
+
                         
 
-                        <div style={{ position: 'relative' }}>
-
-                            {isLoaded ? <GoogleMap
-                                mapContainerStyle={containerStyle}
-                                center={center}
-                                zoom={7}
-                                onLoad={onLoad}
-                                onUnmount={onUnmount}
-                            >
-                                { /* Child components, such as markers, info windows, etc. */}
-                                <></>
-                            </GoogleMap>
-                                : <></>
-                            }
-
-                        </div>
-
-
-                    </div >
+                        </div> 
                    
 
                 </div>

@@ -31,7 +31,7 @@ const ListedProperties = () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
       //debugger;
-      console.log("Response Data", response.data)
+      //console.log("Response Data", response.data)
       setProperties(response.data);
 
       //console.log(properties);
