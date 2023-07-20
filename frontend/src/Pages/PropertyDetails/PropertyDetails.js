@@ -17,8 +17,8 @@ import Map from '../DetailsMap/Map.js'
 
 
 const PropertyDetails = () => {
-    
-   
+
+
 
 
     const { propertyId } = useParams();
@@ -71,8 +71,8 @@ const PropertyDetails = () => {
                 //debugger;
                 //console.log("Response Data", response.data);
                 setPropertyDetails(response.data);
-                
-    
+
+
                 //console.log(properties);
             }
             catch (error) {
@@ -83,16 +83,16 @@ const PropertyDetails = () => {
         //debugger;
     }, []);
 
-    
-
-   
 
 
 
-    
 
 
-   
+
+
+
+
+
 
 
 
@@ -105,14 +105,14 @@ const PropertyDetails = () => {
 
         emailjs.sendForm('service_vyplnzz', 'template_dbeyttu', form.current, '24fN1jM0eumXcxJ50')
             .then((result) => {
-               // console.log(result.text);
+                // console.log(result.text);
                 // console.log("message sent")
             }, (error) => {
                 console.log(error.text);
             });
     };
 
-    
+
 
 
 
@@ -177,63 +177,78 @@ const PropertyDetails = () => {
                     <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                         <h6 className='mt-2 fw-bold'>Property Details</h6>
                         <div className='row'>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
+                            {propertyDetails.expectedSalePrice ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Price: ₹ {propertyDetails.expectedSalePrice}</h6>
-                            </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
+                            </div> : ""}
+                            {propertyDetails.builtUpArea ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Property Size: {propertyDetails.builtUpArea} ft<sup>2</sup></h6>
-                            </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
+                            </div> : ""}
+                            {propertyDetails.plotSize ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Property Plot Size: {propertyDetails.builtUpArea}ft <sup>2</sup></h6>
-                            </div>
-                        </div>
-                        <div className='row'>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Bedrooms: {propertyDetails.bedrooms}</h6>
-                            </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Property ID: {propertyDetails._id}</h6>
-                            </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Monthly Maintenance: 4500</h6>
-                            </div>
-                        </div>
+                            </div> : ""}
 
-                        <div className='row'>
+                            {propertyDetails.bedrooms ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Bedrooms: {propertyDetails.bedrooms}</h6>
+                            </div> : ""}
+                            {propertyDetails.bathrooms ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Bathrooms: {propertyDetails.bathrooms}</h6>
+                            </div> : ""}
+                            {/* {propertyDetails._id? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Property ID: {propertyDetails._id}</h6>
+                            </div> :""} */}
+                            {propertyDetails.monthlyMaintenance ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Monthly Maintenance: 4500</h6>
+                            </div> : ""}
+
                             <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Security Deposit: 10 months</h6>
                             </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
+                            {propertyDetails.balcony ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Balconies: 1</h6>
-                            </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
+                            </div> : ""}
+                            {propertyDetails.carParks ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Car Parks: 1</h6>
-                            </div>
-                        </div>
+                            </div> : ""}
 
-                        <div className='row'>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
+                            {propertyDetails.mainDoorDirection ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Unit Facing: West</h6>
-                            </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
+                            </div> : ""}
+                            {propertyDetails.marble ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Flooring: Marble</h6>
-                            </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
+                            </div> : ""}
+                            {/* <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Furnishing: Fully Furnished</h6>
-                            </div>
+                            </div> */}
+
+{propertyDetails.studyRoom ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Study Room: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.maidsRoom ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Maid's Room: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.maidsToilet ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Maid's Toilet: Yes</h6>
+                            </div> : ""}
+
+
+                            {propertyDetails.privateGarden ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Private Garden: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.privateTerrace ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Private Terrace: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.privatePool ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Private Pool: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.homeTheatreRoom ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Home Theatre Room: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.mediaRoom ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Media Room: Yes</h6>
+                            </div> : ""}
+                            
                         </div>
 
-                        <div className='row'>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Private Garden: Yes</h6>
-                            </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Private Terrace: Yes</h6>
-                            </div>
-                            <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Modular Kitchen: Yes</h6>
-                            </div>
-                        </div>
                         {/* <div className='row'>
                             <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Brokerage: 1 month + GST</h6>
@@ -243,7 +258,7 @@ const PropertyDetails = () => {
                     </div>
 
                     {/* <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
-                        <h6 className='mt-2 fw-bold'>Property Details</h6>
+                        <h6 className='mt-2 fw-bold'>Furnishing Details</h6>
                         <h6 className='mt-3 fw-bold'>Amenities</h6>
                         <div className='row'>
                             <div className='col-lg-4 col-md-4 col-sm-12'>
@@ -300,20 +315,115 @@ const PropertyDetails = () => {
 
                         </div>
 
-                    </div> */}
+                    </div>  */}
 
-                    
+
+
+
+
+
+
+                    <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
+                        <h6 className='mt-2 fw-bold'>Furnishing Details</h6>
+
+                        <div className='row'>
+                            {propertyDetails.airConditioner ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Air conditioner: Yes</h6>
+                            </div> : ""}
+
+                            {propertyDetails.bed ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Bed: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.chimney ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Chimney: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.curtains ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Curtains: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.diningTable ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Dining Table: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.modularKitchen ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2'>Modular Kitchen: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.dishwasher ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Dishwasher: Yes</h6>
+                            </div> : ""}
+
+                            {propertyDetails.dryer ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Dryer: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.geyser ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Geyser: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.hob ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Hob: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.mattress ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Mattress: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.microwave ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Microwave: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.oven ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Oven: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.refrigerator ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Refrigerator: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.sofaSet ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Sofa Set: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.solarHeater ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Solar Heater: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.tv ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>TV: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.wardrobe ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Wardrobe: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.washingMachine ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>washing Machine: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.waterPurifier ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Water Purifier: Yes</h6>
+                            </div> : ""}
+                            {propertyDetails.granite ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Flooring: {propertyDetails.granite}</h6>
+                            </div> : ""}
+                            {propertyDetails.italianMarble ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Flooring: {propertyDetails.italianMarble}</h6>
+                            </div> : ""}
+                            {propertyDetails.kotaStone ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Flooring: {propertyDetails.kotaStone}</h6>
+                            </div> : ""}
+                            {propertyDetails.marble ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Flooring: {propertyDetails.marble}</h6>
+                            </div> : ""}
+                            {propertyDetails.tiles ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Flooring: {propertyDetails.tiles}</h6>
+                            </div> : ""}
+                            {propertyDetails.wood ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                                <h6 className='mt-2 '>Flooring: {propertyDetails.wood}</h6>
+                            </div> : ""}
+                            
+                        </div>
+
+                    </div>
+
+
 
                     <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                         <h6 className='mt-2 fw-bold'>Map</h6>
-                       
 
-                        <Map  latitude={propertyDetails.latitude ? propertyDetails.latitude:"12.9481"}  longitude={propertyDetails.longitude ?propertyDetails.longitude:"77.6780"} />
 
-                        
+                        <Map latitude={propertyDetails.latitude ? propertyDetails.latitude : "12.9481"} longitude={propertyDetails.longitude ? propertyDetails.longitude : "77.6780"} />
 
-                        </div> 
-                   
+
+
+                    </div>
+
 
                 </div>
                 <div className='col-lg-4 col-md-4 col-sm-12 '>

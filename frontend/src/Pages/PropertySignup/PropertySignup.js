@@ -203,14 +203,18 @@ const PropertySignup = () => {
                   <div id="emailHelp" className="form-text">Villa/Apartment</div>
                 </div>
 
-
-
-                <input value={projectName} onChange={(e) => setProjectName(e.target.value)} type="text" className="form-control" id="propertybasics" />
-                <div id="emailHelp" className="form-text">Project name </div>
-
+                
 
                 <input value={builderName} onChange={(e) => setBuilderName(e.target.value)} type="text" className="form-control" id="propertybasics" />
                 <div id="emailHelp" className="form-text">Builder Name </div>
+
+
+
+                <input value={projectName} onChange={(e) => setProjectName(e.target.value)} type="text" className=" mt-2 form-control" id="propertybasics" />
+                <div id="emailHelp" className="form-text">Project name </div>
+
+
+                
 
 
 
@@ -259,7 +263,7 @@ const PropertySignup = () => {
                 <div className="mb-3 ">
                   {image.preview && <img src={image.preview} width='100' height='100' />}
                   <hr></hr>
-                  <input type='file' name='file' onChange={handleImgChange}></input>
+                  <input type='file' name='file' onChange={handleImgChange} required></input>
                 </div>
 
 
