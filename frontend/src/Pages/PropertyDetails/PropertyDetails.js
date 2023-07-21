@@ -197,30 +197,30 @@ const PropertyDetails = () => {
                                 <h6 className='mt-2'>Property ID: {propertyDetails._id}</h6>
                             </div> :""} */}
                             {propertyDetails.monthlyMaintenance ? <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Monthly Maintenance: 4500</h6>
+                                <h6 className='mt-2'>Monthly Maintenance: {propertyDetails.monthlyMaintenance}</h6>
                             </div> : ""}
 
                             <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Security Deposit: 10 months</h6>
                             </div>
                             {propertyDetails.balcony ? <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Balconies: 1</h6>
+                                <h6 className='mt-2'>Balconies: {propertyDetails.balcony}</h6>
                             </div> : ""}
                             {propertyDetails.carParks ? <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Car Parks: 1</h6>
+                                <h6 className='mt-2'>Car Parks: {propertyDetails.carParks}</h6>
                             </div> : ""}
 
                             {propertyDetails.mainDoorDirection ? <div className='col-lg-4 col-md-4 col-sm-12'>
-                                <h6 className='mt-2'>Unit Facing: West</h6>
+                                <h6 className='mt-2'>Unit Facing: {propertyDetails.mainDoorDirection}</h6>
                             </div> : ""}
-                            {propertyDetails.marble ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                            {/* {propertyDetails.marble ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Flooring: Marble</h6>
-                            </div> : ""}
+                            </div> : ""} */}
                             {/* <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Furnishing: Fully Furnished</h6>
                             </div> */}
 
-{propertyDetails.studyRoom ? <div className='col-lg-4 col-md-4 col-sm-12'>
+                            {propertyDetails.studyRoom ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Study Room: Yes</h6>
                             </div> : ""}
                             {propertyDetails.maidsRoom ? <div className='col-lg-4 col-md-4 col-sm-12'>
@@ -246,7 +246,7 @@ const PropertyDetails = () => {
                             {propertyDetails.mediaRoom ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2'>Media Room: Yes</h6>
                             </div> : ""}
-                            
+
                         </div>
 
                         {/* <div className='row'>
@@ -407,7 +407,7 @@ const PropertyDetails = () => {
                             {propertyDetails.wood ? <div className='col-lg-4 col-md-4 col-sm-12'>
                                 <h6 className='mt-2 '>Flooring: {propertyDetails.wood}</h6>
                             </div> : ""}
-                            
+
                         </div>
 
                     </div>

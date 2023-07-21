@@ -33,7 +33,7 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route exact path='/propertySignup' element={<PropertySignup />} />
           <Route exact path='/plotSignup' element={<PlotSignup />} />
-          <Route exact path='/getPropertiesByProject/:projectId' element={<ListedProperties />} />
+          <Route  path='/getPropertiesByProject/:projectId' element={<ListedProperties />} />
           <Route exact path='/getPropertiesByLocation/:locationId' element={<PropertyListLocation />} />
           <Route exact path='/propertyDetails/:propertyId' element={<PropertyDetails />} />
           <Route exact path='/plotDetails/:plotId' element={<PlotDetails />} />
@@ -45,10 +45,6 @@ function App() {
           <Route exact path='/careers' element={<Carrier />} />
           <Route exact path='/aboutus' element={<AboutUs />} />
           <Route exact path='/interested' element={<Interested />} />
-          
-
-
-
         </Routes> 
         <Footer />
       </Router>

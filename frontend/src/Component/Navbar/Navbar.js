@@ -7,7 +7,7 @@ import { API_BASE_URL } from '../../config';
 
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
     const [projects, setProjects] = useState([]);
     const [locations, setLocations] = useState([]);
@@ -92,7 +92,14 @@ const Navbar = () => {
                                             <input type="checkbox" id="drop-12" />
                                             <ul>
                                                 {projects.map(project => (
-                                                    <li><a href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a></li>
+                                                    <li>
+                                                        {/* {<Link to={{pathname:`/getPropertiesByProject/${project._id}`,
+                                                    state:{data:true}
+                                                }} >{project.projectName}</Link>} */}
+                                                <a href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a>
+                                                
+                                                
+                                                </li>
                                                 ))}
                                                 {plotPorject.map(project => (
                                                     <li><a href={`/getPlotByProject/${project._id}`}>{project.projectName}</a></li>

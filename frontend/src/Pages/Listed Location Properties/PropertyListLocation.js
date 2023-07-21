@@ -53,7 +53,7 @@ const ListedProperties = () => {
         <h3 className='text-muted my-5'>Properties listed in {property.location} sales</h3>
         
           <div className='col-lg-3 col-sm-12'>
-            <div className="card" style={{ width: '20rem' }}>
+            <div className="card" >
             <Link to={`/propertyDetails/${property._id}`}>
               <img src={`${API_BASE_URL}/files/${property.propertyImgName}`}  height={250}
               className="card-img-top " alt="House-iamge" />

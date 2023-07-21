@@ -9,13 +9,18 @@ import { useLocation } from 'react-router-dom';
 
 
 
-const ListedProperties = () => {
+const ListedProperties = (props) => {
+  const location = useLocation();
+
   const { projectId } = useParams();
   //console.log(projectId);
   const [properties, setProperties] = useState([]);
 
 
-  //console.log(sdata)
+
+  console.log("hello" ,location);
+
+
 
 
 
@@ -27,7 +32,7 @@ const ListedProperties = () => {
 
 
 
-  const fetchProperty = async () => {
+  const fetchProperty = async (props) => {
     try {
       const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
       //debugger;
@@ -46,7 +51,9 @@ const ListedProperties = () => {
 
   return (
     <div className='  container '>
-     
+
+      
+
       <div className='row mb-2'>
 
 
@@ -54,26 +61,26 @@ const ListedProperties = () => {
 
         {properties.map(property => (
           <>
-           <h3 className='text-muted my-5'>Properties listed in {property.projectName} </h3>
-          
-          <div className='col-lg-3 col-sm-12'>
-            <div className="card" style={{ width: '20rem' }}>
-            <Link to={`/propertyDetails/${property._id}`}>
-              <img src={`${API_BASE_URL}/files/${property.propertyImgName}`} 
-              height={250} className="card-img-top " alt="House-iamge" />
-              </Link>
 
-              <div className="card-body">
-              <Link className='text-decoration-none'  to={`/propertyDetails/${property._id}`}>
-                <h5 className="card-title">{property.bedrooms} BHK {property.villaApartmentNumber} {property.projectName} , {property.location}</h5>
-              </Link>
-                <h5 className="card-title">₹ {property.expectedSalePrice} </h5>
-                <p className="card-text"> {property.additionalInformation} ...</p>
-                <p><i className="fa-solid fa-bed"></i> {property.bedrooms} &nbsp; &nbsp;<span > <i className="fa-solid fa-droplet "></i> {property.bathrooms} &nbsp; &nbsp;</span> <span className=''><i className="fa-solid fa-map"></i>{property.builtUpArea} ft<sup>2</sup></span> </p>
-                <p className='text-center'><Link to='/interested' className='text-muted text-decoration-none'><i class="fa-sharp fa-regular fa-face-smile"></i> Interested?</Link></p>
+<h3 className='text-muted my-5'>Properties listed in {property.projectName} </h3>
+            <div className='col-lg-3 col-sm-12'>
+              <div className="card" >
+                <Link to={`/propertyDetails/${property._id}`}>
+                  <img src={`${API_BASE_URL}/files/${property.propertyImgName}`}
+                    height={250} className="card-img-top " alt="House-iamge" />
+                </Link>
+
+                <div className="card-body">
+                  <Link className='text-decoration-none' to={`/propertyDetails/${property._id}`}>
+                    <h5 className="card-title">{property.bedrooms} BHK {property.villaApartmentNumber} {property.projectName} , {property.location}</h5>
+                  </Link>
+                  <h5 className="card-title">₹ {property.expectedSalePrice} </h5>
+                  <p className="card-text"> {property.additionalInformation} ...</p>
+                  <p><i className="fa-solid fa-bed"></i> {property.bedrooms} &nbsp; &nbsp;<span > <i className="fa-solid fa-droplet "></i> {property.bathrooms} &nbsp; &nbsp;</span> <span className=''><i className="fa-solid fa-map"></i>{property.builtUpArea} ft<sup>2</sup></span> </p>
+                  <p className='text-center'><Link to='/interested' className='text-muted text-decoration-none'><i class="fa-sharp fa-regular fa-face-smile"></i> Interested?</Link></p>
+                </div>
               </div>
             </div>
-          </div>
           </>
         ))}
 
