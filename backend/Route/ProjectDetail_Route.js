@@ -23,8 +23,7 @@ router.post('/projects', async (req, res) => {
       });
   
       // Save the new project to the database
-      await newProject.save();
-  
+      await newProject.save(); 
       res.status(201).json({ message: 'Project created successfully' });
     } catch (err) {
       res.status(500).json({ error: 'Failed to create the project' });
