@@ -25,6 +25,7 @@ const PropertySignup = () => {
   const [carpetArea, setCarpetArea] = useState('');
   const [plotSize, setPlotSize] = useState('');
   const [image, setImage] = useState({ preview: '', data: '' })
+  const [imgUrl,setImgUrl]= useState('');
 
   const [bedrooms, setBedrooms] = useState('');
   const [bathrooms, setBathrooms] = useState('');
@@ -77,9 +78,9 @@ const PropertySignup = () => {
   const formSubmit = async (e) => {
     e.preventDefault();
     setLoader(true);
-    const imgResponse = await uploadImage();
+    //const imgResponse = await uploadImage();
 
-    const reqData = { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, builderName, location, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, carpetArea, plotSize, propertyImgName: imgResponse.data.fileName, bedrooms,latitude,longitude, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation };
+    const reqData = { ownerName, mobileNumbers, emailAddresses, villaApartmentNumber, projectName, builderName, location,imgUrl, yearOfCompletion, expectedRentPrice, expectedSalePrice, monthlyMaintenance, builtUpArea, carpetArea, plotSize, propertyImgName:"hello", bedrooms,latitude,longitude, bathrooms, balconies, carParks, mainDoorDirection, studyRoom, maidsRoom, maidsToilet, privatePool, privateGarden, privateTerrace, homeTheatreRoom, mediaRoom, modularKitchen, airConditioner, bed, chimney, curtains, diningTable, dishwasher, dryer, geyser, hob, mattress, microwave, oven, refrigerator, sofaSet, solarHeater, tv, wardrobe, washingMachine, waterPurifier, granite, italianMarble, kotaStone, marble, tiles, wood, additionalInformation };
     axios.post(`${API_BASE_URL}/propertySignup`, reqData)
       .then((result) => {
         if (result.status === 201) {
@@ -164,6 +165,50 @@ const PropertySignup = () => {
     const response = await axios.post(`${API_BASE_URL}/uploadFile`, formData)
     return response;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImgUrl(base64);
+
+    // try {
+    //   const resp=await axios.post(url,latitude);
+    //   console.log(resp);
+      
+    // } catch (error) {
+    //   console.log(error.message);
+    // }
+  };
 
 
 
@@ -263,7 +308,7 @@ const PropertySignup = () => {
                 <div className="mb-3 ">
                   {image.preview && <img src={image.preview} width='100' height='100' />}
                   <hr></hr>
-                  <input type='file' name='file' onChange={handleImgChange} required></input>
+                  <input type='file' name='file'   onChange={(e) => handleFileUpload(e)} required></input>
                 </div>
 
 

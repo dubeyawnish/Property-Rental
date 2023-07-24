@@ -35,8 +35,12 @@ const adminPropertySchema = new mongoose.Schema({
             
         },
         yearOfCompletion: {
-            type: Number,
+            type: String,
            
+        },
+        imgUrl:{
+            type:String,
+
         },
     //propertyPricing: {
         expectedRentPrice: {

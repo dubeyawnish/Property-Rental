@@ -7,7 +7,7 @@ import { API_BASE_URL } from '../../config';
 
 
 
-const Navbar = (props) => {
+const Navbar = ({setPr}) => {
 
     const [projects, setProjects] = useState([]);
     const [locations, setLocations] = useState([]);
@@ -22,7 +22,7 @@ const Navbar = (props) => {
             const res = await axios.get(`${API_BASE_URL}/getByLocation`);
             const resProjectPlot = await axios.get(`${API_BASE_URL}/getAllPlotProjects`);
             const resLocationPlot = await axios.get(`${API_BASE_URL}/getPlotByLocation`);
-            const resBuild=await axios.get(`${API_BASE_URL}/getAllBuilder`);
+            const resBuild = await axios.get(`${API_BASE_URL}/getAllBuilder`);
 
             //setProjects(response.data);
             setLocations(res.data);
@@ -42,13 +42,20 @@ const Navbar = (props) => {
     }, []);
 
 
-    const projectCall =async (builderId)=>{
+    const projectCall = async (builderId) => {
 
         const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilder/${builderId}`);
         setProjects(response.data);
         console.log(projects);
-        
+
     }
+
+
+
+   const handleClick=(name)=>{
+    setPr(name);
+
+   }
 
 
 
@@ -84,31 +91,32 @@ const Navbar = (props) => {
                                     <a href="#">Buy by Project</a>
                                     <input type="checkbox" id="drop-3" />
                                     <ul>
-                                        {  Array.isArray(builders) &&   builders.map(builder => (
+                                        {Array.isArray(builders) && builders.map(builder => (
                                             <>
-                                        <li >
-                                            <label for="drop-12" onClick={() => projectCall(builder._id)} className="toggle">{builder.builderName} </label>
-                                            <a onMouseOver={() => projectCall(builder._id)} href="#">{builder.builderName}</a>
-                                            <input type="checkbox" id="drop-12" />
-                                            <ul>
-                                                {projects.map(project => (
-                                                    <li>
-                                                        {/* {<Link to={{pathname:`/getPropertiesByProject/${project._id}`,
-                                                    state:{data:true}
-                                                }} >{project.projectName}</Link>} */}
-                                                <a href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a>
-                                                
-                                                
+                                                <li >
+                                                    <label for="drop-12" onClick={() => projectCall(builder._id)} className="toggle">{builder.builderName} </label>
+                                                    <a onMouseOver={() => projectCall(builder._id)} href="#">{builder.builderName}</a>
+                                                    <input type="checkbox" id="drop-12" />
+                                                    <ul>
+                                                        {projects.map(project => (
+                                                            <li>
+                                                                {/* {<Link to={{ pathname: `/getPropertiesByProject/${project._id}`, state: "hello" }}>
+                                                                    {project.projectName}
+                                                                </Link>} */}
+                                                                 <a onClick={handleClick(project.projectName)} href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a> 
+
+
+
+                                                            </li>
+                                                        ))}
+                                                        {plotPorject.map(project => (
+                                                            <li><a href={`/getPlotByProject/${project._id}`}>{project.projectName}</a></li>
+                                                        ))}
+                                                    </ul>
                                                 </li>
-                                                ))}
-                                                {plotPorject.map(project => (
-                                                    <li><a href={`/getPlotByProject/${project._id}`}>{project.projectName}</a></li>
-                                                ))}
-                                            </ul>
-                                        </li>
-                                        </>
+                                            </>
                                         ))
-                                     }
+                                        }
                                     </ul>
                                 </li>
                                 <li>

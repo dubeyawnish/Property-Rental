@@ -9,16 +9,17 @@ import { useLocation } from 'react-router-dom';
 
 
 
-const ListedProperties = (props) => {
+const ListedProperties = ({ pr }) => {
   const location = useLocation();
 
   const { projectId } = useParams();
   //console.log(projectId);
   const [properties, setProperties] = useState([]);
+  const [loader, setLoader] = useState(false);
 
 
-
-  console.log("hello" ,location);
+  //console.log("hello" ,location);
+  console.log("he", pr);
 
 
 
@@ -26,6 +27,7 @@ const ListedProperties = (props) => {
 
 
   useEffect(() => {
+    setLoader(true)
     fetchProperty();
     //debugger;
   }, []);
@@ -35,6 +37,7 @@ const ListedProperties = (props) => {
   const fetchProperty = async (props) => {
     try {
       const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
+      setLoader(false);
       //debugger;
       //console.log("Response Data", response.data)
       setProperties(response.data);
@@ -44,29 +47,32 @@ const ListedProperties = (props) => {
     catch (error) {
       console.error(error);
     }
-
   }
 
   //console.log(projectId)
 
   return (
     <div className='  container '>
+      {loader ?
+        <div className='mb-3 mt-3 col-md-12 text-center'>
+          <div className="  spinner-border text-primary" role="status">
+            <span className="visually-hidden"></span>
+          </div>
+        </div>
+        : ""}
 
-      
+
+
 
       <div className='row mb-2'>
-
-
-
-
         {properties.map(property => (
           <>
 
-<h3 className='text-muted my-5'>Properties listed in {property.projectName} </h3>
+            <h3 className='text-muted my-5'>Properties listed in {property.projectName} </h3>
             <div className='col-lg-3 col-sm-12'>
               <div className="card" >
                 <Link to={`/propertyDetails/${property._id}`}>
-                  <img src={`${API_BASE_URL}/files/${property.propertyImgName}`}
+                  <img src={property.imgUrl}
                     height={250} className="card-img-top " alt="House-iamge" />
                 </Link>
 
