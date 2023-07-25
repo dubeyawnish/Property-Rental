@@ -18,29 +18,29 @@ const ListedProperties = ({ pr }) => {
   const [properties, setProperties] = useState([]);
   const [loader, setLoader] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState('2BHK');
-  const [projectDetail,setProjectDetail] =useState({});
-  
+  const [projectDetail, setProjectDetail] = useState({});
+
 
 
   //console.log("hello" ,location);
   //console.log("he", pr);
 
- 
-  
+
+
 
 
   useEffect(() => {
     setLoader(true)
-     fetchProjectDetail();
+    fetchProjectDetail();
     fetchProperty();
     //debugger;
   }, []);
 
-  const fetchProjectDetail= async()=>{
-    const projectName=localStorage.getItem('ProjectName');
-    const reqData={projectName};
-    try{
-      const res=await axios.post(`${API_BASE_URL}/getProjectDetail`,reqData);
+  const fetchProjectDetail = async () => {
+    const projectName = localStorage.getItem('ProjectName');
+    const reqData = { projectName };
+    try {
+      const res = await axios.post(`${API_BASE_URL}/getProjectDetail`, reqData);
       //console.log(res.data);
       setProjectDetail(res.data);
       //console.log("projejctDetail",projectDetail);
@@ -68,11 +68,11 @@ const ListedProperties = ({ pr }) => {
       console.error(error);
     }
   }
-  console.log("Mama",projectDetail.twoBHK)
- // let data=projectDetail.twoBHK
+  // console.log("Mama",projectDetail.twoBHK)
+  // let data=projectDetail.twoBHK
 
   const PropertyData = {
-    '2BHK':   projectDetail.twoBHK,
+    '2BHK': projectDetail.twoBHK,
     '3BHK': projectDetail.threeBHK,
     '4BHK': projectDetail.fourBHK
 
@@ -91,7 +91,7 @@ const ListedProperties = ({ pr }) => {
   //console.log(projectId)
 
 
-  
+
 
 
   return (
@@ -107,9 +107,9 @@ const ListedProperties = ({ pr }) => {
 
       <div class="text-center mt-3">
 
-      <a href='https://newprojects.99acres.com/projects/prestige_group/prestige_kew_gardens/images/jngdjz0z.jpg'><img src="https://newprojects.99acres.com/projects/prestige_group/prestige_kew_gardens/images/jngdjz0z.jpg" className='img-size img-fluid rounded' alt="..." /> </a>  
+        <a href='https://newprojects.99acres.com/projects/prestige_group/prestige_kew_gardens/images/jngdjz0z.jpg'><img src="https://newprojects.99acres.com/projects/prestige_group/prestige_kew_gardens/images/jngdjz0z.jpg" className='img-size img-fluid rounded' alt="..." /> </a>
       </div>
-      <div className='mt-5'>
+      <div className=' text-center mt-5'>
         <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
         <p >by <span className='text-color'>Prestige Group</span> </p>
         <a className='text-decoration-none text-muted' href='#'><p className='mt-2'><i class="fa-solid fa-location-dot"></i> Yemalur Main Rd, Yemalur, Bellandur, Bengaluru, Karnataka 560037 <span className='text-color'>(Show on map)</span></p></a>
@@ -117,7 +117,37 @@ const ListedProperties = ({ pr }) => {
       </div>
 
       <div className='mt-5 text-muted'>
-        <h3 className=''>Floor Plans</h3>
+        <h3 className=''>Overview</h3>
+
+        <div className='row  '>
+          <div className='col-md-3 col-lg-3 col-sm-6'>
+            <h5 className='mt-3'>Nov'11</h5>
+            <p className='mt-0 fs-6'>Profession start date</p>
+          </div>
+
+          <div className='col-md-3 col-lg-3 col-sm-6'>
+            <h5 className='mt-3'>Completed</h5>
+            <p className='mt-0 fs-6'>Status</p>
+          </div>
+          <div className='col-md-3 col-lg-3 col-sm-6'>
+            <h5 className='mt-3'>2997</h5>
+            <p className='mt-0 fs-6'>Total Launched apartments</p>
+          </div>
+          <div className='col-md-3 col-lg-3 col-sm-12'>
+            <h5 className='mt-3'>Sep'06</h5>
+            <p className='mt-0 fs-6'>Launch Date</p>
+          </div>
+          <div className='col-md-3 col-lg-3 col-sm-12'>
+            <h5 className='mt-3'>Resale</h5>
+            <p className='mt-0 fs-6'>Availability</p>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div className='mt-5 text-muted'>
+        <h3 className=''>{projectDetail.projectName} Floor Plans</h3>
       </div>
 
 
@@ -168,8 +198,8 @@ const ListedProperties = ({ pr }) => {
           <>
             <div className='text-color shadow-none p-3 mb-5 bg-body-tertiary rounded row'>
               <div className='col-lg-4 col-md-4 col-sm-4'>
-               <a href='https://im.proptiger.com/2/5276098/12/shantiniketan-floor-plan-floor-plan-100638400.jpeg' > <img src='https://im.proptiger.com/2/5276098/12/shantiniketan-floor-plan-floor-plan-100638400.jpeg ' className='layout-img' /></a>
-                
+                <a href='https://im.proptiger.com/2/5276098/12/shantiniketan-floor-plan-floor-plan-100638400.jpeg' > <img src='https://im.proptiger.com/2/5276098/12/shantiniketan-floor-plan-floor-plan-100638400.jpeg ' className='layout-img' /></a>
+
 
               </div>
               <div className='col-lg-4 col-md-4 col-sm-4'>
@@ -191,11 +221,55 @@ const ListedProperties = ({ pr }) => {
 
 
 
-        ) }
+        )}
 
 
 
 
+      </div>
+
+      <div className='mt-5 text-muted'>
+        <h3 className=''>Amenities</h3>
+        <div className='row mb-2  mt-3'>
+           <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
+            <h4 className='text-color'><i class="fa-solid fa-dumbbell"></i></h4>
+            <p >Gymnasium</p>
+           </div>
+
+           <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
+            <h4 className='text-color'><i class="fa-solid fa-person-swimming"></i></h4>
+            <p >Swimming Pool</p>
+           </div>
+
+           <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
+            <h4 className='text-color'><i class="fa-solid fa-chess"></i></h4>
+            <p >Children's play area</p>
+           </div>
+
+           <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
+            <h4 className='text-color'><i class="fa-solid fa-person-running"></i></h4>
+            <p >Jogging Track</p>
+
+           </div>
+
+           <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
+            <h4 className='text-color'><i class="fa-solid fa-table-tennis-paddle-ball"></i></h4>
+            <p >Tennis Court</p>
+           </div>
+           <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
+            <h4 className='text-color'><i class="fa-regular fa-credit-card"></i></h4>
+            <p >ATM</p>
+           </div>
+          
+
+           <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
+            <h4 className='text-color'><i class="fa-solid fa-book"></i></h4>
+            <p >Library</p>
+           </div>
+
+
+
+        </div>
       </div>
 
 
@@ -211,7 +285,7 @@ const ListedProperties = ({ pr }) => {
         {properties.map(property => (
           <>
 
-           
+
             <div className='col-lg-3 col-sm-12'>
               <div className="card" >
                 <Link to={`/propertyDetails/${property._id}`}>

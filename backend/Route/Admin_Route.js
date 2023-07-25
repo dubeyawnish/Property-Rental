@@ -104,6 +104,40 @@ router.get('/getAllProjectByBuilder/:builderId', async (req, res) => {
   }
 });
 
+
+
+
+router.get('/getAllProjectByBuilders/:builderId', async (req, res) => {
+  try {
+    const { builderId } = req.params;
+    const project = await AdminProperty.find({ _id: builderId });
+
+    const Projects = await AdminProperty.find({ builderName: project[0].builderName });
+
+    const uniqueProjects = [];
+    const projectNames = [];
+
+    for (let i = 0; i < Projects.length; i++) {
+      const { _id, projectName } = Projects[i]; // Destructure the required fields
+
+      if (!projectNames.includes(projectName)) {
+        uniqueProjects.push({ _id, projectName }); // Construct a new object with only the required fields
+        projectNames.push(projectName);
+      }
+    }
+
+    res.json(uniqueProjects);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
+
+
+
+
 router.get('/getByLocation', async (req, res) => {
   try {
     const allLocation = await AdminProperty.find({}, 'location');

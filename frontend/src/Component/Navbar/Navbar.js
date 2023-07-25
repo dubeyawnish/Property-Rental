@@ -7,7 +7,7 @@ import { API_BASE_URL } from '../../config';
 
 
 
-const Navbar = ({pr,sendDataToParent}) => {
+const Navbar = () => {
 
     const [projects, setProjects] = useState([]);
     const [locations, setLocations] = useState([]);
@@ -44,7 +44,7 @@ const Navbar = ({pr,sendDataToParent}) => {
 
     const projectCall = async (builderId) => {
 
-        const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilder/${builderId}`);
+        const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilders/${builderId}`);
         setProjects(response.data);
         //console.log(projects);
 
@@ -52,10 +52,6 @@ const Navbar = ({pr,sendDataToParent}) => {
 
 
 
-//    const handleClick=(name)=>{
-//     setPr(name);
-//     console.log("hello",pr);
-//    }
 
 
    const handleSendData = (dataToSend) => {

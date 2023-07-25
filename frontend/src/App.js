@@ -1,6 +1,6 @@
 
 import './App.css';
-import { useState  } from 'react';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Component/Navbar/Navbar';
 import Footer from './Component/Footer/Footer';
@@ -22,26 +22,23 @@ import PlotDetails from './Pages/PlotDetails/PlotDetails.js'
 import PlotListLocation from './Pages/Listed Location Plot/PlotListLocation.js'
 
 function App() {
-  const [pr,setPr]=useState('');
+  
 
-  const receiveDataFromChild = (data) => {
-   // console.log("Rammmmmmmm data",data);
-    setPr(data);
-  };
+ 
 
   return (
 
     <>
       <Router>
         
-        <Navbar pr={pr}  sendDataToParent={receiveDataFromChild} />
+        <Navbar  />
         <ScrollToTop />
 
          <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/propertySignup' element={<PropertySignup />} />
           <Route exact path='/plotSignup' element={<PlotSignup />} />
-          <Route  path='/getPropertiesByProject/:projectId'  element={<ListedProperties  pr={pr} />} />
+          <Route exact path='/getPropertiesByProject/:projectId'  element={<ListedProperties  />} />
           <Route exact path='/getPropertiesByLocation/:locationId' element={<PropertyListLocation />} />
           <Route exact path='/propertyDetails/:propertyId' element={<PropertyDetails />} />
           <Route exact path='/plotDetails/:plotId' element={<PlotDetails />} />
