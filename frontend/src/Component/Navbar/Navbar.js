@@ -7,7 +7,7 @@ import { API_BASE_URL } from '../../config';
 
 
 
-const Navbar = ({setPr}) => {
+const Navbar = ({pr,sendDataToParent}) => {
 
     const [projects, setProjects] = useState([]);
     const [locations, setLocations] = useState([]);
@@ -46,17 +46,22 @@ const Navbar = ({setPr}) => {
 
         const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilder/${builderId}`);
         setProjects(response.data);
-        console.log(projects);
+        //console.log(projects);
 
     }
 
 
 
-   const handleClick=(name)=>{
-    setPr(name);
+//    const handleClick=(name)=>{
+//     setPr(name);
+//     console.log("hello",pr);
+//    }
 
-   }
 
+   const handleSendData = (dataToSend) => {
+    localStorage.clear();
+    localStorage.setItem("ProjectName",dataToSend)
+  };
 
 
 
@@ -95,7 +100,7 @@ const Navbar = ({setPr}) => {
                                             <>
                                                 <li >
                                                     <label for="drop-12" onClick={() => projectCall(builder._id)} className="toggle">{builder.builderName} </label>
-                                                    <a onMouseOver={() => projectCall(builder._id)} href="#">{builder.builderName}</a>
+                                                    <Link onMouseOver={() => projectCall(builder._id)} to="#">{builder.builderName}</Link>
                                                     <input type="checkbox" id="drop-12" />
                                                     <ul>
                                                         {projects.map(project => (
@@ -103,7 +108,7 @@ const Navbar = ({setPr}) => {
                                                                 {/* {<Link to={{ pathname: `/getPropertiesByProject/${project._id}`, state: "hello" }}>
                                                                     {project.projectName}
                                                                 </Link>} */}
-                                                                 <a onClick={handleClick(project.projectName)} href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a> 
+                                                                 <a onClick={()=> handleSendData(project.projectName)} href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a> 
 
 
 

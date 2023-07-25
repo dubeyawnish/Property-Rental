@@ -24,12 +24,17 @@ import PlotListLocation from './Pages/Listed Location Plot/PlotListLocation.js'
 function App() {
   const [pr,setPr]=useState('');
 
+  const receiveDataFromChild = (data) => {
+   // console.log("Rammmmmmmm data",data);
+    setPr(data);
+  };
+
   return (
 
     <>
       <Router>
         
-        <Navbar   setPr={setPr} />
+        <Navbar pr={pr}  sendDataToParent={receiveDataFromChild} />
         <ScrollToTop />
 
          <Routes>

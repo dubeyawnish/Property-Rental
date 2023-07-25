@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
-import { useLocation } from 'react-router-dom';
+//import { useLocation } from 'react-router-dom';
 import './ListedProperties.css'
 
 
@@ -11,80 +11,40 @@ import './ListedProperties.css'
 
 
 const ListedProperties = ({ pr }) => {
-  const location = useLocation();
+  //const location = useLocation();
 
   const { projectId } = useParams();
   //console.log(projectId);
   const [properties, setProperties] = useState([]);
   const [loader, setLoader] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState('2BHK');
+  const [projectDetail,setProjectDetail] =useState({});
   
 
 
   //console.log("hello" ,location);
   //console.log("he", pr);
 
-  const PropertyData = {
-    '2BHK': [
-      {
-        propertyType: "2BHK Apartment",
-        area: "1000 sq. ft.",
-        price: 26600000
-      },
-      {
-        propertyType: "2BHK Villa",
-        area: "1200 sq. ft.",
-        price: 250000
-      }
-    ],
-    '3BHK': [
-      {
-        propertyType: "3BHK Apartment",
-        area: "1000 sq. ft.",
-        price: 200000
-      },
-      {
-        propertyType: "3BHK Villa",
-        area: "1200 sq. ft.",
-        price: 250000
-      }
-
-    ],
-    '4BHK': [
-      {
-        propertyType: "4BHK Apartment",
-        area: "1000 sq. ft.",
-        price: 200000
-      },
-      {
-        propertyType: "4BHK Villa",
-        area: "1200 sq. ft.",
-        price: 250000
-      }
-    ]
-
-  };
-
-  const popers = PropertyData[selectedProperty];
+ 
+  
 
 
   useEffect(() => {
     setLoader(true)
+     fetchProjectDetail();
     fetchProperty();
     //debugger;
   }, []);
 
+  const fetchProjectDetail= async()=>{
+    const projectName=localStorage.getItem('ProjectName');
+    const reqData={projectName};
+    try{
+      const res=await axios.post(`${API_BASE_URL}/getProjectDetail`,reqData);
+      //console.log(res.data);
+      setProjectDetail(res.data);
+      //console.log("projejctDetail",projectDetail);
 
-
-  const fetchProperty = async (props) => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
-      setLoader(false);
-      //debugger;
-      //console.log("Response Data", response.data)
-      setProperties(response.data);
-
-      //console.log(properties);
     }
     catch (error) {
       console.error(error);
@@ -93,10 +53,46 @@ const ListedProperties = ({ pr }) => {
 
 
 
+  const fetchProperty = async (props) => {
+    try {
+
+      const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
+      setLoader(false);
+      //debugger;
+      //console.log("Response Data", response.data)
+      setProperties(response.data);
+
+      //console.log("propes",properties);
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  console.log("Mama",projectDetail.twoBHK)
+ // let data=projectDetail.twoBHK
+
+  const PropertyData = {
+    '2BHK':   projectDetail.twoBHK,
+    '3BHK': projectDetail.threeBHK,
+    '4BHK': projectDetail.fourBHK
+
+  };
+
+  //console.log("Mama",projectDetail.twoBHK)
+
+  const popers = PropertyData[selectedProperty];
+
+
+
+
   const handlePropertyClick = (property) => {
     setSelectedProperty(property);
   };
   //console.log(projectId)
+
+
+  
+
 
   return (
     <div className='  container '>
@@ -114,7 +110,7 @@ const ListedProperties = ({ pr }) => {
       <a href='https://newprojects.99acres.com/projects/prestige_group/prestige_kew_gardens/images/jngdjz0z.jpg'><img src="https://newprojects.99acres.com/projects/prestige_group/prestige_kew_gardens/images/jngdjz0z.jpg" className='img-size img-fluid rounded' alt="..." /> </a>  
       </div>
       <div className='mt-5'>
-        <h3 className='text-muted fw-bold mb-0'>Prestige Kew Garden</h3>
+        <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
         <p >by <span className='text-color'>Prestige Group</span> </p>
         <a className='text-decoration-none text-muted' href='#'><p className='mt-2'><i class="fa-solid fa-location-dot"></i> Yemalur Main Rd, Yemalur, Bellandur, Bengaluru, Karnataka 560037 <span className='text-color'>(Show on map)</span></p></a>
 
@@ -168,7 +164,7 @@ const ListedProperties = ({ pr }) => {
           </div>
         </div>
 
-        {popers.map((property, index) => (
+        {popers && popers.map((property, index) => (
           <>
             <div className='text-color shadow-none p-3 mb-5 bg-body-tertiary rounded row'>
               <div className='col-lg-4 col-md-4 col-sm-4'>
@@ -195,7 +191,7 @@ const ListedProperties = ({ pr }) => {
 
 
 
-        )}
+        ) }
 
 
 
@@ -207,7 +203,7 @@ const ListedProperties = ({ pr }) => {
 
 
 
-
+      <h3 className='text-muted my-5'>Properties listed in {localStorage.getItem('ProjectName')} </h3>
 
 
 
@@ -215,7 +211,7 @@ const ListedProperties = ({ pr }) => {
         {properties.map(property => (
           <>
 
-            <h3 className='text-muted my-5'>Properties listed in {property.projectName} </h3>
+           
             <div className='col-lg-3 col-sm-12'>
               <div className="card" >
                 <Link to={`/propertyDetails/${property._id}`}>

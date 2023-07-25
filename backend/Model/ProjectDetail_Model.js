@@ -7,15 +7,15 @@ const projectDetailSchema = new mongoose.Schema({
   projectImg :{
     type:String,
   },
+  projectGroup:{
+    type:String,
+  },
   projectLocation :{
     type:String,
   },
   mapLink:{
     type:String,
   },
-
-
-
   twoBHK: [],   // Changed from 2BHK to twoBHK
   threeBHK: [], // Changed from 3BHK to threeBHK
   fourBHK: [],  // Changed from 4BHK to fourBHK

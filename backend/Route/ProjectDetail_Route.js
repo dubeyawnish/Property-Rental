@@ -9,13 +9,14 @@ const ProjectDetail = mongoose.model('ProjectDetail');
 router.post('/projects', async (req, res) => {
     try {
       // Assuming the request body has an array of objects for 2BHK and 3BHK
-      const { projectName,projectLocation,projectImg, twoBHK, mapLink,threeBHK, fourBHK } = req.body;
+      const { projectName,projectLocation,projectImg,projectGroup, twoBHK, mapLink,threeBHK, fourBHK } = req.body;
   
       // Create a new Project instance
       const newProject = new ProjectDetail({
         projectName,
         projectLocation,
         projectImg,
+        projectGroup,
         mapLink,
         twoBHK,
         threeBHK,
@@ -31,10 +32,20 @@ router.post('/projects', async (req, res) => {
   });
 
 
+  router.post('/getProjectDetail',async(req,res)=>{
+    const {projectName}=req.body;
+    try{
+      const proDetail = await ProjectDetail.findOne({projectName:projectName});
+      res.json(proDetail);
 
 
+    }
+    catch(error){
+      console.error(error.message);
+      res.status(500).send("Internal Server Error");
+    }
+    
+  })
 
-
-  
 
   module.exports = router;
