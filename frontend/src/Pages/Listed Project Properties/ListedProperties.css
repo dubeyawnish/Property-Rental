@@ -1,13 +1,39 @@
 .img-size{
     height: 500px;
-    width: 350px;
+    
 }
 
 .text-color{
-    color:navy;
+    color:#052e66;
 }
 
 .layout-img{
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
 }
+.btnCol{
+    background-color: #052e66;
+    color: white;
+}
+
+
+@media all and (max-width : 580px) {
+
+    .font-sizes{
+        font-size:20px;
+    }
+    .dis{
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between;
+    }
+    .textCeter{
+        text-align: center;
+    }
+
+    
+
+}
+
+
+

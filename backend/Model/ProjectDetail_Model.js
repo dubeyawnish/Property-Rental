@@ -16,8 +16,33 @@ const projectDetailSchema = new mongoose.Schema({
   mapLink:{
     type:String,
   },
+  startDate:{
+    type:String,
+
+  },
+  status:{
+    type:String,
+
+  },
+  totalApartment:{
+    type:String,
+
+  },
+  launchDate:{
+    type:String, 
+
+  },
+  availability:{
+    type:String,
+
+  },
+  oneBHK: [],
+  oneFiveBHK: [],
+  twoFiveBHK: [],
   twoBHK: [],   // Changed from 2BHK to twoBHK
-  threeBHK: [], // Changed from 3BHK to threeBHK
+  threeBHK: [],
+  
+  threeFiveBHK:[],
   fourBHK: [],  // Changed from 4BHK to fourBHK
 });
 

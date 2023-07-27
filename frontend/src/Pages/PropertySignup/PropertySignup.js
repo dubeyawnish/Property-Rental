@@ -224,7 +224,7 @@ const PropertySignup = () => {
           <div className=' list-property-container'>
             <div className=' upper-div'>
               <h4>List your Property with us</h4>
-              <h6>Dharni Property specializes in renting and selling premium homes across Bangalore</h6>
+              <h6>Dharni Properties specializes in renting and selling premium homes across Bangalore</h6>
             </div>
             <div className='mt-3 p-4'>
               <form onSubmit={formSubmit}>
