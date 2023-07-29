@@ -2,41 +2,41 @@ import React from 'react';
 import Modal from 'react-modal';
 
 
-const customModalStyles = {
-    content: {
-        top: '60%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        transform: 'translate(-50%, -50%)',
-        maxWidth: '800px',
-        maxHeight: '90vh',
-        overflow: 'auto',
 
-        '@media screen and (max-width: 600px)': {
-            top: '10%',
-
-            bottom: 'auto',
-            transform: 'translate(-50%, -50%)',
-            width: '90%',
-            maxHeight: '80vh',
-        },
-
-    },
-
-};
 
 
 const ImageModal = ({ imageUrl, onClose }) => {
+    const closeModal = () => {
+        onClose();
+    };
+
     return (
         <Modal
             isOpen={true}
-            onRequestClose={onClose}
-            style={customModalStyles}
-            contentLabel="Larger Image Modal"
+            onRequestClose={closeModal}
+            contentLabel="Full Screen Image"
+            style={{
+                overlay: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                    zIndex: 9999,
+                },
+                content: {
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                    right: '0',
+                    bottom: '0',
+                    border: 'none',
+                    background: 'none',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                },
+            }}
         >
-            <img src={imageUrl} alt="Larger View" style={{ width: '100%', height: 'auto' }} />
-            <button onClick={onClose} style={{ position: 'absolute', top: 10, right: 10 }}>
+            <img src={imageUrl} alt="Full Screen" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+            <button onClick={closeModal} style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer' }}>
                 Close
             </button>
         </Modal>

@@ -28,6 +28,7 @@ app.use(require('./Route/Plot_Route.js'))
 app.use(require('./Route/Requirement_Route.js'))
 app.use(require('./Route/File_Route.js'))
 app.use(require('./Route/Admin_Route.js'));
+app.use(require('./Route/Image_Route.js'))
 
 app.use(require('./Route/Property_Route.js'))
 app.use(require('./Route/ProjectDetail_Route.js'))

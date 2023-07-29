@@ -44,6 +44,7 @@ const ListedProperties = () => {
       const res = await axios.post(`${API_BASE_URL}/getProjectDetail`, reqData);
       //console.log(res.data);
       setProjectDetail(res.data);
+      setLoader(false);
       //console.log("projejctDetail",projectDetail);
 
     }
@@ -58,12 +59,12 @@ const ListedProperties = () => {
     try {
 
       const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
-      setLoader(false);
+      
       //debugger;
       //console.log("Response Data", response.data)
       setProperties(response.data);
 
-      console.log("propes", properties);
+      //console.log("propes", properties);
     }
     catch (error) {
       console.error(error);
@@ -73,14 +74,13 @@ const ListedProperties = () => {
   // let data=projectDetail.twoBHK
 
   const PropertyData = {
-    '1BHK':projectDetail.oneBHK,
-    '1.5BHK':projectDetail.oneFiveBHK,
-    '2BHK':projectDetail.twoBHK,
+    '1BHK': projectDetail.oneBHK,
+    '1.5BHK': projectDetail.oneFiveBHK,
+    '2BHK': projectDetail.twoBHK,
     '2.5BHK': projectDetail.twoFiveBHK,
     '3BHK': projectDetail.threeBHK,
-    '3.5BHK':projectDetail.threeFiveBHKBHK,
+    '3.5BHK': projectDetail.threeFiveBHKBHK,
     '4BHK': projectDetail.fourBHK
-
   };
 
   //console.log("Mama",projectDetail.twoBHK)
@@ -124,13 +124,17 @@ const ListedProperties = () => {
 
 
 
-  const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleImageClick = (imageUrl) => {
-    setSelectedImage(imageUrl);
+
+  const [modalImageUrl, setModalImageUrl] = useState(null);
+
+  const openModal = (imageUrl) => {
+    setModalImageUrl(imageUrl);
   };
-   
- // console.log(projectDetail.projectLocation);
+
+  const closeModal = () => {
+    setModalImageUrl(null);
+  };
 
 
   return (
@@ -146,10 +150,12 @@ const ListedProperties = () => {
 
       <div class="text-center mt-3">
 
-        <img onClick={() => handleImageClick(projectDetail.projectImg)}
-          style={{ cursor: 'pointer' }} src={projectDetail.projectImg} className='img-size img-fluid rounded' alt="Project Image" />
+        <img onClick={() => openModal(projectDetail.projectImg)}
+          style={{ cursor: 'pointer' }}
+          src={projectDetail.projectImg} className='img-size img-fluid rounded' alt="Project Image" />
 
-        {selectedImage && <ImageModal className='' imageUrl={selectedImage} onClose={() => setSelectedImage(null)} />}
+        {modalImageUrl && <ImageModal imageUrl={modalImageUrl} onClose={closeModal} />}
+
       </div>
       <div className=' text-center mt-5'>
         <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
@@ -196,49 +202,49 @@ const ListedProperties = () => {
 
 
       <div className=' text-color shadow-none p-3  bg-body-tertiary rounded d-flex'>
-      {projectDetail.oneBHK && projectDetail.oneBHK.length>0 ?<h5
+        {projectDetail.oneBHK && projectDetail.oneBHK.length > 0 ? <h5
           style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '1BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('1BHK')}
         >
           1BHK
-        </h5>:""}
-       {projectDetail.oneFiveBHK && projectDetail.oneFiveBHK.length>0 ? <h5
+        </h5> : ""}
+        {projectDetail.oneFiveBHK && projectDetail.oneFiveBHK.length > 0 ? <h5
           style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '1.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('1.5BHK')}
         >
           1.5BHK
-        </h5>:""}
+        </h5> : ""}
 
-       {projectDetail.twoBHK && projectDetail.twoBHK.length>0? <h5
+        {projectDetail.twoBHK && projectDetail.twoBHK.length > 0 ? <h5
           style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '2BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('2BHK')}
         >
           2BHK
-        </h5> :""}
-        {projectDetail.twoFiveBHK && projectDetail.twoFiveBHK.length>0 ?<h5
+        </h5> : ""}
+        {projectDetail.twoFiveBHK && projectDetail.twoFiveBHK.length > 0 ? <h5
           style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '2.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('2.5BHK')}
         >
           2.5BHK
-        </h5>:""}
-       {projectDetail.threeBHK && projectDetail.threeBHK.length>0? <h5
+        </h5> : ""}
+        {projectDetail.threeBHK && projectDetail.threeBHK.length > 0 ? <h5
           style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '3BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('3BHK')}
         >
           3BHK
-        </h5>:""}
-       {projectDetail.threeFiveBHK && projectDetail.threeFiveBHK.length>0? <h5
+        </h5> : ""}
+        {projectDetail.threeFiveBHK && projectDetail.threeFiveBHK.length > 0 ? <h5
           style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '3.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('3.5BHK')}
         >
           3.5BHK
-        </h5>:""}
-        {projectDetail.fourBHK && projectDetail.fourBHK.length>0?<h5
+        </h5> : ""}
+        {projectDetail.fourBHK && projectDetail.fourBHK.length > 0 ? <h5
           style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '4BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('4BHK')}
         >
           4BHK
-        </h5>:""}
+        </h5> : ""}
       </div>
 
 
@@ -265,16 +271,19 @@ const ListedProperties = () => {
           <>
             <div className=' shadow-none p-3  bg-body-tertiary rounded d-flex dis'>
               <div className='col-lg-4 col-md-4 col-sm-4'>
-                <a href='https://im.proptiger.com/2/5276098/12/shantiniketan-floor-plan-floor-plan-100638400.jpeg' > <img src='https://im.proptiger.com/2/5276098/12/shantiniketan-floor-plan-floor-plan-100638400.jpeg ' className='layout-img' /></a>
+                 <img onClick={() => openModal(property.layout)}
+          style={{ cursor: 'pointer' }} src={property.layout} className='layout-img' />
+                {modalImageUrl && <ImageModal imageUrl={modalImageUrl} onClose={closeModal} />}
 
 
               </div>
               <div className='col-lg-4 col-md-4 col-sm-4'>
                 <p>{property.area}</p>
+                <p className=' fw-lighter text-muted'>{property.type}</p>
 
               </div>
               <div className='col-lg-4 col-md-4 col-sm-4'>
-                <p>{property.price}</p>
+                <p >{property.price}</p>
 
               </div>
             </div>
