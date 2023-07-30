@@ -59,7 +59,7 @@ const ListedProperties = () => {
     try {
 
       const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);
-      
+
       //debugger;
       //console.log("Response Data", response.data)
       setProperties(response.data);
@@ -104,7 +104,7 @@ const ListedProperties = () => {
 
 
 
-  const [rowsToShow, setRowsToShow] = useState(1);
+  const [rowsToShow, setRowsToShow] = useState(4);
   const [showAll, setShowAll] = useState(false);
 
 
@@ -159,8 +159,8 @@ const ListedProperties = () => {
       </div>
       <div className=' text-center mt-5'>
         <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
-        <p >by <span className='text-color'>Prestige Group</span> </p>
-        <a className='text-decoration-none text-muted' href={projectDetail.projectLocation}><p className='mt-2'><i class="fa-solid fa-location-dot"></i> Yemalur Main Rd, Yemalur, Bellandur, Bengaluru, Karnataka 560037 <span className='text-color'>(Show on map)</span></p></a>
+        <p >by <span className='text-color'>{projectDetail.projectGroup}</span> </p>
+        <a className='text-decoration-none text-muted' href={projectDetail.mapLink}><p className='mt-2'><i class="fa-solid fa-location-dot"></i> {projectDetail.projectLocation} <span className='text-color'>(Show on map)</span></p></a>
 
       </div>
 
@@ -169,24 +169,24 @@ const ListedProperties = () => {
 
         <div className='row '>
           <div className='col-md-3 col-lg-3 col-sm-6  textCeter'>
-            <h5 className='mt-3'>Nov'11</h5>
+            <h5 className='mt-3'>{projectDetail.startDate}</h5>
             <p className='mt-0 fs-6'>Possession start date</p>
           </div>
 
           <div className='col-md-3 col-lg-3 col-sm-6 textCeter'>
-            <h5 className='mt-3'>Completed</h5>
+            <h5 className='mt-3'>{projectDetail.status}</h5>
             <p className='mt-0 fs-6'>Status</p>
           </div>
           <div className='col-md-3 col-lg-3 col-sm-6 textCeter'>
-            <h5 className='mt-3'>2997</h5>
-            <p className='mt-0 fs-6'>Total Launched apartments</p>
+            <h5 className='mt-3'>{projectDetail.totalApartment}</h5>
+            <p className='mt-0 fs-6'>Total  apartments</p>
           </div>
           <div className='col-md-3 col-lg-3 col-sm-12 textCeter'>
-            <h5 className='mt-3'>Sep'06</h5>
+            <h5 className='mt-3'>{projectDetail.launchDate}</h5>
             <p className='mt-0 fs-6'>Launch Date</p>
           </div>
           <div className='col-md-3 col-lg-3 col-sm-12 textCeter'>
-            <h5 className='mt-3'>Resale</h5>
+            <h5 className='mt-3'>{projectDetail.availability}</h5>
             <p className='mt-0 fs-6'>Availability</p>
           </div>
 
@@ -271,8 +271,8 @@ const ListedProperties = () => {
           <>
             <div className=' shadow-none p-3  bg-body-tertiary rounded d-flex dis'>
               <div className='col-lg-4 col-md-4 col-sm-4'>
-                 <img onClick={() => openModal(property.layout)}
-          style={{ cursor: 'pointer' }} src={property.layout} className='layout-img' />
+                <img onClick={() => openModal(property.layout)}
+                  style={{ cursor: 'pointer' }} src={property.layout} className='layout-img' />
                 {modalImageUrl && <ImageModal imageUrl={modalImageUrl} onClose={closeModal} />}
 
 
@@ -389,8 +389,8 @@ const ListedProperties = () => {
 
 
 
-      {properties.length > 0 ? <div>
-        <h3 className='text-muted my-5'>Properties listed in {localStorage.getItem('ProjectName')} </h3>
+      <div>
+        {properties && properties[0]?.bedrooms ? <h3 className='text-muted fw-bold my-5'>Properties listed in {localStorage.getItem('ProjectName')} sales </h3> : ""}
         <div className='row mb-2'>
           {properties.map(property => (
 
@@ -416,7 +416,7 @@ const ListedProperties = () => {
             </>
           ))}
         </div>
-      </div> : ""}
+      </div>
     </div>
   )
 }

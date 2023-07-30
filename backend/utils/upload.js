@@ -8,7 +8,8 @@ const DB_USERNAME = process.env.DB_USERNAME;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 
 
-const CONNECTION_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@rentproperty.amfwt8o.mongodb.net/`
+//const CONNECTION_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@rentproperty.amfwt8o.mongodb.net/`
+const CONNECTION_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@properties.aphnmm7.mongodb.net/`
 const connectionOption = {
 	useNewUrlParser: true, useUnifiedTopology: true
 }

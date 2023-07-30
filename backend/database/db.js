@@ -8,7 +8,9 @@ const dbpassword=process.env.DB_PASSWORD;
 
 
  const Connection=async()=>{
-    const URL=`mongodb+srv://${dbusername}:${dbpassword}@rentproperty.amfwt8o.mongodb.net/`
+    const URL=`mongodb+srv://${dbusername}:${dbpassword}@properties.aphnmm7.mongodb.net/`
+    //console.log('Connection URL:', URL);
+    //const URL=`mongodb+srv://${dbusername}:${dbpassword}@rentproperty.amfwt8o.mongodb.net/`
     try{
         await mongoose.connect(URL,{useNewUrlParser:true});
         console.log('Database Connected Successfully');
