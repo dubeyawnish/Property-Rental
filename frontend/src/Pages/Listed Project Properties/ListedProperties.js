@@ -104,20 +104,20 @@ const ListedProperties = () => {
 
 
 
-  const [rowsToShow, setRowsToShow] = useState(4);
-  const [showAll, setShowAll] = useState(false);
+  // const [rowsToShow, setRowsToShow] = useState(4);
+  // const [showAll, setShowAll] = useState(false);
 
 
-  const handleShowMore = () => {
+  // const handleShowMore = () => {
 
-    setShowAll(true);
-  };
+  //   setShowAll(true);
+  // };
 
 
-  const handleShowLess = () => {
+  // const handleShowLess = () => {
 
-    setShowAll(false);
-  };
+  //   setShowAll(false);
+  // };
 
 
 
@@ -202,45 +202,45 @@ const ListedProperties = () => {
 
 
       <div className=' text-color shadow-none p-3  bg-body-tertiary rounded d-flex'>
-        {projectDetail.oneBHK && projectDetail.oneBHK.length > 0 ? <h5
-          style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '1BHK' ? 'underline' : 'none' }}
+        {projectDetail.oneBHK && projectDetail.oneBHK.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '1BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('1BHK')}
         >
           1BHK
         </h5> : ""}
-        {projectDetail.oneFiveBHK && projectDetail.oneFiveBHK.length > 0 ? <h5
-          style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '1.5BHK' ? 'underline' : 'none' }}
+        {projectDetail.oneFiveBHK && projectDetail.oneFiveBHK.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '1.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('1.5BHK')}
         >
           1.5BHK
         </h5> : ""}
 
-        {projectDetail.twoBHK && projectDetail.twoBHK.length > 0 ? <h5
-          style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '2BHK' ? 'underline' : 'none' }}
+        {projectDetail.twoBHK && projectDetail.twoBHK.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '2BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('2BHK')}
         >
           2BHK
         </h5> : ""}
-        {projectDetail.twoFiveBHK && projectDetail.twoFiveBHK.length > 0 ? <h5
-          style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '2.5BHK' ? 'underline' : 'none' }}
+        {projectDetail.twoFiveBHK && projectDetail.twoFiveBHK.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '2.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('2.5BHK')}
         >
           2.5BHK
         </h5> : ""}
-        {projectDetail.threeBHK && projectDetail.threeBHK.length > 0 ? <h5
-          style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '3BHK' ? 'underline' : 'none' }}
+        {projectDetail.threeBHK && projectDetail.threeBHK.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '3BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('3BHK')}
         >
           3BHK
         </h5> : ""}
-        {projectDetail.threeFiveBHK && projectDetail.threeFiveBHK.length > 0 ? <h5
-          style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '3.5BHK' ? 'underline' : 'none' }}
+        {projectDetail.threeFiveBHK && projectDetail.threeFiveBHK.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '3.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('3.5BHK')}
         >
           3.5BHK
         </h5> : ""}
-        {projectDetail.fourBHK && projectDetail.fourBHK.length > 0 ? <h5
-          style={{ cursor: 'pointer', margin: '30px', textDecoration: selectedProperty === '4BHK' ? 'underline' : 'none' }}
+        {projectDetail.fourBHK && projectDetail.fourBHK.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '4BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('4BHK')}
         >
           4BHK
@@ -266,13 +266,14 @@ const ListedProperties = () => {
 
           </div>
         </div>
+        {/* {.slice(0, showAll ? popers.length : rowsToShow)} */}
 
-        {popers && popers.slice(0, showAll ? popers.length : rowsToShow).map((property, index) => (
+        {popers && popers.map((property, index) => (
           <>
             <div className=' shadow-none p-3  bg-body-tertiary rounded d-flex dis'>
-              <div className='col-lg-4 col-md-4 col-sm-4'>
+              <div className='col-lg-4 col-md-4 col-sm-4 '>
                 <img onClick={() => openModal(property.layout)}
-                  style={{ cursor: 'pointer' }} src={property.layout} className='layout-img' />
+                  style={{ cursor: 'pointer' }} src={property.layout} className='layout-img border border-secondary' />
                 {modalImageUrl && <ImageModal imageUrl={modalImageUrl} onClose={closeModal} />}
 
 
@@ -283,7 +284,7 @@ const ListedProperties = () => {
 
               </div>
               <div className='col-lg-4 col-md-4 col-sm-4'>
-                <p >{property.price}</p>
+                <p className='text-center' >{property.price}</p>
 
               </div>
             </div>
@@ -298,7 +299,7 @@ const ListedProperties = () => {
 
 
         )}
-        <div className='text-center mt-2'>
+        {/* <div className='text-center mt-2'>
           {!showAll && popers && popers.length > rowsToShow && (
             <button className='btn btn-primary btnCol' onClick={handleShowMore}>Show More</button>
           )}
@@ -309,7 +310,7 @@ const ListedProperties = () => {
           )}
 
 
-        </div>
+        </div> */}
 
 
 

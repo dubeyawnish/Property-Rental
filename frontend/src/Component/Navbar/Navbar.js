@@ -68,7 +68,7 @@ const Navbar = () => {
         <div className="App">
             <nav className="z-3   navbar navbar-expand-lg bg-body-tertiary shadow p-3  bg-body-tertiary rounded">
                 <div className="container ">
-                    <Link className=" me-5 " to="/"> <img src={Logo} /></Link>
+                    <Link className=" me-5 " to="/"> <img src={Logo} className='img-fluid' /></Link>
                     <label for="drop" className="toggle">&#8801; Menu</label>
                     <input type="checkbox" id="drop" />
                     <ul className=" navbar-nav me-auto mb-2 mb-lg-0 menu">
@@ -77,9 +77,9 @@ const Navbar = () => {
                             <Link to='/' > Home</Link>
                             <input type="checkbox" id="drop-1" />
                             <ul>
-                                <li><Link to="/serviceFee">Service & Fee</Link></li>
-                                <li><Link to="/contactUs">Contact Us</Link></li>
-                                <li><Link to="/careers">Careers</Link></li>
+                                <li><Link className='togg' to="/serviceFee">Service & Fee</Link></li>
+                                <li><Link className='togg' to="/contactUs">Contact Us</Link></li>
+                                <li><Link className='togg' to="/careers">Careers</Link></li>
                             </ul>
                         </li>
                         <li >
@@ -95,8 +95,8 @@ const Navbar = () => {
                                         {Array.isArray(builders) && builders.map(builder => (
                                             <>
                                                 <li >
-                                                    <label for="drop-12" onClick={() => projectCall(builder._id)} className="toggle">{builder.builderName} </label>
-                                                    <Link onMouseOver={() => projectCall(builder._id)} to="#">{builder.builderName}</Link>
+                                                    <label for="drop-12" onClick={() => projectCall(builder._id)} className="toggle ">{builder.builderName} </label>
+                                                    <Link  onMouseOver={() => projectCall(builder._id)} to="#">{builder.builderName}</Link>
                                                     <input type="checkbox" id="drop-12" />
                                                     <ul>
                                                         {projects.map(project => (
@@ -104,14 +104,14 @@ const Navbar = () => {
                                                                 {/* {<Link to={{ pathname: `/getPropertiesByProject/${project._id}`, state: "hello" }}>
                                                                     {project.projectName}
                                                                 </Link>} */}
-                                                                 <a onClick={()=> handleSendData(project.projectName)} href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a> 
+                                                                 <a className='togg' onClick={()=> handleSendData(project.projectName)} href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a> 
 
 
 
                                                             </li>
                                                         ))}
                                                         {plotPorject.map(project => (
-                                                            <li><a href={`/getPlotByProject/${project._id}`}>{project.projectName}</a></li>
+                                                            <li><a className='togg' href={`/getPlotByProject/${project._id}`}>{project.projectName}</a></li>
                                                         ))}
                                                     </ul>
                                                 </li>
@@ -126,10 +126,10 @@ const Navbar = () => {
                                     <input type="checkbox" id="drop-4" />
                                     <ul>
                                         {locations.map(location => (
-                                            <li><a href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
+                                            <li><a className='togg' href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
                                         ))}
                                         {plotLocation.map(location => (
-                                            <li><Link to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
+                                            <li><Link className='togg'to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
                                         ))}
                                     </ul>
                                 </li>
@@ -171,7 +171,7 @@ const Navbar = () => {
                                     <input type="checkbox" id="drop-9" />
                                     <ul>
                                         {locations.map(location => (
-                                            <li><a href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
+                                            <li><a className='togg' href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
                                         ))}
                                     </ul>
                                 </li>
@@ -197,17 +197,17 @@ const Navbar = () => {
                             </ul>
                         </li>
                         <li> <label for="drop-11" className="toggle">List Property </label>
-                            <Link to='/' > List Property</Link>
+                            <Link  to='/' > List Property</Link>
                             <input type="checkbox" id="drop-11" />
                             <ul>
-                                <li><Link to="/propertySignup">List a Property</Link></li>
-                                <li> <Link to="/plotSignup">List a Plot</Link></li>
+                                <li><Link className='togg' to="/propertySignup">List a Property</Link></li>
+                                <li>  <Link className='togg' to="/plotSignup">List a Plot</Link></li>
                             </ul>
                         </li>
 
 
                         <li>
-                            <Link to="/aboutus">About</Link>
+                            <Link className='togg ' to="/aboutus">About</Link>
                         </li>
                     </ul>
                 </div>

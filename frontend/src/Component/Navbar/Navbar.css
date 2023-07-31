@@ -123,10 +123,10 @@ width: 100%;
     
     nav a {
       display: block;
-      padding: 0 20px;
+      padding: 0 15px;
       color: white;
       font-size: 15px;
-      line-height: 55px;
+      line-height: 50px;
       text-decoration: none;
     }
     
@@ -139,13 +139,13 @@ width: 100%;
     nav ul ul {
       display: none;
       position: absolute;
-      top: 55px;
+      top: 50px;
     }
     
     nav ul li:hover > ul { display: inherit; }
     
     nav ul ul li {
-      width: 190px;
+      width: 200px;
       float: none;
       display: list-item;
       position: relative;
@@ -153,8 +153,8 @@ width: 100%;
     
     nav ul ul ul li {
       position: relative;
-      top: -55px;
-      left: 190px;
+      top: -50px;
+      left: 200px;
     }
     
     li > a:after { content: ' '; }
@@ -167,6 +167,10 @@ width: 100%;
     
      
       nav { margin: 0; }
+
+      .togg{
+        font-size:13px;
+      }
      
       
       .toggle + a,
@@ -177,27 +181,36 @@ width: 100%;
         background-color: #052e66;
         padding: 0 20px;
         color: #FFF;
-        font-size: 18px;
-        
-        
-        line-height: 60px;
+        font-size: 13px;
+
+        line-height: 50px;
         text-decoration: none;
         border: none;
       }
       
       .toggle:hover { background-color: #07002b; }
+     
       
       [id^=drop]:checked + ul { display: block; }
       
-      nav ul li {
+      nav ul li  {
         display: block;
-        width: 100%;
+        width: 80vw;
       }
       
       nav ul ul .toggle,
        nav ul ul a { padding: 0 40px; }
+
+
+       nav ul ul ul .toggle{
+        padding: 0 50px;
+
+       }
+       
       
-      nav ul ul ul a { padding: 0 80px; }
+      
+      nav ul ul ul a { padding-left:  60px; }
+     
       
       nav a:hover,
        nav ul ul ul a { background-color: #07002b; }
@@ -216,7 +229,7 @@ width: 100%;
       
       nav ul ul li {
         display: block;
-        width: 100%;
+        width: 80vw;
       }
       
       nav ul ul ul li { position: static;
@@ -228,12 +241,87 @@ width: 100%;
       
       nav ul li {
         display: block;
-        width: 94%;
+        width: 80vw;
       }
       
       } 
 
-     @media only screen and (max-width: 1199px) and (min-width: 769px)  {
+
+
+
+      @media only screen and (max-width: 991px) and (min-width: 769px)  {
+        nav { margin: 0; }
+
+      .togg{
+        font-size:13px;
+      }
+     
+      
+      .toggle + a,
+       .menu { display: none; }
+      
+       .toggle {
+        display: block;
+        background-color: #052e66;
+        padding: 0 20px;
+        color: #FFF;
+        font-size: 13px;
+
+        line-height: 50px;
+        text-decoration: none;
+        border: none;
+      }
+      
+      .toggle:hover { background-color: #07002b; }
+     
+      
+      [id^=drop]:checked + ul { display: block; }
+      
+      nav ul li  {
+        display: block;
+        width: 80vw;
+      }
+      
+      nav ul ul .toggle,
+       nav ul ul a { padding: 0 40px; }
+
+
+       nav ul ul ul .toggle{
+        padding: 0 50px;
+
+       }
+       
+      
+      
+      nav ul ul ul a { padding-left:  60px; }
+     
+      
+      nav a:hover,
+       nav ul ul ul a { background-color: #07002b; }
+      
+      nav ul li ul li .toggle,
+       nav ul ul a { background-color: #212121; }
+      
+      nav ul ul {
+        float: none;
+        position: static;
+        color: #ffffff;
+      }
+      
+      nav ul ul li:hover > ul,
+      nav ul li:hover > ul { display: none; }
+      
+      nav ul ul li {
+        display: block;
+        width: 80vw;
+      }
+      
+      nav ul ul ul li { position: static;
+      
+      }
+      }
+
+     /* @media only screen and (max-width: 1199px) and (min-width: 769px)  {
         nav { margin: 0; }
      
       
@@ -297,7 +385,7 @@ width: 100%;
 
 
 
-      }
+      } */
   
   
   
