@@ -39,11 +39,15 @@ const projectDetailSchema = new mongoose.Schema({
   oneBHK: [],
   oneFiveBHK: [],
   twoFiveBHK: [],
-  twoBHK: [],   // Changed from 2BHK to twoBHK
+  twoBHK: [],   
   threeBHK: [],
-  
   threeFiveBHK:[],
-  fourBHK: [],  // Changed from 4BHK to fourBHK
+  fourBHK: [], 
+  twoBHKVilla: [],
+  threeBHKVilla :[],
+  fourBHKVilla :[],
+
+ 
 });
 
 const ProjectDetail = mongoose.model('ProjectDetail', projectDetailSchema);

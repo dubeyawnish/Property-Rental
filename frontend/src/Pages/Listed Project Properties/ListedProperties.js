@@ -79,8 +79,11 @@ const ListedProperties = () => {
     '2BHK': projectDetail.twoBHK,
     '2.5BHK': projectDetail.twoFiveBHK,
     '3BHK': projectDetail.threeBHK,
-    '3.5BHK': projectDetail.threeFiveBHKBHK,
-    '4BHK': projectDetail.fourBHK
+    '3.5BHK': projectDetail.threeFiveBHK,
+    '4BHK': projectDetail.fourBHK,
+    '2BHKVilla':projectDetail.twoBHKVilla,
+    '3BHKVilla':projectDetail.threeBHKVilla,
+    '4BHKVilla':projectDetail.fourBHKVilla,
   };
 
   //console.log("Mama",projectDetail.twoBHK)
@@ -138,7 +141,7 @@ const ListedProperties = () => {
 
 
   return (
-    <div className='  container '>
+    <div className=' container '>
       {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
@@ -159,35 +162,34 @@ const ListedProperties = () => {
       </div>
       <div className=' text-center mt-5'>
         <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
-        <p >by <span className='text-color'>{projectDetail.projectGroup}</span> </p>
+        <p >by <span className='text-color fw-bold'>{projectDetail.projectGroup}</span> </p>
         <a className='text-decoration-none text-muted' href={projectDetail.mapLink}><p className='mt-2'><i class="fa-solid fa-location-dot"></i> {projectDetail.projectLocation} <span className='text-color'>(Show on map)</span></p></a>
 
       </div>
 
-      <div className='mt-5 text-muted textCeter'>
-        <h3 className='fw-bold'>Overview</h3>
-
+      <div className='mt-5 text-muted textCeter '>
+        <h3 className='fw-bold'>Overview</h3>     
         <div className='row '>
           <div className='col-md-3 col-lg-3 col-sm-6  textCeter'>
-            <h5 className='mt-3'>{projectDetail.startDate}</h5>
-            <p className='mt-0 fs-6'>Possession start date</p>
+            <h5 className=' font-sizes mt-3'>{projectDetail.startDate}</h5>
+            <p className='font-sizes mt-0 fs-6'>Possession start date</p>
           </div>
 
           <div className='col-md-3 col-lg-3 col-sm-6 textCeter'>
-            <h5 className='mt-3'>{projectDetail.status}</h5>
-            <p className='mt-0 fs-6'>Status</p>
+            <h5 className=' font-sizes mt-3'>{projectDetail.status}</h5>
+            <p className='mt-0 fs-6 font-sizes'>Status</p>
           </div>
           <div className='col-md-3 col-lg-3 col-sm-6 textCeter'>
-            <h5 className='mt-3'>{projectDetail.totalApartment}</h5>
-            <p className='mt-0 fs-6'>Total  apartments</p>
+            <h5 className='font-sizes mt-3'>{projectDetail.totalApartment}</h5>
+            <p className='font-sizes mt-0 fs-6'>Total  apartments</p>
           </div>
           <div className='col-md-3 col-lg-3 col-sm-12 textCeter'>
-            <h5 className='mt-3'>{projectDetail.launchDate}</h5>
-            <p className='mt-0 fs-6'>Launch Date</p>
+            <h5 className='font-sizes mt-3'>{projectDetail.launchDate}</h5>
+            <p className='font-sizes mt-0 fs-6'>Launch Date</p>
           </div>
           <div className='col-md-3 col-lg-3 col-sm-12 textCeter'>
-            <h5 className='mt-3'>{projectDetail.availability}</h5>
-            <p className='mt-0 fs-6'>Availability</p>
+            <h5 className='font-sizes mt-3'>{projectDetail.availability}</h5>
+            <p className='font-sizes mt-0 fs-6'>Availability</p>
           </div>
 
         </div>
@@ -245,6 +247,34 @@ const ListedProperties = () => {
         >
           4BHK
         </h5> : ""}
+        
+        
+
+        {projectDetail.twoBHKVilla && projectDetail.twoBHKVilla.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '2BHKVilla' ? 'underline' : 'none' }}
+          onClick={() => handlePropertyClick('twoBHKVilla')}
+        >
+          2BHKVilla
+        </h5> : ""}
+
+        {projectDetail.threeBHKVilla && projectDetail.threeBHKVilla.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '3BHKVilla' ? 'underline' : 'none' }}
+          onClick={() => handlePropertyClick('3BHKVilla')}
+        >
+          3BHKVilla
+        </h5> : ""}
+
+        {projectDetail.fourBHKVilla && projectDetail.fourBHKVilla.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '4BHKVilla' ? 'underline' : 'none' }}
+          onClick={() => handlePropertyClick('4BHKVilla')}
+        >
+          4BHKVilla
+        </h5> : ""}
+
+
+
+
+
       </div>
 
 
@@ -252,7 +282,7 @@ const ListedProperties = () => {
       <div>
         {/* <h2>{selectedProperty}</h2> */}
 
-        <div className='shadow-none p-3  bg-body-tertiary rounded d-flex dis '>
+        <div className='shadow-none p-3  bg-body-tertiary rounded d-flex  dis '>
           <div className='col-lg-4 col-md-4 col-sm-4'>
             <h4 className='font-sizes'>Floor Layout</h4>
 
@@ -279,12 +309,12 @@ const ListedProperties = () => {
 
               </div>
               <div className='col-lg-4 col-md-4 col-sm-4'>
-                <p>{property.area}</p>
-                <p className=' fw-lighter text-muted'>{property.type}</p>
+                <p className='font-sizes'>{property.area}</p>
+                <p className='font-sizes   text-muted'>{property.type}</p>
 
               </div>
               <div className='col-lg-4 col-md-4 col-sm-4'>
-                <p className='text-center' >{property.price}</p>
+                <p className='font-sizes text-center' >{property.price}</p>
 
               </div>
             </div>
