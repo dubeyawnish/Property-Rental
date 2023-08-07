@@ -13,6 +13,9 @@ const projectDetailSchema = new mongoose.Schema({
   projectLocation :{
     type:String,
   },
+  showLocation:{
+    type:String,
+  },
   mapLink:{
     type:String,
   },
@@ -23,6 +26,9 @@ const projectDetailSchema = new mongoose.Schema({
   status:{
     type:String,
 
+  },
+  projectType:{
+    type:String,
   },
   totalApartment:{
     type:String,

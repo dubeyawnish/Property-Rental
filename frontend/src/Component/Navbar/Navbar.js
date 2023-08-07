@@ -54,10 +54,19 @@ const Navbar = () => {
 
 
 
-   const handleSendData = (dataToSend) => {
-    localStorage.clear();
-    localStorage.setItem("ProjectName",dataToSend)
-  };
+    const handleSendData = (dataToSend) => {
+        localStorage.clear();
+        localStorage.setItem("ProjectName", dataToSend)
+    };
+
+    const builderPro = (builderId, builderName) => {
+        //console.log(builderId)
+        localStorage.removeItem("BuilderId");
+        localStorage.removeItem("BuilderName");
+        localStorage.setItem("BuilderId", builderId);
+        localStorage.setItem("BuilderName", builderName);
+
+    }
 
 
 
@@ -88,15 +97,16 @@ const Navbar = () => {
                             <input type="checkbox" id="drop-2" />
                             <ul>
                                 <li>
-                                    <label for="drop-3" className="toggle">Buy by Project </label>
-                                    <a href="#">Buy by Project</a>
+                                    <label for="drop-3" className="toggle">Buy by Builder </label>
+                                    <a href="#">Buy by Builder</a>
                                     <input type="checkbox" id="drop-3" />
                                     <ul>
                                         {Array.isArray(builders) && builders.map(builder => (
                                             <>
                                                 <li >
-                                                    <label for="drop-12" onClick={() => projectCall(builder._id)} className="toggle ">{builder.builderName} </label>
-                                                    <Link  onMouseOver={() => projectCall(builder._id)} to="#">{builder.builderName}</Link>
+                                                    <a onClick={() => builderPro(builder._id, builder.builderName)} href="/builderProject"><label for="drop-12" className="toggle "> </label></a>
+                                                    {/* <Link  onMouseOver={() => projectCall(builder._id)} to="#">{builder.builderName}</Link> */}
+                                                    <a onClick={() => builderPro(builder._id, builder.builderName)} href="/builderProject">{builder.builderName}</a>
                                                     <input type="checkbox" id="drop-12" />
                                                     <ul>
                                                         {projects.map(project => (
@@ -104,10 +114,7 @@ const Navbar = () => {
                                                                 {/* {<Link to={{ pathname: `/getPropertiesByProject/${project._id}`, state: "hello" }}>
                                                                     {project.projectName}
                                                                 </Link>} */}
-                                                                 <a className='togg' onClick={()=> handleSendData(project.projectName)} href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a> 
-
-
-
+                                                                <a className='togg' onClick={() => handleSendData(project.projectName)} href={`/getPropertiesByProject/${project._id}`}>{project.projectName}</a>
                                                             </li>
                                                         ))}
                                                         {plotPorject.map(project => (
@@ -129,7 +136,7 @@ const Navbar = () => {
                                             <li><a className='togg' href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
                                         ))}
                                         {plotLocation.map(location => (
-                                            <li><Link className='togg'to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
+                                            <li><Link className='togg' to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
                                         ))}
                                     </ul>
                                 </li>
@@ -197,7 +204,7 @@ const Navbar = () => {
                             </ul>
                         </li>
                         <li> <label for="drop-11" className="toggle">List Property </label>
-                            <Link  to='/' > List Property</Link>
+                            <Link to='/' > List Property</Link>
                             <input type="checkbox" id="drop-11" />
                             <ul>
                                 <li><Link className='togg' to="/propertySignup">List a Property</Link></li>

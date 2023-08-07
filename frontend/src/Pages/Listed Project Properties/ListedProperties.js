@@ -6,6 +6,7 @@ import { API_BASE_URL } from '../../config';
 //import { useLocation } from 'react-router-dom';
 import './ListedProperties.css'
 import ImageModal from '../ImageModel/imageModel.js';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,6 +14,8 @@ import ImageModal from '../ImageModel/imageModel.js';
 
 const ListedProperties = () => {
   //const location = useLocation();
+  const navigate=useNavigate();
+
 
   const { projectId } = useParams();
   //console.log(projectId);
@@ -123,7 +126,9 @@ const ListedProperties = () => {
   // };
 
 
-
+ const moveToPrevious=()=>{
+  navigate(-1 );
+ }
 
 
 
@@ -163,7 +168,7 @@ const ListedProperties = () => {
       </div>
       <div className=' text-center mt-5'>
         <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
-        <p >by <span className='text-color fw-bold'>{projectDetail.projectGroup}</span> </p>
+        <p >by <span style={{ cursor: 'pointer' }} onClick={moveToPrevious} className='text-color fw-bold'>{projectDetail.projectGroup}</span> </p>
         <a className='text-decoration-none text-muted' href={projectDetail.mapLink}><p className='mt-2'><i class="fa-solid fa-location-dot"></i> {projectDetail.projectLocation} <span className='text-color'>(Show on map)</span></p></a>
 
       </div>

@@ -9,7 +9,7 @@ const ProjectDetail = mongoose.model('ProjectDetail');
 router.post('/projects', async (req, res) => {
   try {
     // Assuming the request body has an array of objects for 2BHK and 3BHK
-    const { projectName, projectLocation, projectImg, projectGroup, startDate, status, totalApartment, launchDate, availability, oneBHK,
+    const { projectName, projectLocation, projectImg, projectType,showLocation, projectGroup, startDate, status, totalApartment, launchDate, availability, oneBHK,
       oneFiveBHK,
       twoFiveBHK, twoBHK, mapLink, threeBHK, threeFiveBHK, fourBHK,twoBHKVilla,threeBHKVilla,fourBHKVilla } = req.body;
 
@@ -19,6 +19,8 @@ router.post('/projects', async (req, res) => {
       projectName,
       projectLocation,
       projectImg,
+      projectType,
+      showLocation,
       projectGroup,
       mapLink,
       oneBHK,

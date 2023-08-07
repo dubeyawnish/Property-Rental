@@ -42,6 +42,12 @@ const adminPropertySchema = new mongoose.Schema({
             type:String,
 
         },
+        projectImg:{
+            type: String,
+        },
+        propertyType:{
+            type:String,
+        },
     //propertyPricing: {
         expectedRentPrice: {
             type: String,
