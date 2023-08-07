@@ -36,9 +36,10 @@
     .mar{
         margin-right: 15px;
     }
-
-    
-
+    .wra{
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 
 

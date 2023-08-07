@@ -1,0 +1,6 @@
+@media all and (max-width : 580px) {
+
+    .font-sizes{
+        font-size:1rem !important;
+    }
+}

@@ -142,6 +142,7 @@ const ListedProperties = () => {
 
   return (
     <div className=' container '>
+      
       {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
@@ -200,16 +201,14 @@ const ListedProperties = () => {
         <h3 className='fw-bold'>{projectDetail.projectName} Floor Plans</h3>
       </div>
 
-
-
-
-      <div className=' text-color shadow-none p-3  bg-body-tertiary rounded d-flex'>
+      <div className=' text-color shadow-none p-3  bg-body-tertiary rounded d-flex wra'>
         {projectDetail.oneBHK && projectDetail.oneBHK.length > 0 ? <h5 className='mar'
           style={{ cursor: 'pointer',  textDecoration: selectedProperty === '1BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('1BHK')}
         >
           1BHK
         </h5> : ""}
+
         {projectDetail.oneFiveBHK && projectDetail.oneFiveBHK.length > 0 ? <h5 className='mar'
           style={{ cursor: 'pointer',  textDecoration: selectedProperty === '1.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('1.5BHK')}
@@ -223,24 +222,28 @@ const ListedProperties = () => {
         >
           2BHK
         </h5> : ""}
+
         {projectDetail.twoFiveBHK && projectDetail.twoFiveBHK.length > 0 ? <h5 className='mar'
           style={{ cursor: 'pointer',  textDecoration: selectedProperty === '2.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('2.5BHK')}
         >
           2.5BHK
         </h5> : ""}
+
         {projectDetail.threeBHK && projectDetail.threeBHK.length > 0 ? <h5 className='mar'
           style={{ cursor: 'pointer',  textDecoration: selectedProperty === '3BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('3BHK')}
         >
           3BHK
         </h5> : ""}
+
         {projectDetail.threeFiveBHK && projectDetail.threeFiveBHK.length > 0 ? <h5 className='mar'
           style={{ cursor: 'pointer',  textDecoration: selectedProperty === '3.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('3.5BHK')}
         >
           3.5BHK
         </h5> : ""}
+
         {projectDetail.fourBHK && projectDetail.fourBHK.length > 0 ? <h5 className='mar'
           style={{ cursor: 'pointer',  textDecoration: selectedProperty === '4BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('4BHK')}
@@ -249,7 +252,6 @@ const ListedProperties = () => {
         </h5> : ""}
         
         
-
         {projectDetail.twoBHKVilla && projectDetail.twoBHKVilla.length > 0 ? <h5 className='mar'
           style={{ cursor: 'pointer',  textDecoration: selectedProperty === '2BHKVilla' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('twoBHKVilla')}
@@ -270,11 +272,6 @@ const ListedProperties = () => {
         >
           4BHKVilla
         </h5> : ""}
-
-
-
-
-
       </div>
 
 
@@ -421,7 +418,7 @@ const ListedProperties = () => {
 
 
       <div>
-        {properties && properties[0]?.bedrooms ? <h3 className='text-muted fw-bold my-5'>Properties listed in {localStorage.getItem('ProjectName')} sales </h3> : ""}
+        {properties && properties[0]?.bedrooms ? <h3 className='text-muted fw-bold my-5'>Properties listed in {localStorage.getItem('ProjectName')} sales </h3> : "" }
         <div className='row mb-2'>
           {properties.map(property => (
 

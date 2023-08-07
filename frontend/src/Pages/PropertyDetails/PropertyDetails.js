@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { useParams } from 'react-router-dom';
 import Map from '../DetailsMap/Map.js'
+import './PropertyDetail.css'
 
 
 
@@ -158,14 +159,6 @@ const PropertyDetails = () => {
                     <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
                         <h6 className='mt-2 fw-bold'>Property Description</h6>
                         <p className='p-3'>{propertyDetails.additionalInformation}</p>
-
-
-
-
-
-
-
-
                     </div >
 
 
@@ -464,17 +457,17 @@ const PropertyDetails = () => {
 
                                         <button type="submit" className=" form-control btn btn-secondary "><i className="fa-solid fa-phone"></i> Call</button></a>
                                 </div>
-                                <div className='  col-6'>
+                                <div className='font-sizes  col-6'>
                                     <a href="https://wa.me/9945608407?text=Hello!">
-                                        <button type="submit" className=" form-control btn btn-secondary "><i className="fa-brands fa-whatsapp"></i> Whatsapp</button> </a>
+                                        <button type="submit" className="font-sizes form-control btn btn-secondary "><i className="fa-brands fa-whatsapp"></i> Whatsapp</button> </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded'>
+                        <div className='shadow-lg p-3 mb-5 bg-body-tertiary rounded font-sizes'>
                             <h6 className='mt-2 fw-bold text-muted text-center'>Contact Us</h6>
                             <a className='text-decoration-none text-muted fw-bold' href="tel:9945608407"> <i className="fa-solid fa-phone"></i> 9945608407</a> <br />
-                            <a className='text-decoration-none text-muted fw-bold' href="mailto:properties@dharnigroup.com"><i className="fa-regular fa-envelope"></i> properties@dharnigroup.com</a>
+                            <a className=' font-sizes text-decoration-none text-muted fw-bold' href="mailto:properties@dharnigroup.com"><i className="fa-regular fa-envelope"></i> properties@dharnigroup.com</a>
                         </div>
 
 

@@ -356,7 +356,7 @@ const PropertySignup = () => {
 
                 <h3 className='mb-5 mt-5 textColor'>Property Features</h3>
 
-                <div className='d-flex '>
+                <div className='d-flex dis'>
                   <div className="mb-3 form-check">
                     <input onChange={(e) => setStudyRoom(e.target.value)} type="checkbox" className="form-check-input" id="studyroom" value='Study Room' />
                     <label className=" me-4 form-check-label" for="studyroom">Study Room</label>
@@ -380,7 +380,7 @@ const PropertySignup = () => {
                   </div>
 
                 </div>
-                <div className='d-flex'>
+                <div className='d-flex dis'>
                   <div className="mb-3 form-check">
                     <input onChange={(e) => setPrivateTerrace(e.target.value)} type="checkbox" className="form-check-input" id="privateterrace" value='Private Terrace' />
                     <label className=" me-4 form-check-label" for="privateterrace">Private Terrace</label>
@@ -403,7 +403,7 @@ const PropertySignup = () => {
                 <h3 className='mb-5 mt-5 textColor'>Furnishing Details (Yes/No)</h3>
 
 
-                <div className='d-flex'>
+                <div className='d-flex dis'>
                   <div className="mb-3 form-check">
                     <input onChange={(e) => setAirConditioner(e.target.value)} type="checkbox" className="form-check-input" id="aircondition" value='Air conditioner' />
                     <label className=" me-4 form-check-label" for="aircondition">Air conditioner</label>
@@ -437,7 +437,7 @@ const PropertySignup = () => {
                 </div>
 
 
-                <div className='d-flex'>
+                <div className='d-flex dis'>
                   <div className="mb-3 form-check">
                     <input onChange={(e) => setGeyser(e.target.value)} type="checkbox" className="form-check-input" id="geyser" value='Geyser' />
                     <label className=" me-4 form-check-label" for="geyser">Geyser</label>
@@ -471,7 +471,7 @@ const PropertySignup = () => {
                 </div>
 
 
-                <div className='d-flex'>
+                <div className='d-flex dis'>
                   <div className="mb-3 form-check">
                     <input onChange={(e) => setSolarHeater(e.target.value)} type="checkbox" className="form-check-input" id="solarheater" value='Solar Heater' />
                     <label className=" me-4 form-check-label" for="solarheater">Solar Heater</label>
@@ -505,7 +505,7 @@ const PropertySignup = () => {
 
                 <h3 className='mb-5 mt-5 textColor'>Flooring Type (Select Anyone)</h3>
 
-                <div className='d-flex'>
+                <div className='d-flex dis'>
                   <div className="mb-3 form-check">
                     <input onChange={(e) => setGranite(e.target.value)} type="checkbox" className="form-check-input" id="granite" value='Granite' />
                     <label className=" me-4 form-check-label" for="granite">Granite</label>

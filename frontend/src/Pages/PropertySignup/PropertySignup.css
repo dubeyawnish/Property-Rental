@@ -15,9 +15,13 @@
     color:white;
     padding:10px;
 }
-@media only screen and (max-width:450px){
+@media only screen and (max-width:768px){
     .list-property-container{
-     width: 90vw;
+     width: 90%;
+    }
+    .dis{
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 
