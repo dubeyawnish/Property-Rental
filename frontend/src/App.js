@@ -21,6 +21,7 @@ import ListedPlot from './Pages/Listed Project Plot/ListedPlot.js'
 import PlotDetails from './Pages/PlotDetails/PlotDetails.js'
 import PlotListLocation from './Pages/Listed Location Plot/PlotListLocation.js'
 import BuilderProjects from './Pages/BuilderProjects/BuilderProjects.js';
+import ProjectByLocation from './Pages/BuilderProjectsByLocation/ProjectByLocation';
 
 function App() {
   
@@ -46,6 +47,7 @@ function App() {
           <Route exact path='/getPlotByProject/:projectId' element={<ListedPlot />} />
           <Route exact path='/getPlotByLocation/:locationId' element={<PlotListLocation />} />
           <Route exact path='/builderProject' element={<BuilderProjects />} />
+          <Route exact path='/builderProjectByLocation' element={<ProjectByLocation />} />
           <Route exact path='/requirement' element={<Requirement />} />
           <Route exact path='/serviceFee' element={<ServiceFee />} />
           <Route exact path='/contactUs' element={<ContactUs />} />

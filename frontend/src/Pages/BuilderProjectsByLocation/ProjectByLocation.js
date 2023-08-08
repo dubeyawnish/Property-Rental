@@ -2,25 +2,24 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
-import './BuilderProject.css'
+import './ProjectByLocation.css'
 
-
-
-const BuilderProjects = () => {
+const ProjectByLocation = () => {
     const [projects, setProjects] = useState([]);
-    const BuilderName = localStorage.getItem("BuilderName");
+    const location = localStorage.getItem("location");
     const [loader, setLoader] = useState(false);
 
 
     useEffect(() => {
         setLoader(true);
-        const builderId = localStorage.getItem("BuilderId")
-        projectCall(builderId);
+        const location = localStorage.getItem("location")
+        projectCall(location);
     }, []);
 
-    const projectCall = async (builderId) => {
+    const projectCall = async (location) => {
+        const reqbody={location};
 
-        const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilders/${builderId}`);
+        const response = await axios.post(`${API_BASE_URL}/getAllProjectByLocation`,reqbody);
         setLoader(false);
         setProjects(response.data);
         //console.log(projects);
@@ -33,7 +32,8 @@ const BuilderProjects = () => {
 
     return (
         <div className='container'>
-            {loader ?
+
+   {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
             <span className="visually-hidden"></span>
@@ -41,10 +41,8 @@ const BuilderProjects = () => {
         </div>
         : ""}
 
-
-
             
-                <h3 className=' my-5 fw-bold text-muted'> {BuilderName}  Builder's Exclusive Project Portfolio  </h3>
+                <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {location} locations  </h3>
                 <ul className="cards">
                     {projects?.map(project => (
                         <li className="cards_item">
@@ -77,4 +75,4 @@ const BuilderProjects = () => {
     )
 }
 
-export default BuilderProjects
+export default ProjectByLocation

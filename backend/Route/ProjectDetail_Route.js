@@ -9,7 +9,7 @@ const ProjectDetail = mongoose.model('ProjectDetail');
 router.post('/projects', async (req, res) => {
   try {
     // Assuming the request body has an array of objects for 2BHK and 3BHK
-    const { projectName, projectLocation, projectImg, projectType,showLocation, projectGroup, startDate, status, totalApartment, launchDate, availability, oneBHK,
+    const { projectName, projectLocation, projectImg, projectType,showLocation, projectGroup,reraNo, startDate, status, totalApartment, launchDate, availability, oneBHK,
       oneFiveBHK,
       twoFiveBHK, twoBHK, mapLink, threeBHK, threeFiveBHK, fourBHK,twoBHKVilla,threeBHKVilla,fourBHKVilla } = req.body;
 
@@ -20,6 +20,7 @@ router.post('/projects', async (req, res) => {
       projectLocation,
       projectImg,
       projectType,
+      reraNo,
       showLocation,
       projectGroup,
       mapLink,
@@ -43,6 +44,46 @@ router.post('/projects', async (req, res) => {
   }
 });
 
+router.get('/getProjectByLocation', async (req, res) => {
+  try {
+    const allLocation = await ProjectDetail.find({}, 'showLocation');
+    const uniqueProjects = [];
+    const projectNames = [];
+
+    for (let i = 0; i < allLocation.length; i++) {
+      const location = allLocation[i].showLocation;
+
+      if (!projectNames.includes(location)) {
+        uniqueProjects.push(allLocation[i]);
+        projectNames.push(location);
+      }
+    }
+    // If there are errors, return Bad request and the errors
+    //console.log(allProject)
+    res.json(uniqueProjects)
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+router.post('/getAllProjectByLocation', async (req, res) => {
+  const { location } = req.body;
+  try {
+    const proDetail = await ProjectDetail.find({ showLocation: location });
+    res.json(proDetail);
+
+
+  }
+  catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
 
 router.post('/getProjectDetail', async (req, res) => {
   const { projectName } = req.body;
@@ -58,6 +99,7 @@ router.post('/getProjectDetail', async (req, res) => {
   }
 
 })
+
 
 router.delete('/deleteProjectDetails', async (req, res) => {
   const { projectName } = req.body;

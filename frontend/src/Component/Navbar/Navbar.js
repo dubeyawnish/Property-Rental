@@ -19,7 +19,7 @@ const Navbar = () => {
     const fetchData = async () => {
         try {
             //const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
-            const res = await axios.get(`${API_BASE_URL}/getByLocation`);
+            const res = await axios.get(`${API_BASE_URL}/getProjectByLocation`);
             const resProjectPlot = await axios.get(`${API_BASE_URL}/getAllPlotProjects`);
             const resLocationPlot = await axios.get(`${API_BASE_URL}/getPlotByLocation`);
             const resBuild = await axios.get(`${API_BASE_URL}/getAllBuilder`);
@@ -42,13 +42,13 @@ const Navbar = () => {
     }, []);
 
 
-    const projectCall = async (builderId) => {
+    // const projectCall = async (builderId) => {
 
-        const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilders/${builderId}`);
-        setProjects(response.data);
-        //console.log(projects);
+    //     const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilders/${builderId}`);
+    //     setProjects(response.data);
+    //     //console.log(projects);
 
-    }
+    // }
 
 
 
@@ -67,7 +67,10 @@ const Navbar = () => {
         localStorage.setItem("BuilderName", builderName);
 
     }
-
+  const handleLocationData=(location)=>{
+    localStorage.removeItem("location");
+    localStorage.setItem("location",location);
+  }
 
 
 
@@ -133,11 +136,11 @@ const Navbar = () => {
                                     <input type="checkbox" id="drop-4" />
                                     <ul>
                                         {locations.map(location => (
-                                            <li><a className='togg' href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a></li>
+                                            <li><a onClick={()=>{handleLocationData(location.showLocation)}} className='togg' href={'/builderProjectByLocation'}>{location.showLocation}</a></li>
                                         ))}
-                                        {plotLocation.map(location => (
+                                        {/* {plotLocation.map(location => (
                                             <li><Link className='togg' to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
-                                        ))}
+                                        ))} */}
                                     </ul>
                                 </li>
                             </ul>
