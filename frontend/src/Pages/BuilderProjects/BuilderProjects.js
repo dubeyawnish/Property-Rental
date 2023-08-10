@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
+import { useLocation,Link } from 'react-router-dom';
 import './BuilderProject.css'
 
 
@@ -10,6 +11,11 @@ const BuilderProjects = () => {
     const [projects, setProjects] = useState([]);
     const BuilderName = localStorage.getItem("BuilderName");
     const [loader, setLoader] = useState(false);
+
+    // const location = useLocation();
+    // const { fromHome } = location.state;
+    
+    // console.log("Hello",fromHome);
 
 
     useEffect(() => {
@@ -45,15 +51,15 @@ const BuilderProjects = () => {
 
             
                 <h3 className=' my-5 fw-bold text-muted'> {BuilderName}  Builder's Exclusive Project Portfolio  </h3>
-                <ul className="cards">
+                <ul className="cards dis">
                     {projects?.map(project => (
                         <li className="cards_item">
                             <div className="card">
                                 <div className="card_image">
-                                    <a className='togg' onClick={() => handleSendData(project.projectName)} href={`/getPropertiesByProject/${project._id}`}> <img src={project.projectImg} height={250} width={300} /></a>
+                                    <Link className='togg' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}> <img src={project.projectImg} height={250} width={300} /></Link>
                                 </div>
                                 <div className="card_content">
-                                    <a className='togg text-decoration-none' onClick={() => handleSendData(project.projectName)} href={`/getPropertiesByProject/${project._id}`}><h2 className="card_title text-center">{project.projectName}</h2></a>
+                                    <Link className='togg text-decoration-none' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}><h2 className="card_title text-center">{project.projectName}</h2></Link>
                                 </div>
                             </div>
                         </li>

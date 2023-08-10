@@ -6,8 +6,33 @@ const Home = () => {
 
   return (
     <>
-      <div className='background ' >
+      {/* <div className='background ' >
+      </div> */}
+      <div className='container mt-5'>
+        <div className=' border border-danger'>
+          <h3 className='fw-bold text-muted text-center'>Buy By Project</h3>
+
+        </div>
+        <div className=' border border-danger text-center'>
+          <h3 className='fw-bold fs-3 text-muted'>Buy By Location</h3>
+
+        </div>
+
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div className='container'>
         <h3 className='mt-5 mb-5  text-center text-color' >How can we be of assistance today?</h3>
         <div className="p-2 text-center">

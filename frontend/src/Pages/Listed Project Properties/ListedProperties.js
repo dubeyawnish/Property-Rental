@@ -17,6 +17,7 @@ const ListedProperties = () => {
   const navigate=useNavigate();
 
 
+
   const { projectId } = useParams();
   //console.log(projectId);
   const [properties, setProperties] = useState([]);
@@ -58,7 +59,7 @@ const ListedProperties = () => {
 
 
 
-  const fetchProperty = async (props) => {
+  const fetchProperty = async () => {
     try {
 
       const response = await axios.get(`${API_BASE_URL}/getPropertiesByProject/${projectId}`);

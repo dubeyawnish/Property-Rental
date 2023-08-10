@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
+
 import './ProjectByLocation.css'
+import { Link } from 'react-router-dom';
 
 const ProjectByLocation = () => {
     const [projects, setProjects] = useState([]);
@@ -19,7 +21,7 @@ const ProjectByLocation = () => {
     const projectCall = async (location) => {
         const reqbody={location};
 
-        const response = await axios.post(`${API_BASE_URL}/getAllProjectByLocation`,reqbody);
+        const response = await axios.post(`${API_BASE_URL}/getAllProjectsByLocation`,reqbody);
         setLoader(false);
         setProjects(response.data);
         //console.log(projects);
@@ -43,15 +45,15 @@ const ProjectByLocation = () => {
 
             
                 <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {location} locations  </h3>
-                <ul className="cards">
+                <ul className="cards dis">
                     {projects?.map(project => (
                         <li className="cards_item">
                             <div className="card">
                                 <div className="card_image">
-                                    <a className='togg' onClick={() => handleSendData(project.projectName)} href={`/getPropertiesByProject/${project._id}`}> <img src={project.projectImg} height={250} width={300} /></a>
+                                    <Link className='togg' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}> <img src={project.projectImg} height={250} width={300} /></Link>
                                 </div>
                                 <div className="card_content">
-                                    <a className='togg text-decoration-none' onClick={() => handleSendData(project.projectName)} href={`/getPropertiesByProject/${project._id}`}><h2 className="card_title text-center">{project.projectName}</h2></a>
+                                    <Link className='togg text-decoration-none' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}><h2 className="card_title text-center">{project.projectName}</h2></Link>
                                 </div>
                             </div>
                         </li>

@@ -24,6 +24,14 @@ img {
     width: 50%;
   }
 }
+@media all and (max-width : 446px) {
+   .dis{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   }
+
+}
 
 @media (min-width: 56rem) {
   .cards_item {

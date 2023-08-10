@@ -38,6 +38,9 @@ const adminPropertySchema = new mongoose.Schema({
             type: String,
            
         },
+        showLocation:{
+            type:String,
+        },
         imgUrl:{
             type:String,
 

@@ -44,45 +44,45 @@ router.post('/projects', async (req, res) => {
   }
 });
 
-router.get('/getProjectByLocation', async (req, res) => {
-  try {
-    const allLocation = await ProjectDetail.find({}, 'showLocation');
-    const uniqueProjects = [];
-    const projectNames = [];
+// router.get('/getProjectByLocation', async (req, res) => {
+//   try {
+//     const allLocation = await ProjectDetail.find({}, 'showLocation');
+//     const uniqueProjects = [];
+//     const projectNames = [];
 
-    for (let i = 0; i < allLocation.length; i++) {
-      const location = allLocation[i].showLocation;
+//     for (let i = 0; i < allLocation.length; i++) {
+//       const location = allLocation[i].showLocation;
 
-      if (!projectNames.includes(location)) {
-        uniqueProjects.push(allLocation[i]);
-        projectNames.push(location);
-      }
-    }
-    // If there are errors, return Bad request and the errors
-    //console.log(allProject)
-    res.json(uniqueProjects)
+//       if (!projectNames.includes(location)) {
+//         uniqueProjects.push(allLocation[i]);
+//         projectNames.push(location);
+//       }
+//     }
+//     // If there are errors, return Bad request and the errors
+//     //console.log(allProject)
+//     res.json(uniqueProjects)
 
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Internal Server Error");
-  }
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send("Internal Server Error");
+//   }
 
-})
+// })
 
-router.post('/getAllProjectByLocation', async (req, res) => {
-  const { location } = req.body;
-  try {
-    const proDetail = await ProjectDetail.find({ showLocation: location });
-    res.json(proDetail);
+// router.post('/getAllProjectByLocation', async (req, res) => {
+//   const { location } = req.body;
+//   try {
+//     const proDetail = await ProjectDetail.find({ showLocation: location });
+//     res.json(proDetail);
 
 
-  }
-  catch (error) {
-    console.error(error.message);
-    res.status(500).send("Internal Server Error");
-  }
+//   }
+//   catch (error) {
+//     console.error(error.message);
+//     res.status(500).send("Internal Server Error");
+//   }
 
-})
+// })
 
 
 router.post('/getProjectDetail', async (req, res) => {
