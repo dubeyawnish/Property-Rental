@@ -1,39 +1,153 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Home.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { API_BASE_URL } from '../../config';
 
 const Home = () => {
+
+  const [projects, setProjects] = useState([]);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetchAllProject();
+
+  }, [])
+
+  const fetchAllProject = async () => {
+    const res = await axios.get(`${API_BASE_URL}/getAllProjects`);
+    const resp = await axios.get(`${API_BASE_URL}/getAllLocation`);
+    setProjects(res.data);
+    setData(resp.data);
+    //console.log("hello",projects)
+  }
+
+  const categorizeProjects = () => {
+    const categories = {
+      AtoE: [],
+      FtoM: [],
+      NtoS: [],
+      TtoZ: [],
+    };
+
+    projects.forEach(project => {
+      const firstLetter = project.projectName.charAt(0).toUpperCase();
+      if (firstLetter >= 'A' && firstLetter <= 'E') {
+        categories.AtoE.push(project);
+      } else if (firstLetter >= 'F' && firstLetter <= 'M') {
+        categories.FtoM.push(project);
+      } else if (firstLetter >= 'N' && firstLetter <= 'S') {
+        categories.NtoS.push(project);
+      } else if (firstLetter >= 'T' && firstLetter <= 'Z') {
+        categories.TtoZ.push(project);
+      }
+    });
+
+    // Sort projects within each category
+    Object.keys(categories).forEach(category => {
+      categories[category].sort((a, b) => a.projectName.localeCompare(b.projectName));
+    });
+
+    return categories;
+  };
+
+
+  const columns = {
+    EastBLR: data.filter(item => item.projectDirection === "East"),
+    WestBLR: data.filter(item => item.projectDirection === "West"),
+    CentralBLR: data.filter(item => item.projectDirection === "Central"),
+    NorthBLR: data.filter(item => item.projectDirection === "North"),
+    SouthBLR: data.filter(item => item.projectDirection === "South"),
+  };
+
+  // Sort each column's data by showLocation
+  for (const columnKey in columns) {
+    columns[columnKey].sort((a, b) => a.showLocation.localeCompare(b.showLocation));
+  }
+
+
+
+
+
+
+  const categories = categorizeProjects();
+  const handleSendData = (dataToSend) => {
+    localStorage.removeItem("ProjectName");
+    localStorage.setItem("ProjectName", dataToSend)
+  };
+
+  const handleLocationData=(location)=>{
+    localStorage.removeItem("location");
+    localStorage.setItem("location",location);
+  }
 
   return (
     <>
       {/* <div className='background ' >
       </div> */}
-      <div className='container mt-5'>
-        <div className=' border border-danger'>
-          <h3 className='fw-bold text-muted text-center'>Buy By Project</h3>
+      <div className='container shadow-none   bg-body-tertiary rounded mt-5 '>
+        <div className=' '>
+          <h3 className='fw-bold mb-3 text-muted text-center'>Buy By Project</h3>
+
+          <div className="columns">
+            <div className="column">
+              <h4 className='text-center'>A to E</h4>
+              <ul>
+                {categories.AtoE.map(project => (
+                  <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div className="column">
+              <h4 className='text-center'>F to M</h4>
+              <ul>
+                {categories.FtoM.map(project => (
+                  <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div className="column">
+              <h4 className='text-center'>N to S</h4>
+              <ul >
+                {categories.NtoS.map(project => (
+                  <li key={project._id}>
+                    <Link className='text-muted  text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link>
+
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="column">
+              <h4 className='text-center'>T to Z</h4>
+              <ul>
+                {categories.TtoZ.map(project => (
+                  <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
 
         </div>
-        <div className=' border border-danger text-center'>
-          <h3 className='fw-bold fs-3 text-muted'>Buy By Location</h3>
+        <div className=' text-center '>
+          <h3 className='fw-bold fs-3 text-center text-muted my-4'>Buy By Location</h3>
+          <div className="Apps">
+            {Object.keys(columns).map(columnKey => (
+              <div className="columnn" key={columnKey}>
+                <h4 className='text-center'>{columnKey}</h4>
+                <ul>
+                  {columns[columnKey].map(item => (
+                    <li key={item._id}><a className='text-muted test text-decoration-none' onClick={()=>handleLocationData(item.showLocation)}  href={'/builderProjectByLocation'}>{item.showLocation}</a></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
 
         </div>
 
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <div className='container'>
+      {/* <div className='container'>
         <h3 className='mt-5 mb-5  text-center text-color' >How can we be of assistance today?</h3>
         <div className="p-2 text-center">
           <div className="row g-2">
@@ -65,7 +179,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
 
 

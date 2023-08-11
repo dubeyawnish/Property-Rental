@@ -12,8 +12,65 @@
 
 
 
+/* Basic styles for columns */
+.columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  padding: 20px;
+  
+  border-right: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .columns {
+    flex-direction: column;
+  }
+}
+
+.Apps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.columnn {
+  flex: 1;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  box-sizing: border-box;
+  min-width: 200px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+}
+
+
+.test {
+ 
+  
+  transition: margin-left 0.3s ease; /* Apply transition to margin-left property */
+}
+
+.test:hover {
+  
+  margin-left: 20px; /* Move the element 20px to the right when hovered */
+}
 
 
 

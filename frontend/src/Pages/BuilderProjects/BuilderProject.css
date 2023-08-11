@@ -25,7 +25,7 @@ img {
   }
 }
 @media all and (max-width : 446px) {
-   .dis{
+   .dist{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -63,3 +63,11 @@ img {
 }
 
 
+.zoom {
+ 
+  transition: transform 0.3s ease; /* Apply transition to transform property */
+}
+
+.zoom:hover {
+  transform: scale(1.02); /* Scale the element to 110% when hovered */
+}

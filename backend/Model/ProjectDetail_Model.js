@@ -13,7 +13,9 @@ const projectDetailSchema = new mongoose.Schema({
   projectLocation :{
     type:String,
   },
- 
+  projectDirection:{
+    type:String,
+},
   reraNo:{
     type:String,
   },

@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 import { useLocation,Link } from 'react-router-dom';
-import './BuilderProject.css'
+//import './ResidentailProject.css';
 
 
 
-const BuilderProjects = () => {
+const ResidentailProjects = () => {
     const [projects, setProjects] = useState([]);
-    const BuilderName = localStorage.getItem("BuilderName");
+  
     const [loader, setLoader] = useState(false);
 
     // const location = useLocation();
@@ -20,13 +20,13 @@ const BuilderProjects = () => {
 
     useEffect(() => {
         setLoader(true);
-        const builderId = localStorage.getItem("BuilderId")
-        projectCall(builderId);
+        
+        projectCall();
     }, []);
 
-    const projectCall = async (builderId) => {
+    const projectCall = async () => {
 
-        const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilders/${builderId}`);
+        const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
         setLoader(false);
         setProjects(response.data);
         //console.log(projects);
@@ -50,13 +50,13 @@ const BuilderProjects = () => {
 
 
             
-                <h3 className=' my-5 fw-bold text-muted'> {BuilderName}  Builder's Exclusive Project Portfolio  </h3>
+                <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio  </h3>
                 <ul className="cards dist">
                     {projects?.map(project => (
                         <li className="cards_item">
                             <div className="card zoom">
                                 <div className="card_image">
-                                    <Link className='togg ' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}> <img  src={project.projectImg} height={250} width={300} /></Link>
+                                    <Link className='togg' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}> <img src={project.projectImg} height={250} width={300} /></Link>
                                 </div>
                                 <div className="card_content">
                                     <Link className='togg text-decoration-none' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}><h2 className="card_title text-center">{project.projectName}</h2></Link>
@@ -83,4 +83,4 @@ const BuilderProjects = () => {
     )
 }
 
-export default BuilderProjects
+export default ResidentailProjects;

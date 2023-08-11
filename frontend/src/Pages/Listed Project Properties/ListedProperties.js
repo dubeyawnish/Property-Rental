@@ -170,6 +170,7 @@ const ListedProperties = () => {
       <div className=' text-center mt-5'>
         <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
         <p >by <span style={{ cursor: 'pointer' }} onClick={moveToPrevious} className='text-color fw-bold'>{projectDetail.projectGroup}</span> </p>
+        <p className='fw-bold text-muted'>Rera No:{projectDetail.reraNo}</p>
         <a className='text-decoration-none text-muted' href={projectDetail.mapLink}><p className='mt-2'><i class="fa-solid fa-location-dot"></i> {projectDetail.projectLocation} <span className='text-color'>(Show on map)</span></p></a>
 
       </div>

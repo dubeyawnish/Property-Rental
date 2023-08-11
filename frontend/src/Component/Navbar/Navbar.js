@@ -96,7 +96,7 @@ const Navbar = () => {
                         </li>
                         <li >
                             <label for="drop-2" className="toggle">Residential</label>
-                            <a href="/">Residential</a>
+                            <a href="/residentialProjects">Residential</a>
                             <input type="checkbox" id="drop-2" />
                             <ul>
                                 <li>

@@ -28,7 +28,7 @@
     .dis{
         display: flex !important;
         flex-direction: row !important;
-        justify-content: space-between;
+        justify-content: space-between !important;
     }
     .textCeter{
         text-align: center;

@@ -45,10 +45,10 @@ const ProjectByLocation = () => {
 
             
                 <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {location} locations  </h3>
-                <ul className="cards dis">
+                <ul className="cards dist">
                     {projects?.map(project => (
                         <li className="cards_item">
-                            <div className="card">
+                            <div className="card zoom">
                                 <div className="card_image">
                                     <Link className='togg' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}> <img src={project.projectImg} height={250} width={300} /></Link>
                                 </div>
