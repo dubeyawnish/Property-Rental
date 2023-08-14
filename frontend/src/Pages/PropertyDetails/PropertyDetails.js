@@ -446,7 +446,7 @@ const PropertyDetails = () => {
                                     <input type="tel" name='user_mobileno' placeholder='Your Number' className=" mt-3 form-control" id="date" aria-describedby="emailHelp" required />
 
                                     <div className=' mt-3 '>
-                                        <button type="submit" value='send' className=" form-control btn btn-primary ">Send Email</button>
+                                        <button type="submit" value='send' className="font-sizes form-control btn btn-primary ">Send Email</button>
                                     </div>
 
                                 </div>
@@ -455,7 +455,7 @@ const PropertyDetails = () => {
                                 <div className='  me-2 col-6'>
                                     <a href="tel:9945608407">
 
-                                        <button type="submit" className=" form-control btn btn-secondary "><i className="fa-solid fa-phone"></i> Call</button></a>
+                                        <button type="submit" className="font-sizes form-control btn btn-secondary "><i className="fa-solid fa-phone"></i> Call</button></a>
                                 </div>
                                 <div className='font-sizes  col-6'>
                                     <a href="https://wa.me/9945608407?text=Hello!">

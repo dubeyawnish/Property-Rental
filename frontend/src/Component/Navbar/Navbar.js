@@ -78,7 +78,7 @@ const Navbar = () => {
 
     return (
         <div className="App">
-            <nav className="z-3   navbar navbar-expand-lg bg-body-tertiary shadow p-3  bg-body-tertiary rounded">
+            <nav className="z-3   navbar navbar-expand-lg bg-body-tertiary shadow p-3   bg-body-tertiary rounded">
                 <div className="container ">
                     <Link className=" me-5 " to="/"> <img src={Logo} className='img-fluid' /></Link>
                     <label for="drop" className="toggle">&#8801; Menu</label>

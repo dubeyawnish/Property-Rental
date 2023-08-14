@@ -8,7 +8,9 @@ const Home = () => {
 
   const [projects, setProjects] = useState([]);
   const [data, setData] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
+    setLoader(true);
     fetchAllProject();
 
   }, [])
@@ -18,8 +20,11 @@ const Home = () => {
     const resp = await axios.get(`${API_BASE_URL}/getAllLocation`);
     setProjects(res.data);
     setData(resp.data);
+    setLoader(false);
     //console.log("hello",projects)
   }
+
+  
 
   const categorizeProjects = () => {
     const categories = {
@@ -84,13 +89,20 @@ const Home = () => {
     <>
       {/* <div className='background ' >
       </div> */}
+      {loader ?
+        <div className='mb-3 mt-3 col-md-12 text-center'>
+          <div className="  spinner-border text-primary" role="status">
+            <span className="visually-hidden"></span>
+          </div>
+        </div>
+        : ""}
       <div className='container shadow-none   bg-body-tertiary rounded mt-5 '>
         <div className=' '>
           <h3 className='fw-bold mb-3 text-muted text-center'>Buy By Project</h3>
 
           <div className="columns">
             <div className="column">
-              <h4 className='text-center'>A to E</h4>
+              <h4 className='text-center text-muted'>A to E</h4>
               <ul>
                 {categories.AtoE.map(project => (
                   <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
@@ -98,7 +110,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="column">
-              <h4 className='text-center'>F to M</h4>
+              <h4 className='text-center text-muted'>F to M</h4>
               <ul>
                 {categories.FtoM.map(project => (
                   <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
@@ -106,7 +118,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="column">
-              <h4 className='text-center'>N to S</h4>
+              <h4 className='text-center text-muted'>N to S</h4>
               <ul >
                 {categories.NtoS.map(project => (
                   <li key={project._id}>
@@ -117,7 +129,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="column">
-              <h4 className='text-center'>T to Z</h4>
+              <h4 className='text-center text-muted'>T to Z</h4>
               <ul>
                 {categories.TtoZ.map(project => (
                   <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
@@ -129,11 +141,11 @@ const Home = () => {
 
         </div>
         <div className=' text-center '>
-          <h3 className='fw-bold fs-3 text-center text-muted my-4'>Buy By Location</h3>
+          <h3 className='fw-bold  text-center text-muted my-4'>Buy By Location</h3>
           <div className="Apps">
             {Object.keys(columns).map(columnKey => (
               <div className="columnn" key={columnKey}>
-                <h4 className='text-center'>{columnKey}</h4>
+               <Link className='text-decoration-none' to={`/projectDirection/${columnKey}`}> <h4 className='text-center text-muted'>{columnKey}</h4></Link>
                 <ul>
                   {columns[columnKey].map(item => (
                     <li key={item._id}><a className='text-muted test text-decoration-none' onClick={()=>handleLocationData(item.showLocation)}  href={'/builderProjectByLocation'}>{item.showLocation}</a></li>

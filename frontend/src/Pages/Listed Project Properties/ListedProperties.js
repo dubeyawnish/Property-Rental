@@ -313,8 +313,8 @@ const ListedProperties = () => {
 
               </div>
               <div className='col-lg-4 col-md-4 col-sm-4'>
-                <p className='font-sizes'>{property.area}</p>
-                <p className='font-sizes   text-muted'>{property.type}</p>
+                <p className=''>{property.area}</p>
+                <p className='   text-muted'>{property.type}</p>
 
               </div>
               <div className='col-lg-4 col-md-4 col-sm-4'>

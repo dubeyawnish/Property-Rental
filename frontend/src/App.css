@@ -1,5 +1,8 @@
 *{
   font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* html {
@@ -19,3 +22,30 @@
   }
   
 } */
+@media all and (max-width : 480px){
+
+  p {
+    font-size: 5vmin;
+  }
+  h2{
+    font-size: 5vmin;
+  }
+  h6{
+    font-size: 5vmin;
+  }
+  h3{
+    font-size: 7vmin;
+  }
+  h4{
+    font-size: 6vmin;
+  }
+  h5{
+    font-size: 5vmin;
+  }
+  a{
+    font-size: 5vmin;
+  }
+  label{
+    font-size: 5vmin;
+  }
+}

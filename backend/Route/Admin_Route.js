@@ -58,7 +58,7 @@ router.get('/getAllBuilder', async (req, res) => {
 
 router.get('/getAllProjects', async (req, res) => {
   try {
-    const allProject = await AdminProperty.find({}, 'projectName propertyType projectImg ');
+    const allProject = await AdminProperty.find({}, 'projectName propertyType projectImg projectDirection');
     const uniqueProjects = [];
     const projectNames = [];
 
