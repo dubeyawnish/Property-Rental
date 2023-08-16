@@ -50,7 +50,7 @@ const ResidentailProjects = () => {
 
 
             
-                <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio  </h3>
+                <h3 className=' my-5 fw-bold text-muted'>Exclusive Residential Project Portfolio  </h3>
                 <ul className="cards dist">
                     {projects?.map(project => (
                         <li className="cards_item">

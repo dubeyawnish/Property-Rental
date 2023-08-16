@@ -25,6 +25,7 @@
   padding: 20px;
   
   border-right: 1px solid #eaeaea;
+  /* min-width: 150px; */
   box-sizing: border-box;
 }
 

@@ -48,6 +48,9 @@ const projectDetailSchema = new mongoose.Schema({
     type:String,
 
   },
+  builderName:{
+    type:String,
+  },
   oneBHK: [],
   oneFiveBHK: [],
   twoFiveBHK: [],
@@ -58,6 +61,7 @@ const projectDetailSchema = new mongoose.Schema({
   twoBHKVilla: [],
   threeBHKVilla :[],
   fourBHKVilla :[],
+  fiveBHKVilla :[],
 
  
 });

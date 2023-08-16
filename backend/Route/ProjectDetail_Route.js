@@ -9,9 +9,9 @@ const ProjectDetail = mongoose.model('ProjectDetail');
 router.post('/projects', async (req, res) => {
   try {
     // Assuming the request body has an array of objects for 2BHK and 3BHK
-    const { projectName, projectLocation,projectDirection, projectImg, projectType,showLocation, projectGroup,reraNo, startDate, status, totalApartment, launchDate, availability, oneBHK,
+    const { projectName, projectLocation,projectDirection, projectImg, projectType,showLocation, projectGroup,reraNo, startDate, status, totalApartment, launchDate, availability,builderName, oneBHK,
       oneFiveBHK,
-      twoFiveBHK, twoBHK, mapLink, threeBHK, threeFiveBHK, fourBHK,twoBHKVilla,threeBHKVilla,fourBHKVilla } = req.body;
+      twoFiveBHK, twoBHK, mapLink, threeBHK, threeFiveBHK, fourBHK,twoBHKVilla,threeBHKVilla,fourBHKVilla,fiveBHKVilla } = req.body;
 
     // Create a new Project instance
      //console.log("hello",threeBHKVilla);
@@ -25,6 +25,7 @@ router.post('/projects', async (req, res) => {
       projectDirection,
       projectGroup,
       mapLink,
+      builderName,
       oneBHK,
       oneFiveBHK,
       twoFiveBHK,
@@ -34,6 +35,7 @@ router.post('/projects', async (req, res) => {
       twoBHKVilla,
       threeBHKVilla,
       fourBHKVilla,
+      fiveBHKVilla,
       fourBHK, startDate, status, totalApartment, launchDate, availability
     });
 

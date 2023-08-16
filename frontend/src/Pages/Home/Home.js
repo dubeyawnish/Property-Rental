@@ -102,7 +102,7 @@ const Home = () => {
 
           <div className="columns">
             <div className="column">
-              <h4 className='text-center text-muted'>A to E</h4>
+              <h4 className=' text-muted'>A to E</h4>
               <ul>
                 {categories.AtoE.map(project => (
                   <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
@@ -110,7 +110,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="column">
-              <h4 className='text-center text-muted'>F to M</h4>
+              <h4 className=' text-muted'>F to M</h4>
               <ul>
                 {categories.FtoM.map(project => (
                   <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
@@ -118,7 +118,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="column">
-              <h4 className='text-center text-muted'>N to S</h4>
+              <h4 className=' text-muted'>N to S</h4>
               <ul >
                 {categories.NtoS.map(project => (
                   <li key={project._id}>
@@ -129,7 +129,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="column">
-              <h4 className='text-center text-muted'>T to Z</h4>
+              <h4 className=' text-muted'>T to Z</h4>
               <ul>
                 {categories.TtoZ.map(project => (
                   <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>

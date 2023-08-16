@@ -23,6 +23,7 @@ import PlotListLocation from './Pages/Listed Location Plot/PlotListLocation.js'
 import BuilderProjects from './Pages/BuilderProjects/BuilderProjects.js';
 import ProjectByLocation from './Pages/BuilderProjectsByLocation/ProjectByLocation';
 import ResidentailProjects from './Pages/ResidentialProject/ResidentialProject';
+
 import ProjectDirection from './Pages/ProjectDirection/ProjectDirection';
 
 function App() {

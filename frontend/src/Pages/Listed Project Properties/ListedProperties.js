@@ -22,7 +22,7 @@ const ListedProperties = () => {
   //console.log(projectId);
   const [properties, setProperties] = useState([]);
   const [loader, setLoader] = useState(false);
-  const [selectedProperty, setSelectedProperty] = useState('2BHK');
+ 
   const [projectDetail, setProjectDetail] = useState({});
 
 
@@ -38,6 +38,7 @@ const ListedProperties = () => {
     setLoader(true)
     fetchProjectDetail();
     fetchProperty();
+   
     //debugger;
   }, []);
 
@@ -88,9 +89,73 @@ const ListedProperties = () => {
     '2BHKVilla':projectDetail.twoBHKVilla,
     '3BHKVilla':projectDetail.threeBHKVilla,
     '4BHKVilla':projectDetail.fourBHKVilla,
+    '5BHKVilla':projectDetail.fiveBHKVilla,
   };
 
   //console.log("Mama",projectDetail.twoBHK)
+
+ 
+// let defaultProperty = '2BHK'; // Default to '2BHK'
+
+// if (projectDetail.oneBHK) {
+//   defaultProperty = '1BHK';
+// }
+// else if(projectDetail.oneFiveBHK){
+// defaultProperty='1.5BHK';
+// }
+// else if(projectDetail.twoBHK){
+// defaultProperty='2BHK';
+// }
+// else if(projectDetail.twoFiveBHK){
+// defaultProperty='2.5BHK';
+// }
+// else if(projectDetail.threeBHK){
+// defaultProperty='3BHK';
+// }
+// else if(projectDetail.threeFiveBHK){
+// defaultProperty='3.5BHK';
+// }
+// else if(projectDetail.fourBHK){
+// defaultProperty='4BHK';
+// }
+// else if(projectDetail.twoBHKVilla){
+// defaultProperty='2BHKVilla';
+// }
+// else if(projectDetail.threeBHKVilla){
+// defaultProperty='3BHKVilla';
+// }
+// else if(projectDetail.fourBHKVilla){
+// defaultProperty='4BHKVilla';
+// }
+// else if(projectDetail.fiveBHKVilla){
+// defaultProperty='5BHKVilla';
+// }
+  
+
+let defaultProperty = null;
+
+
+for (const propertyType in PropertyData) {
+ 
+  if (PropertyData[propertyType] && PropertyData[propertyType].length > 0) {
+    defaultProperty=propertyType;
+    break;
+  }
+
+}
+
+if (!defaultProperty) {
+  // Set a default property type if none are available
+  defaultProperty='2BHK';
+}
+
+
+
+
+//console.log("hello",defaultProperty)
+const [selectedProperty, setSelectedProperty] = useState(defaultProperty);
+//console.log("hiii",selectedProperty);
+
 
   const popers = PropertyData[selectedProperty];
 
@@ -171,7 +236,7 @@ const ListedProperties = () => {
         <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
         <p >by <span style={{ cursor: 'pointer' }} onClick={moveToPrevious} className='text-color fw-bold'>{projectDetail.projectGroup}</span> </p>
         <p className='fw-bold text-muted'>Rera No:{projectDetail.reraNo}</p>
-        <a className='text-decoration-none text-muted' href={projectDetail.mapLink}><p className='mt-2'><i class="fa-solid fa-location-dot"></i> {projectDetail.projectLocation} <span className='text-color'>(Show on map)</span></p></a>
+        <a className='text-decoration-none text-muted' target='_blank' href={projectDetail.mapLink}><p className='mt-2'><i class="fa-solid fa-location-dot"></i> {projectDetail.projectLocation} <span className='text-color'>(Show on map)</span></p></a>
 
       </div>
 
@@ -179,25 +244,25 @@ const ListedProperties = () => {
         <h3 className='fw-bold'>Overview</h3>     
         <div className='row '>
           <div className='col-md-3 col-lg-3 col-sm-6  textCeter'>
-            <h5 className=' font-sizes mt-3'>{projectDetail.startDate}</h5>
-            <p className='font-sizes mt-0 fs-6'>Possession start date</p>
+            <h5 className='  mt-3'>{projectDetail.startDate}</h5>
+            <p className=' mt-0 fs-6'>Possession start date</p>
           </div>
 
           <div className='col-md-3 col-lg-3 col-sm-6 textCeter'>
-            <h5 className=' font-sizes mt-3'>{projectDetail.status}</h5>
-            <p className='mt-0 fs-6 font-sizes'>Status</p>
+            <h5 className='  mt-3'>{projectDetail.status}</h5>
+            <p className='mt-0 fs-6 '>Status</p>
           </div>
           <div className='col-md-3 col-lg-3 col-sm-6 textCeter'>
-            <h5 className='font-sizes mt-3'>{projectDetail.totalApartment}</h5>
-            <p className='font-sizes mt-0 fs-6'>Total  apartments</p>
+            <h5 className=' mt-3'>{projectDetail.totalApartment}</h5>
+            <p className=' mt-0 fs-6'>Total  apartments</p>
           </div>
           <div className='col-md-3 col-lg-3 col-sm-12 textCeter'>
-            <h5 className='font-sizes mt-3'>{projectDetail.launchDate}</h5>
-            <p className='font-sizes mt-0 fs-6'>Launch Date</p>
+            <h5 className=' mt-3'>{projectDetail.launchDate}</h5>
+            <p className=' mt-0 fs-6'>Launch Date</p>
           </div>
           <div className='col-md-3 col-lg-3 col-sm-12 textCeter'>
-            <h5 className='font-sizes mt-3'>{projectDetail.availability}</h5>
-            <p className='font-sizes mt-0 fs-6'>Availability</p>
+            <h5 className=' mt-3'>{projectDetail.availability}</h5>
+            <p className=' mt-0 fs-6'>Availability</p>
           </div>
 
         </div>
@@ -279,6 +344,13 @@ const ListedProperties = () => {
         >
           4BHKVilla
         </h5> : ""}
+
+        {projectDetail.fiveBHKVilla && projectDetail.fiveBHKVilla.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '5BHKVilla' ? 'underline' : 'none' }}
+          onClick={() => handlePropertyClick('5BHKVilla')}
+        >
+          5BHKVilla
+        </h5> : ""}
       </div>
 
 
@@ -288,15 +360,15 @@ const ListedProperties = () => {
 
         <div className='shadow-none p-3  bg-body-tertiary rounded d-flex  dis '>
           <div className='col-lg-4 col-md-4 col-sm-4'>
-            <h4 className='font-sizes'>Floor Layout</h4>
+            <h4 className='font-sizes fw-bold'>Floor Layout</h4>
 
           </div>
           <div className='col-lg-4 col-md-4 col-sm-4'>
-            <h4 className='font-sizes'>Area</h4>
+            <h4 className='font-sizes fw-bold'>Area</h4>
 
           </div>
           <div className='col-lg-4 col-md-4 col-sm-4'>
-            <h4 className='font-sizes'>Builder Price</h4>
+            <h4 className='font-sizes fw-bold'>Builder Price</h4>
 
           </div>
         </div>
