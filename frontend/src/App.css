@@ -22,7 +22,7 @@
   }
   
 } */
-@media all and (max-width : 480px){
+@media all and (max-width : 380px){
 
   p {
     font-size: 4vmin;
@@ -34,16 +34,16 @@
     font-size: 5vmin;
   }
   h3{
-    font-size: 7vmin;
+    font-size: 5vmin;
   }
   h4{
-    font-size: 6vmin;
+    font-size: 5vmin;
   }
   h5{
     font-size: 5vmin;
   }
   a{
-    font-size: 5vmin;
+    font-size: 4vmin;
   }
   label{
     font-size: 5vmin;

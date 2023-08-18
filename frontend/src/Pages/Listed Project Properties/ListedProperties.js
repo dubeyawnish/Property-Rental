@@ -38,6 +38,7 @@ const ListedProperties = () => {
     setLoader(true)
     fetchProjectDetail();
     fetchProperty();
+    
    
     //debugger;
   }, []);
@@ -51,6 +52,7 @@ const ListedProperties = () => {
       setProjectDetail(res.data);
       setLoader(false);
       //console.log("projejctDetail",projectDetail);
+      //setSelectedProperty(defaultProperty);
 
     }
     catch (error) {
@@ -139,6 +141,7 @@ for (const propertyType in PropertyData) {
  
   if (PropertyData[propertyType] && PropertyData[propertyType].length > 0) {
     defaultProperty=propertyType;
+    
     break;
   }
 
@@ -150,11 +153,16 @@ if (!defaultProperty) {
 }
 
 
-
-
-//console.log("hello",defaultProperty)
 const [selectedProperty, setSelectedProperty] = useState(defaultProperty);
-//console.log("hiii",selectedProperty);
+
+useEffect(() => {
+  // Update selectedProperty whenever defaultProperty changes
+  setSelectedProperty(defaultProperty);
+}, [defaultProperty]);
+
+//console.log("defaultProperty",defaultProperty)
+
+//console.log("selectedProperty",selectedProperty);
 
 
   const popers = PropertyData[selectedProperty];
@@ -223,7 +231,7 @@ const [selectedProperty, setSelectedProperty] = useState(defaultProperty);
         : ""}
 
 
-      <div class="text-center mt-3">
+      <div className="text-center mt-3">
 
         <img onClick={() => openModal(projectDetail.projectImg)}
           style={{ cursor: 'pointer' }}
@@ -236,7 +244,7 @@ const [selectedProperty, setSelectedProperty] = useState(defaultProperty);
         <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
         <p >by <span style={{ cursor: 'pointer' }} onClick={moveToPrevious} className='text-color fw-bold'>{projectDetail.projectGroup}</span> </p>
         <p className='fw-bold text-muted'>Rera No:{projectDetail.reraNo}</p>
-        <a className='text-decoration-none text-muted' target='_blank' href={projectDetail.mapLink}><p className='mt-2'><i class="fa-solid fa-location-dot"></i> {projectDetail.projectLocation} <span className='text-color'>(Show on map)</span></p></a>
+        <a className='text-decoration-none text-muted' target='_blank' href={projectDetail.mapLink}><p className='mt-2'><i className="fa-solid fa-location-dot"></i> {projectDetail.projectLocation} <span className='text-color'>(Show on map)</span></p></a>
 
       </div>
 
@@ -428,63 +436,63 @@ const [selectedProperty, setSelectedProperty] = useState(defaultProperty);
       </div>
       <div className='row mb-2  mt-3'>
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-dumbbell"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-dumbbell"></i></h4>
           <p >Gymnasium</p>
         </div>
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-person-swimming"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-person-swimming"></i></h4>
           <p >Swimming Pool</p>
         </div>
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-chess"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-chess"></i></h4>
           <p >Children's play area</p>
         </div>
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-person-running"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-person-running"></i></h4>
           <p >Jogging Track</p>
 
         </div>
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-table-tennis-paddle-ball"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-table-tennis-paddle-ball"></i></h4>
           <p >Tennis Court</p>
         </div>
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-regular fa-credit-card"></i></h4>
+          <h4 className='text-color'><i className="fa-regular fa-credit-card"></i></h4>
           <p >ATM</p>
         </div>
 
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-book"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-book"></i></h4>
           <p >Library</p>
         </div>
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-house-medical-flag"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-house-medical-flag"></i></h4>
           <p >Hospital</p>
         </div>
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-user-group"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-user-group"></i></h4>
           <p >Community Hall</p>
         </div>
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-person-shelter"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-person-shelter"></i></h4>
           <p >Staff Quarter</p>
         </div>
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-wifi"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-wifi"></i></h4>
           <p >Internet/Wi-Fi</p>
         </div>
 
         <div className='col-lg-2 col-md-2 col-sm-6 text-center'>
-          <h4 className='text-color'><i class="fa-solid fa-faucet-drip"></i></h4>
+          <h4 className='text-color'><i className="fa-solid fa-faucet-drip"></i></h4>
           <p >24X7 Water Supply</p>
         </div>
 
@@ -516,7 +524,7 @@ const [selectedProperty, setSelectedProperty] = useState(defaultProperty);
                     <h5 className="card-title">₹ {property.expectedSalePrice} </h5>
                     <p className="card-text"> {property.additionalInformation} ...</p>
                     <p><i className="fa-solid fa-bed"></i> {property.bedrooms} &nbsp; &nbsp;<span > <i className="fa-solid fa-droplet "></i> {property.bathrooms} &nbsp; &nbsp;</span> <span className=''><i className="fa-solid fa-map"></i>{property.builtUpArea} ft<sup>2</sup></span> </p>
-                    <p className='text-center'><Link to='/interested' className='text-muted text-decoration-none'><i class="fa-sharp fa-regular fa-face-smile"></i> Interested?</Link></p>
+                    <p className='text-center'><Link to='/interested' className='text-muted text-decoration-none'><i className="fa-sharp fa-regular fa-face-smile"></i> Interested?</Link></p>
                   </div>
                 </div>
               </div> : ""}

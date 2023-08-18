@@ -44,7 +44,7 @@ const ProjectByLocation = () => {
         : ""}
 
             
-                <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {location} locations  </h3>
+                <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {location} location  </h3>
                 <ul className="cards dist">
                     {projects?.map(project => (
                         <li className="cards_item">

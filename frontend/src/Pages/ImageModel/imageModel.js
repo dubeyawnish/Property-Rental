@@ -54,7 +54,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 
 const ImageModal = ({ imageUrl, onClose }) => {
-    const [zoomLevel, setZoomLevel] = useState(80); // Initial zoom level is 100%
+    const [zoomLevel, setZoomLevel] = useState(100); // Initial zoom level is 100%
 
     const handleZoomIn = () => {
         setZoomLevel(Math.min(zoomLevel + 10, 200)); // Limit max zoom to 200%
@@ -98,6 +98,7 @@ const ImageModal = ({ imageUrl, onClose }) => {
                     src={imageUrl}
                     alt="Full Screen"
                     style={{
+                        height:`${zoomLevel}%`,
                         width: `${zoomLevel}%`, // Use width instead of max-width for zooming
                         transition: 'width 0.3s', // Add a smooth transition effect
                         display: 'block', // Prevents margin collapse
@@ -132,7 +133,5 @@ const ImageModal = ({ imageUrl, onClose }) => {
 };
 
 export default ImageModal;
-
-
 
 

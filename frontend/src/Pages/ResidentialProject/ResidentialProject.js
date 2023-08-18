@@ -28,7 +28,14 @@ const ResidentailProjects = () => {
 
         const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
         setLoader(false);
-        setProjects(response.data);
+        // setProjects(response.data);
+         // Sort projects alphabetically by projectName
+         const sortedProjects = response.data.sort((a, b) => {
+            return a.projectName.localeCompare(b.projectName);
+        });
+
+        setProjects(sortedProjects);
+       
         //console.log(projects);
     }
 

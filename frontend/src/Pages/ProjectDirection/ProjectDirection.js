@@ -33,9 +33,15 @@ const ProjectDirection = () => {
             }
             return false; // Default case if direction doesn't match any of the options
         });
-        setProjects(filteredProjects);
+
+        const sortedProjects = filteredProjects.sort((a, b) => {
+            return a.projectName.localeCompare(b.projectName);
+        });
+
+        setProjects(sortedProjects);
+        //setProjects(filteredProjects);
         setLoader(false);
-        console.log(projects);
+        //console.log(projects);
     }
 
 
