@@ -52,6 +52,7 @@
 
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+// import './imageModel.js';
 
 const ImageModal = ({ imageUrl, onClose }) => {
     const [zoomLevel, setZoomLevel] = useState(100); // Initial zoom level is 100%
@@ -97,23 +98,30 @@ const ImageModal = ({ imageUrl, onClose }) => {
                 <img
                     src={imageUrl}
                     alt="Full Screen"
+                    
                     style={{
-                        height:`${zoomLevel}%`,
+                        
+                    //'--zoom-level': `${zoomLevel}%` 
+                    height: window.innerWidth >= 768 ? `${zoomLevel}%` : '',
+                   // height:`${zoomLevel}%`,
                         width: `${zoomLevel}%`, // Use width instead of max-width for zooming
-                        transition: 'width 0.3s', // Add a smooth transition effect
-                        display: 'block', // Prevents margin collapse
-                        margin: '0 auto', // Center the image
+                        transition: 'width 0.3s', // Add a smooth transition effect  
+                        display: 'block', // Prevents margin collapse  
+                        margin: '0 auto',
+                         // Center the image                        
                     }}
                 />
+
             </div>
-            <div style={{ textAlign: 'center', marginTop: '10px' }}>
+            <div style={{ textAlign: 'center', marginTop: '10px', }}>
                 <button
                     onClick={handleZoomIn}
-                    style={{ cursor: 'pointer', marginRight: '10px' }}
+                    style={{ cursor: 'pointer', marginRight: '10px',
+                     }}
                 >
                     Zoom in
                 </button>
-                <button onClick={handleZoomOut} style={{ cursor: 'pointer' }}>
+                <button onClick={handleZoomOut} style={{ cursor: 'pointer'}}>
                 Zoom Out
                 </button>
             </div>

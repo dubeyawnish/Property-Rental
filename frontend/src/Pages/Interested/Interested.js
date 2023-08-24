@@ -14,7 +14,7 @@ const Interested = () => {
                     <div className=' ms-5 mt-2 col-lg-8 col-md-8 col-sm-12'>
                         <h5 className='fw-bold'> Interested?</h5>
                         <p className='mt-3'><a className='text-decoration-none text-muted ' href="tel:9945608407"><i className="fa-solid fa-phone"></i> 9945608407</a></p>
-                        <p className='mt-3 '><a className='text-decoration-none text-muted ' href="tel:9453416152"><i className="fa-solid fa-mobile"></i> 123467890</a></p>
+                        
                         <p className='mt-3 '><a className='text-decoration-none text-muted ' href="mailto:properties@dharnigroup.com"><i className="fa-solid fa-envelope"></i> properties@dharnigroup.com</a></p>
                     </div>
 

@@ -22,8 +22,11 @@ const ProjectByLocation = () => {
         const reqbody={location};
 
         const response = await axios.post(`${API_BASE_URL}/getAllProjectsByLocation`,reqbody);
+        const sortedProjects = response.data.sort((a, b) => {
+            return a.projectName.localeCompare(b.projectName);
+        });
         setLoader(false);
-        setProjects(response.data);
+        setProjects(sortedProjects);
         //console.log(projects);
     }
 

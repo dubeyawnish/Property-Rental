@@ -28,7 +28,7 @@ const Footer = () => {
                         </div>
                         <div className='ms-1'>
                             <div>
-                                <a style={{ textDecoration: 'none' }} href='https://www.facebook.com/dharnigroup' className=''>Dharni Property </a>
+                                <a style={{ textDecoration: 'none' }} href='https://www.facebook.com/dharnigroup' className=''>Dharni Properties </a>
                             </div>
                             <div>
                                 <a style={{ textDecoration: 'none' }} href='https://www.facebook.com/dharnigroup' className='text-muted'> <i className="fa-brands fa-square-facebook"></i> Follow Page </a>

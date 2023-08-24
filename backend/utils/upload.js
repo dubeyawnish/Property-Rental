@@ -18,7 +18,7 @@ const storage = new GridFsStorage({
 	url: CONNECTION_URL,
 	options: connectionOption,
 	file: (request, file) => {
-		const match = ["image/png", "image/jpg","image/jpeg"];
+		const match = ["image/png", "image/jpg","image/jpeg","image/webp"];
 
 		if (match.indexOf(file.memeType) === -1)
 			return `${Date.now()}-dharni-${file.originalname}`;
