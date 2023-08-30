@@ -7,14 +7,12 @@ const propertySchema = new mongoose.Schema({
     },
     mobileNumbers:
     {
-        type: Number,
-        
+        type: Number,    
     }
     ,
     emailAddresses:
     {
-        type: String,
-        
+        type: String,     
     }
     ,
     //propertyBasics: {

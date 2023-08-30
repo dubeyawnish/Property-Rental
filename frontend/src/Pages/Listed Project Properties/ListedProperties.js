@@ -35,11 +35,9 @@ const ListedProperties = () => {
 
 
   useEffect(() => {
-    setLoader(true)
+    setLoader(true);
     fetchProjectDetail();
     fetchProperty();
-    
-   
     //debugger;
   }, []);
 
@@ -235,7 +233,7 @@ useEffect(() => {
 
         <img onClick={() => openModal(projectDetail.projectImg)}
           style={{ cursor: 'pointer' }}
-          src={projectDetail.projectImg} className='img-size img-fluid rounded' alt="Project Image" />
+          src={projectDetail.projectImg ? `${projectDetail.projectImg}`:"https://t3.ftcdn.net/jpg/01/91/95/30/240_F_191953033_gehQATeDoh5z6PyRDbeKyBZuS83CjMEF.jpg"} loading='lazy' className='img-size img-fluid rounded' alt="Project Image" />
 
         {modalImageUrl && <ImageModal imageUrl={modalImageUrl} onClose={closeModal} />}
 

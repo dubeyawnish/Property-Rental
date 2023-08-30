@@ -56,7 +56,7 @@ const BuilderProjects = () => {
                         <li className="cards_item">
                             <div className="card zoom">
                                 <div className="card_image">
-                                    <Link className='togg ' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}> <img  src={project.projectImg} height={250} width={300} /></Link>
+                                    <Link className='togg ' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}> <img  src={project.projectImg} loading='lazy' height={250} width={300} /></Link>
                                 </div>
                                 <div className="card_content">
                                     <Link className='togg text-decoration-none' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}><h2 className="card_title text-center">{project.projectName}</h2></Link>
