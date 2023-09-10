@@ -8,9 +8,9 @@ const Home = () => {
 
   const [projects, setProjects] = useState([]);
   const [data, setData] = useState([]);
-  const [loader, setLoader] = useState(false);
+  //const [loader, setLoader] = useState(false);
   useEffect(() => {
-    setLoader(true);
+    //setLoader(true);
     fetchAllProject();
 
   }, [])
@@ -20,7 +20,7 @@ const Home = () => {
     const resp = await axios.get(`${API_BASE_URL}/getAllLocation`);
     setProjects(res.data);
     setData(resp.data);
-    setLoader(false);
+    //setLoader(false);
     //console.log("hello",projects)
   }
 
@@ -89,13 +89,7 @@ const Home = () => {
     <>
       {/* <div className='background ' >
       </div> */}
-      {loader ?
-        <div className='mb-3 mt-3 col-md-12 text-center'>
-          <div className="  spinner-border text-primary" role="status">
-            <span className="visually-hidden"></span>
-          </div>
-        </div>
-        : ""}
+      
       <div className='container shadow-none   bg-body-tertiary rounded mt-5 '>
         <div className=' '>
           <h3 className='fw-bold mb-3 text-muted text-center'>Buy By Project</h3>

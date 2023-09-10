@@ -29,7 +29,7 @@ const PropertyDetails = () => {
     const [emailAddress, setEmailAddress] = useState('');
     const [requirements, setRequirements] = useState('');
     const [propertyDetails, setPropertyDetails] = useState({});
-    const [loader,setLoader] =useState(false);
+    //const [loader,setLoader] =useState(false);
 
     const formSubmit = (e) => {
         e.preventDefault();
@@ -67,11 +67,11 @@ const PropertyDetails = () => {
 
 
     useEffect(() => {
-        setLoader(true);
+       // setLoader(true);
         const fetchProperty = async () => {
             try {
                 const response = await axios.get(`${API_BASE_URL}/propertyDetails/${propertyId}`);
-                setLoader(false);
+                //setLoader(false);
                 //debugger;
                 //console.log("Response Data", response.data);
                 setPropertyDetails(response.data);
@@ -123,13 +123,13 @@ const PropertyDetails = () => {
 
     return (
         <div className='container'>
-            {loader ?
+            {/* {loader ?
                   <div className='mb-3 mt-3 col-md-12 text-center'>
                     <div className="  spinner-border text-primary" role="status">
                       <span className="visually-hidden"></span>
                     </div>
                   </div>
-                  : ""}
+                  : ""} */}
             <div className='row'>
                 <div className='col-lg-8 col-md-8 col-sm-12  '>
                     <h3 className='my-5'>{propertyDetails.bedrooms} BHK {propertyDetails.villaApartmentNumber} {propertyDetails.projectName}, {propertyDetails.location}</h3>

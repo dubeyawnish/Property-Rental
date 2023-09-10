@@ -9,11 +9,11 @@ import { Link } from 'react-router-dom';
 const ProjectByLocation = () => {
     const [projects, setProjects] = useState([]);
     const location = localStorage.getItem("location");
-    const [loader, setLoader] = useState(false);
+    //const [loader, setLoader] = useState(false);
 
 
     useEffect(() => {
-        setLoader(true);
+        //setLoader(true);
         const location = localStorage.getItem("location")
         projectCall(location);
     }, []);
@@ -25,7 +25,7 @@ const ProjectByLocation = () => {
         const sortedProjects = response.data.sort((a, b) => {
             return a.projectName.localeCompare(b.projectName);
         });
-        setLoader(false);
+        //setLoader(false);
         setProjects(sortedProjects);
         //console.log(projects);
     }
@@ -38,13 +38,13 @@ const ProjectByLocation = () => {
     return (
         <div className='container'>
 
-   {loader ?
+   {/* {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
             <span className="visually-hidden"></span>
           </div>
         </div>
-        : ""}
+        : ""} */}
 
             
                 <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {location} location  </h3>

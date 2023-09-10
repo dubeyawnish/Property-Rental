@@ -7,6 +7,7 @@ import { API_BASE_URL } from '../../config';
 import './ListedProperties.css'
 import ImageModal from '../ImageModel/imageModel.js';
 import { useNavigate } from 'react-router-dom';
+//import myGif from '../../Images/Profile/Spinner.gif'
 
 
 
@@ -21,7 +22,7 @@ const ListedProperties = () => {
   const { projectId } = useParams();
   //console.log(projectId);
   const [properties, setProperties] = useState([]);
-  const [loader, setLoader] = useState(false);
+  //const [loader, setLoader] = useState(false);
  
   const [projectDetail, setProjectDetail] = useState({});
 
@@ -35,7 +36,7 @@ const ListedProperties = () => {
 
 
   useEffect(() => {
-    setLoader(true);
+    //setLoader(true);
     fetchProjectDetail();
     fetchProperty();
     //debugger;
@@ -48,7 +49,7 @@ const ListedProperties = () => {
       const res = await axios.post(`${API_BASE_URL}/getProjectDetail`, reqData);
       //console.log(res.data);
       setProjectDetail(res.data);
-      setLoader(false);
+      //setLoader(false);
       //console.log("projejctDetail",projectDetail);
       //setSelectedProperty(defaultProperty);
 
@@ -220,13 +221,13 @@ useEffect(() => {
   return (
     <div className=' container '>
       
-      {loader ?
+      {/* {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
             <span className="visually-hidden"></span>
           </div>
         </div>
-        : ""}
+        : ""} */}
 
 
       <div className="text-center mt-3">

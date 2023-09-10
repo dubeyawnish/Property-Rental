@@ -4,13 +4,16 @@ import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 import { useLocation,Link } from 'react-router-dom';
 import './BuilderProject.css'
+//import { useParams } from 'react-router-dom';
 
 
 
 const BuilderProjects = () => {
     const [projects, setProjects] = useState([]);
     const BuilderName = localStorage.getItem("BuilderName");
-    const [loader, setLoader] = useState(false);
+   // const {buildername}=useParams();
+    //console.log("Params",buildername);
+    //const [loader, setLoader] = useState(false);
 
     // const location = useLocation();
     // const { fromHome } = location.state;
@@ -19,7 +22,7 @@ const BuilderProjects = () => {
 
 
     useEffect(() => {
-        setLoader(true);
+        //setLoader(true);
         const builderId = localStorage.getItem("BuilderId")
         projectCall(builderId);
     }, []);
@@ -27,7 +30,7 @@ const BuilderProjects = () => {
     const projectCall = async (builderId) => {
 
         const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilders/${builderId}`);
-        setLoader(false);
+        //setLoader(false);
         setProjects(response.data);
         //console.log(projects);
     }
@@ -39,13 +42,13 @@ const BuilderProjects = () => {
 
     return (
         <div className='container'>
-            {loader ?
+            {/* {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
             <span className="visually-hidden"></span>
           </div>
         </div>
-        : ""}
+        : ""} */}
 
 
 

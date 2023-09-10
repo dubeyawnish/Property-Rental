@@ -10,7 +10,7 @@ import { useLocation,Link } from 'react-router-dom';
 const ResidentailProjects = () => {
     const [projects, setProjects] = useState([]);
   
-    const [loader, setLoader] = useState(false);
+    //const [loader, setLoader] = useState(false);
 
     // const location = useLocation();
     // const { fromHome } = location.state;
@@ -19,7 +19,7 @@ const ResidentailProjects = () => {
 
 
     useEffect(() => {
-        setLoader(true);
+        //setLoader(true);
         
         projectCall();
     }, []);
@@ -27,7 +27,7 @@ const ResidentailProjects = () => {
     const projectCall = async () => {
 
         const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
-        setLoader(false);
+        //setLoader(false);
         // setProjects(response.data);
          // Sort projects alphabetically by projectName
          const sortedProjects = response.data.sort((a, b) => {
@@ -46,13 +46,13 @@ const ResidentailProjects = () => {
 
     return (
         <div className='container'>
-            {loader ?
+            {/* {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
             <span className="visually-hidden"></span>
           </div>
         </div>
-        : ""}
+        : ""} */}
 
 
 

@@ -12,13 +12,13 @@ const ListedProperties = () => {
   const { locationId } = useParams();
   //console.log(projectId);
   const [properties, setProperties] = useState([]);
-  const [loader, setLoader] = useState(false);
+  //const [loader, setLoader] = useState(false);
 
 
 
 
   useEffect(() => {
-    setLoader(true);
+    //setLoader(true);
     fetchProperty();
     //debugger;
   }, []);
@@ -31,7 +31,7 @@ const ListedProperties = () => {
       //debugger;
       //console.log("Response Data", response.data)
       setProperties(response.data);
-      setLoader(false);
+      //setLoader(false);
 
       //console.log(properties);
     }
@@ -45,13 +45,13 @@ const ListedProperties = () => {
 
   return (
     <div className='  container '>
-      {loader ?
+      {/* {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
             <span className="visually-hidden"></span>
           </div>
         </div>
-        : ""}
+        : ""} */}
 
       <div className='row mb-2'>
         {properties.map(property => (

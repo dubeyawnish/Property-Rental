@@ -109,7 +109,7 @@ const Navbar = () => {
                                                 <li >
                                                     <a onClick={() => builderPro(builder._id, builder.builderName)} href="/builderProject"><label for="drop-12" className="toggle "> </label></a>
                                                     {/* <Link  onMouseOver={() => projectCall(builder._id)} to="#">{builder.builderName}</Link> */}
-                                                    <a onClick={() => builderPro(builder._id, builder.builderName)} href="/builderProject" >{builder.builderName}</a>
+                                                    <a onClick={() => builderPro(builder._id, builder.builderName)} href={`/builderProject/${builder.builderName}`} >{builder.builderName}</a>
                                                     <input type="checkbox" id="drop-12" />
                                                     <ul>
                                                         {projects?.map(project => (

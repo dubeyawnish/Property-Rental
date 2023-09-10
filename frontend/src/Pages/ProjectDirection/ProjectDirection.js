@@ -8,12 +8,12 @@ const ProjectDirection = () => {
 
     const { direction } = useParams();
     const [projects, setProjects] = useState([]);
-    const[loader,setLoader]=useState(false);
+    //const[loader,setLoader]=useState(false);
     //console.log(direction);
     useEffect(() => {
-        setLoader(true);
+        //setLoader(true);
         fetchAllProject();
-
+    
     }, []);
     const fetchAllProject = async () => {
         const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
@@ -40,7 +40,7 @@ const ProjectDirection = () => {
 
         setProjects(sortedProjects);
         //setProjects(filteredProjects);
-        setLoader(false);
+        //setLoader(false);
         //console.log(projects);
     }
 
@@ -52,13 +52,13 @@ const ProjectDirection = () => {
 
     return (
         <div className='container'>
-            {loader ?
+            {/* {loader ?
                 <div className='mb-3 mt-3 col-md-12 text-center'>
                     <div className="  spinner-border text-primary" role="status">
                         <span className="visually-hidden"></span>
                     </div>
                 </div>
-                : ""}
+                : ""} */}
 
 
 
