@@ -5,23 +5,26 @@ import { API_BASE_URL } from '../../config';
 
 import './ProjectByLocation.css'
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ProjectByLocation = () => {
     const [projects, setProjects] = useState([]);
-    const location = localStorage.getItem("location");
+    //const location = localStorage.getItem("location");
     //const [loader, setLoader] = useState(false);
+    const {location}=useParams();
 
 
     useEffect(() => {
         //setLoader(true);
-        const location = localStorage.getItem("location")
+        //const location = localStorage.getItem("location")
         projectCall(location);
     }, []);
 
     const projectCall = async (location) => {
-        const reqbody={location};
+        //const reqbody={location};
 
-        const response = await axios.post(`${API_BASE_URL}/getAllProjectsByLocation`,reqbody);
+        //const response = await axios.post(`${API_BASE_URL}/getAllProjectsByLocation`,reqbody);
+        const response = await axios.get(`${API_BASE_URL}/getAllProjectsByLocation/${location}`);
         const sortedProjects = response.data.sort((a, b) => {
             return a.projectName.localeCompare(b.projectName);
         });

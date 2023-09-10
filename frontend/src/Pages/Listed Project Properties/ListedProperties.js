@@ -44,9 +44,10 @@ const ListedProperties = () => {
 
   const fetchProjectDetail = async () => {
     const projectName = localStorage.getItem('ProjectName');
-    const reqData = { projectName };
+    //const reqData = { projectName };
     try {
-      const res = await axios.post(`${API_BASE_URL}/getProjectDetail`, reqData);
+      //const res = await axios.post(`${API_BASE_URL}/getProjectDetail`, reqData);
+      const res = await axios.get(`${API_BASE_URL}/getProjectDetail/${projectId}`);
       //console.log(res.data);
       setProjectDetail(res.data);
       //setLoader(false);
@@ -385,7 +386,7 @@ useEffect(() => {
           <>
             <div className=' shadow-none p-3  bg-body-tertiary rounded d-flex dis'>
               <div className='col-lg-4 col-md-4 col-sm-4 '>
-                <img onClick={() => openModal(property.layout)}
+                <img onClick={() => openModal(property.layout)} loading='lazy'
                   style={{ cursor: 'pointer' }} src={property.layout} className='layout-img border border-secondary' />
                 {modalImageUrl && <ImageModal imageUrl={modalImageUrl} onClose={closeModal} />}
 

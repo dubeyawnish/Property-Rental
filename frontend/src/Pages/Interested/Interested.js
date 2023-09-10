@@ -25,7 +25,7 @@ const Interested = () => {
                     <a target='_blank' href="tel:9945608407">
                         <button type="button" className=" me-2 btn btn-success"><i className="fa-solid fa-phone"></i> call +91-9945608407</button></a>
                     <a target='_blank' href="https://wa.me/9945164270?text=Hello!">
-                        <button type="button" className="btn btn-success"><i class="fa-brands fa-whatsapp"></i> Whatsapp</button></a>
+                        <button type="button" className="btn btn-success"><i className="fa-brands fa-whatsapp"></i> Whatsapp</button></a>
 
                 </div>
 

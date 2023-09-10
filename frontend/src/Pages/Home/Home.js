@@ -142,7 +142,7 @@ const Home = () => {
                <Link className='text-decoration-none' to={`/projectDirection/${columnKey}`}> <h4 className='text-center text-muted'>{columnKey}</h4></Link>
                 <ul>
                   {columns[columnKey].map(item => (
-                    <li key={item._id}><a className='text-muted test text-decoration-none' onClick={()=>handleLocationData(item.showLocation)}  href={'/builderProjectByLocation'}>{item.showLocation}</a></li>
+                    <li key={item._id}><a className='text-muted test text-decoration-none' onClick={()=>handleLocationData(item.showLocation)}  href={`/builderProjectByLocation/${item.showLocation}`}>{item.showLocation}</a></li>
                   ))}
                 </ul>
               </div>

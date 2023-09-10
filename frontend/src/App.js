@@ -57,10 +57,10 @@ function App() {
           <Route exact path='/plotDetails/:plotId' element={<PlotDetails />} />
           <Route exact path='/getPlotByProject/:projectId' element={<ListedPlot />} />
           <Route exact path='/getPlotByLocation/:locationId' element={<PlotListLocation />} />
-          <Route exact path='/builderProject/:buildername' element={<React.Suspense fallback='Loading...'>
+          <Route exact path='/builderProject/:builderId' element={<React.Suspense fallback='Loading...'>
             <LazyBuilderProject />
           </React.Suspense>} />
-          <Route exact path='/builderProjectByLocation' element={<ProjectByLocation />} />
+          <Route exact path='/builderProjectByLocation/:location' element={<ProjectByLocation />} />
 
           {/* <Route exact path='/residentialProjects' element={<ResidentailProjects />} /> */}
           <Route exact path='/residentialProjects' element={<React.Suspense fallback='Loading...'>

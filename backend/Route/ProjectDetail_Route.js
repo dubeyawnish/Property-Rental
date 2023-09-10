@@ -154,4 +154,158 @@ router.put('/updateProjectDetail', async (req, res) => {
 });
 
 
+
+
+
+
+
+
+
+
+router.get('/getAllBuilder', async (req, res) => {
+  try {
+    const allBuilder = await ProjectDetail.find({}, 'builderName propertyType ');
+    const uniqueBuilders = [];
+    const BuilderNames = [];
+
+    for (let i = 0; i < allBuilder.length; i++) {
+      const builderName = allBuilder[i].builderName;
+
+      if (!BuilderNames.includes(builderName)) {
+        uniqueBuilders.push(allBuilder[i]);
+        BuilderNames.push(builderName);
+      }
+    }
+    // If there are errors, return Bad request and the errors
+    //console.log(allProject)
+    res.json(uniqueBuilders)
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+});
+
+
+
+
+
+router.get('/getAllProjectByBuilders/:builderId', async (req, res) => {
+  try {
+    const { builderId } = req.params;
+    //console.log(builderId);
+    const project = await ProjectDetail.find({ _id: builderId });
+
+    const Projects = await ProjectDetail.find({ builderName: project[0].builderName });
+
+    const uniqueProjects = [];
+    const projectNames = [];
+
+    for (let i = 0; i < Projects.length; i++) {
+      const { _id, projectName,projectImg ,projectType} = Projects[i]; // Destructure the required fields
+
+      if (!projectNames.includes(projectName)) {
+        uniqueProjects.push({ _id, projectName,projectImg,projectType }); // Construct a new object with only the required fields
+        projectNames.push(projectName);
+      }
+    }
+
+    res.json(uniqueProjects);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
+
+router.get('/getProjectDetail/:projectId', async (req, res) => {
+  const { projectId } = req.params;
+  try {
+    const proDetail = await ProjectDetail.findOne({ _id: projectId });
+    res.json(proDetail);
+
+
+  }
+  catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+
+
+router.get('/getAllProjects', async (req, res) => {
+  try {
+    const allProject = await ProjectDetail.find({}, 'projectName projectType projectImg projectDirection');
+    const uniqueProjects = [];
+    const projectNames = [];
+
+    for (let i = 0; i < allProject.length; i++) {
+      const projectName = allProject[i].projectName;
+
+      if (!projectNames.includes(projectName)) {
+        uniqueProjects.push(allProject[i]);
+        projectNames.push(projectName);
+      }
+    }
+    // If there are errors, return Bad request and the errors
+    //console.log(allProject)
+    res.json(uniqueProjects)
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+
+
+
+router.get('/getAllLocation', async (req, res) => {
+  try {
+    const allLocation = await ProjectDetail.find({}, 'showLocation projectType projectDirection');
+    const uniqueProjects = [];
+    const projectNames = [];
+
+    for (let i = 0; i < allLocation.length; i++) {
+      const location = allLocation[i].showLocation;
+
+      if (!projectNames.includes(location)) {
+        uniqueProjects.push(allLocation[i]);
+        projectNames.push(location);
+      }
+    }
+    // If there are errors, return Bad request and the errors
+    //console.log(allProject)
+    res.json(uniqueProjects)
+
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+
+router.get('/getAllProjectsByLocation/:location', async (req, res) => {
+  const { location } = req.params;
+  try {
+    const proDetail = await ProjectDetail.find({ showLocation: location} ,'projectName projectType projectImg' );
+
+    res.json(proDetail);
+
+
+  }
+  catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+
 module.exports = router;

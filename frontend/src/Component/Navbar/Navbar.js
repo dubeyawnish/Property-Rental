@@ -85,7 +85,7 @@ const Navbar = () => {
                     <input type="checkbox" id="drop" />
                     <ul className=" navbar-nav me-auto mb-2 mb-lg-0 menu">
                         <li >
-                            <label for="drop-1" class="toggle">Home</label>
+                            <label for="drop-1" className="toggle">Home</label>
                             <Link to='/' > Home</Link>
                             <input type="checkbox" id="drop-1" />
                             <ul>
@@ -107,9 +107,9 @@ const Navbar = () => {
                                         {Array.isArray(builders) && builders.map(builder => (
                                             <>
                                                 <li >
-                                                    <a onClick={() => builderPro(builder._id, builder.builderName)} href="/builderProject"><label for="drop-12" className="toggle "> </label></a>
+                                                    <a onClick={() => builderPro(builder._id, builder.builderName)} href={`/builderProject/${builder._id}`}><label for="drop-12" className="toggle "> </label></a>
                                                     {/* <Link  onMouseOver={() => projectCall(builder._id)} to="#">{builder.builderName}</Link> */}
-                                                    <a onClick={() => builderPro(builder._id, builder.builderName)} href={`/builderProject/${builder.builderName}`} >{builder.builderName}</a>
+                                                    <a onClick={() => builderPro(builder._id, builder.builderName)} href={`/builderProject/${builder._id}`} >{builder.builderName}</a>
                                                     <input type="checkbox" id="drop-12" />
                                                     <ul>
                                                         {projects?.map(project => (
@@ -138,7 +138,7 @@ const Navbar = () => {
                                     <input type="checkbox" id="drop-4" />
                                     <ul>
                                         {locations.map(location => (
-                                            <li><a onClick={()=>handleLocationData(location.showLocation)} className='togg' href={'/builderProjectByLocation'}>{location.showLocation}</a></li>
+                                            <li><a onClick={()=>handleLocationData(location.showLocation)} className='togg' href={`/builderProjectByLocation/${location.showLocation}`}>{location.showLocation}</a></li>
                                         ))}
                                         {/* {plotLocation.map(location => (
                                             <li><Link className='togg' to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>

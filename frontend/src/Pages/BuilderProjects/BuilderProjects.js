@@ -4,13 +4,14 @@ import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 import { useLocation,Link } from 'react-router-dom';
 import './BuilderProject.css'
-//import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 
 const BuilderProjects = () => {
     const [projects, setProjects] = useState([]);
     const BuilderName = localStorage.getItem("BuilderName");
+    const {builderId}=useParams();
    // const {buildername}=useParams();
     //console.log("Params",buildername);
     //const [loader, setLoader] = useState(false);
@@ -23,7 +24,7 @@ const BuilderProjects = () => {
 
     useEffect(() => {
         //setLoader(true);
-        const builderId = localStorage.getItem("BuilderId")
+        //const builderId = localStorage.getItem("BuilderId")
         projectCall(builderId);
     }, []);
 
