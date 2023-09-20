@@ -2,43 +2,83 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
-import { useLocation,Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import './BuilderProject.css'
 import { useParams } from 'react-router-dom';
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 
 
 const BuilderProjects = () => {
     const [projects, setProjects] = useState([]);
     const BuilderName = localStorage.getItem("BuilderName");
-    const {builderId}=useParams();
-   // const {buildername}=useParams();
+    const { builderId } = useParams();
+    // const {buildername}=useParams();
     //console.log("Params",buildername);
-    //const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState(false);
 
     // const location = useLocation();
     // const { fromHome } = location.state;
-    
+
     // console.log("Hello",fromHome);
 
 
     useEffect(() => {
-        //setLoader(true);
+        setLoader(true);
         //const builderId = localStorage.getItem("BuilderId")
         projectCall(builderId);
-    }, []);
+    }, [builderId]);
 
     const projectCall = async (builderId) => {
 
         const response = await axios.get(`${API_BASE_URL}/getAllProjectByBuilders/${builderId}`);
-        //setLoader(false);
-        setProjects(response.data);
+        const sortedProjects = response.data.sort((a, b) => {
+            return a.projectName.localeCompare(b.projectName);
+        });
+        setLoader(false);
+        setProjects(sortedProjects);
         //console.log(projects);
     }
 
     const handleSendData = (dataToSend) => {
         localStorage.removeItem("ProjectName");
         localStorage.setItem("ProjectName", dataToSend)
+    };
+
+
+
+    const Loading = () => {
+        return (
+            <>
+                <div className='row mb-4'>
+                    <div className='col-lg-3 col-md-6 col-sm-12 mb-5' >
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                </div>
+            </>
+        );
     };
 
     return (
@@ -53,14 +93,15 @@ const BuilderProjects = () => {
 
 
 
-            
-                <h3 className=' my-5 fw-bold text-muted'> {BuilderName}  Builder's Exclusive Project Portfolio  </h3>
+
+            <h3 className=' my-5 fw-bold text-muted'> {BuilderName}  Builder's Exclusive Project Portfolio  </h3>
+            {loader ? <Loading /> :
                 <ul className="cards dist">
                     {projects?.map(project => (
                         <li className="cards_item">
                             <div className="card zoom">
                                 <div className="card_image">
-                                    <Link className='togg ' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}> <img  src={project.projectImg} loading='lazy' height={250} width={300} /></Link>
+                                    <Link className='togg ' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}> <img src={project.projectImg} loading='lazy' height={250} width={300} /></Link>
                                 </div>
                                 <div className="card_content">
                                     <Link className='togg text-decoration-none' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}><h2 className="card_title text-center">{project.projectName}</h2></Link>
@@ -68,8 +109,8 @@ const BuilderProjects = () => {
                             </div>
                         </li>
                     ))}
-                </ul>
-           
+                </ul>}
+
 
             {/* <div className='d-flex flex-wrap   mb-3'>
                 {projects?.map(project => (

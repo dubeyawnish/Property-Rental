@@ -11,7 +11,7 @@ router.post('/projects', async (req, res) => {
     // Assuming the request body has an array of objects for 2BHK and 3BHK
     const { projectName, projectLocation,projectDirection, projectImg, projectType,showLocation, projectGroup,reraNo, startDate, status, totalApartment, launchDate, availability,builderName, oneBHK,
       oneFiveBHK,
-      twoFiveBHK, twoBHK, mapLink, threeBHK, threeFiveBHK, fourBHK,twoBHKVilla,threeBHKVilla,fourBHKVilla,fiveBHKVilla } = req.body;
+      twoFiveBHK, twoBHK, mapLink, threeBHK, threeFiveBHK, fourBHK,fiveBHK,twoBHKVilla,threeBHKVilla,fourBHKVilla,fiveBHKVilla } = req.body;
 
     // Create a new Project instance
      //console.log("hello",threeBHKVilla);
@@ -36,7 +36,7 @@ router.post('/projects', async (req, res) => {
       threeBHKVilla,
       fourBHKVilla,
       fiveBHKVilla,
-      fourBHK, startDate, status, totalApartment, launchDate, availability
+      fourBHK,fiveBHK, startDate, status, totalApartment, launchDate, availability
     });
 
     // Save the new project to the database

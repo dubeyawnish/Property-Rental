@@ -3,15 +3,17 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 import { Link } from 'react-router-dom';
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ProjectDirection = () => {
 
     const { direction } = useParams();
     const [projects, setProjects] = useState([]);
-    //const[loader,setLoader]=useState(false);
+    const[loader,setLoader]=useState(false);
     //console.log(direction);
     useEffect(() => {
-        //setLoader(true);
+        setLoader(true);
         fetchAllProject();
     
     }, []);
@@ -40,7 +42,7 @@ const ProjectDirection = () => {
 
         setProjects(sortedProjects);
         //setProjects(filteredProjects);
-        //setLoader(false);
+        setLoader(false);
         //console.log(projects);
     }
 
@@ -48,6 +50,40 @@ const ProjectDirection = () => {
     const handleSendData = (dataToSend) => {
         localStorage.removeItem("ProjectName");
         localStorage.setItem("ProjectName", dataToSend)
+    };
+
+
+    const Loading = () => {
+        return (
+            <>
+                <div className='row mb-4'>
+                    <div className='col-lg-3 col-md-6 col-sm-12 mb-5' >
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                </div>
+            </>
+        );
     };
 
     return (
@@ -64,6 +100,7 @@ const ProjectDirection = () => {
 
 
             <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {direction}  </h3>
+            {loader ? <Loading /> : 
             <ul className="cards dist">
                 {projects?.map(project => (
                     <li className="cards_item">
@@ -78,7 +115,7 @@ const ProjectDirection = () => {
                     </li>
                 ))}
             </ul>
-
+          }
 
           
         </div>

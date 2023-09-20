@@ -8,6 +8,8 @@ import './ListedProperties.css'
 import ImageModal from '../ImageModel/imageModel.js';
 import { useNavigate } from 'react-router-dom';
 //import myGif from '../../Images/Profile/Spinner.gif'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 
 
@@ -15,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ListedProperties = () => {
   //const location = useLocation();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
 
 
@@ -23,8 +25,9 @@ const ListedProperties = () => {
   //console.log(projectId);
   const [properties, setProperties] = useState([]);
   //const [loader, setLoader] = useState(false);
- 
+
   const [projectDetail, setProjectDetail] = useState({});
+  const [loading, setLoading] = useState(false);
 
 
 
@@ -36,6 +39,7 @@ const ListedProperties = () => {
 
 
   useEffect(() => {
+    setLoading(true);
     //setLoader(true);
     fetchProjectDetail();
     fetchProperty();
@@ -53,6 +57,7 @@ const ListedProperties = () => {
       //setLoader(false);
       //console.log("projejctDetail",projectDetail);
       //setSelectedProperty(defaultProperty);
+      setLoading(false);
 
     }
     catch (error) {
@@ -88,81 +93,82 @@ const ListedProperties = () => {
     '3BHK': projectDetail.threeBHK,
     '3.5BHK': projectDetail.threeFiveBHK,
     '4BHK': projectDetail.fourBHK,
-    '2BHKVilla':projectDetail.twoBHKVilla,
-    '3BHKVilla':projectDetail.threeBHKVilla,
-    '4BHKVilla':projectDetail.fourBHKVilla,
-    '5BHKVilla':projectDetail.fiveBHKVilla,
+    '5BHK': projectDetail.fiveBHK,
+    '2BHKVilla': projectDetail.twoBHKVilla,
+    '3BHKVilla': projectDetail.threeBHKVilla,
+    '4BHKVilla': projectDetail.fourBHKVilla,
+    '5BHKVilla': projectDetail.fiveBHKVilla,
   };
 
   //console.log("Mama",projectDetail.twoBHK)
 
- 
-// let defaultProperty = '2BHK'; // Default to '2BHK'
 
-// if (projectDetail.oneBHK) {
-//   defaultProperty = '1BHK';
-// }
-// else if(projectDetail.oneFiveBHK){
-// defaultProperty='1.5BHK';
-// }
-// else if(projectDetail.twoBHK){
-// defaultProperty='2BHK';
-// }
-// else if(projectDetail.twoFiveBHK){
-// defaultProperty='2.5BHK';
-// }
-// else if(projectDetail.threeBHK){
-// defaultProperty='3BHK';
-// }
-// else if(projectDetail.threeFiveBHK){
-// defaultProperty='3.5BHK';
-// }
-// else if(projectDetail.fourBHK){
-// defaultProperty='4BHK';
-// }
-// else if(projectDetail.twoBHKVilla){
-// defaultProperty='2BHKVilla';
-// }
-// else if(projectDetail.threeBHKVilla){
-// defaultProperty='3BHKVilla';
-// }
-// else if(projectDetail.fourBHKVilla){
-// defaultProperty='4BHKVilla';
-// }
-// else if(projectDetail.fiveBHKVilla){
-// defaultProperty='5BHKVilla';
-// }
-  
+  // let defaultProperty = '2BHK'; // Default to '2BHK'
 
-let defaultProperty = null;
+  // if (projectDetail.oneBHK) {
+  //   defaultProperty = '1BHK';
+  // }
+  // else if(projectDetail.oneFiveBHK){
+  // defaultProperty='1.5BHK';
+  // }
+  // else if(projectDetail.twoBHK){
+  // defaultProperty='2BHK';
+  // }
+  // else if(projectDetail.twoFiveBHK){
+  // defaultProperty='2.5BHK';
+  // }
+  // else if(projectDetail.threeBHK){
+  // defaultProperty='3BHK';
+  // }
+  // else if(projectDetail.threeFiveBHK){
+  // defaultProperty='3.5BHK';
+  // }
+  // else if(projectDetail.fourBHK){
+  // defaultProperty='4BHK';
+  // }
+  // else if(projectDetail.twoBHKVilla){
+  // defaultProperty='2BHKVilla';
+  // }
+  // else if(projectDetail.threeBHKVilla){
+  // defaultProperty='3BHKVilla';
+  // }
+  // else if(projectDetail.fourBHKVilla){
+  // defaultProperty='4BHKVilla';
+  // }
+  // else if(projectDetail.fiveBHKVilla){
+  // defaultProperty='5BHKVilla';
+  // }
 
 
-for (const propertyType in PropertyData) {
- 
-  if (PropertyData[propertyType] && PropertyData[propertyType].length > 0) {
-    defaultProperty=propertyType;
-    
-    break;
+  let defaultProperty = null;
+
+
+  for (const propertyType in PropertyData) {
+
+    if (PropertyData[propertyType] && PropertyData[propertyType].length > 0) {
+      defaultProperty = propertyType;
+
+      break;
+    }
+
   }
 
-}
-
-if (!defaultProperty) {
-  // Set a default property type if none are available
-  defaultProperty='2BHK';
-}
+  if (!defaultProperty) {
+    // Set a default property type if none are available
+    defaultProperty = '2BHK';
+  }
 
 
-const [selectedProperty, setSelectedProperty] = useState(defaultProperty);
+  const [selectedProperty, setSelectedProperty] = useState(defaultProperty);
 
-useEffect(() => {
-  // Update selectedProperty whenever defaultProperty changes
-  setSelectedProperty(defaultProperty);
-}, [defaultProperty]);
+  useEffect(() => {
+    // Update selectedProperty whenever defaultProperty changes
+    setSelectedProperty(defaultProperty);
+  }, [defaultProperty]);
 
-//console.log("defaultProperty",defaultProperty)
+  //console.log("defaultProperty",defaultProperty)
 
-//console.log("selectedProperty",selectedProperty);
+  //console.log("selectedProperty",selectedProperty);
 
 
   const popers = PropertyData[selectedProperty];
@@ -200,9 +206,9 @@ useEffect(() => {
   // };
 
 
- const moveToPrevious=()=>{
-  navigate(-1 );
- }
+  const moveToPrevious = () => {
+    navigate(-1);
+  }
 
 
 
@@ -218,10 +224,22 @@ useEffect(() => {
     setModalImageUrl(null);
   };
 
+  const Loading = () => {
+    return (
+      <>
+        <div className="col-12 py-5 text-center">
+          <Skeleton height={500} width={400} />
+        </div>
+
+      </>
+    );
+  };
+
+
 
   return (
     <div className=' container '>
-      
+
       {/* {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
@@ -230,16 +248,19 @@ useEffect(() => {
         </div>
         : ""} */}
 
-
+{loading ? <Loading /> :
       <div className="text-center mt-3">
 
         <img onClick={() => openModal(projectDetail.projectImg)}
           style={{ cursor: 'pointer' }}
-          src={projectDetail.projectImg ? `${projectDetail.projectImg}`:"https://t3.ftcdn.net/jpg/01/91/95/30/240_F_191953033_gehQATeDoh5z6PyRDbeKyBZuS83CjMEF.jpg"} loading='lazy' className='img-size img-fluid rounded' alt="Project Image" />
+          src={projectDetail.projectImg ? `${projectDetail.projectImg}` : "https://t3.ftcdn.net/jpg/01/91/95/30/240_F_191953033_gehQATeDoh5z6PyRDbeKyBZuS83CjMEF.jpg"} loading='lazy' className='img-size img-fluid rounded' alt="Project Image" />
 
         {modalImageUrl && <ImageModal imageUrl={modalImageUrl} onClose={closeModal} />}
 
       </div>
+       }
+
+
       <div className=' text-center mt-5'>
         <h3 className='text-muted fw-bold mb-0'>{projectDetail.projectName}</h3>
         <p >by <span style={{ cursor: 'pointer' }} onClick={moveToPrevious} className='text-color fw-bold'>{projectDetail.projectGroup}</span> </p>
@@ -249,7 +270,7 @@ useEffect(() => {
       </div>
 
       <div className='mt-5 text-muted textCeter '>
-        <h3 className='fw-bold'>Overview</h3>     
+        <h3 className='fw-bold'>Overview</h3>
         <div className='row '>
           <div className='col-md-3 col-lg-3 col-sm-6  textCeter'>
             <h5 className='  mt-3'>{projectDetail.startDate}</h5>
@@ -283,78 +304,84 @@ useEffect(() => {
 
       <div className=' text-color shadow-none p-3  bg-body-tertiary rounded d-flex wra'>
         {projectDetail.oneBHK && projectDetail.oneBHK.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '1BHK' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '1BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('1BHK')}
         >
           1BHK
         </h5> : ""}
 
         {projectDetail.oneFiveBHK && projectDetail.oneFiveBHK.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '1.5BHK' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '1.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('1.5BHK')}
         >
           1.5BHK
         </h5> : ""}
 
         {projectDetail.twoBHK && projectDetail.twoBHK.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '2BHK' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '2BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('2BHK')}
         >
           2BHK
         </h5> : ""}
 
         {projectDetail.twoFiveBHK && projectDetail.twoFiveBHK.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '2.5BHK' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '2.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('2.5BHK')}
         >
           2.5BHK
         </h5> : ""}
 
         {projectDetail.threeBHK && projectDetail.threeBHK.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '3BHK' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '3BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('3BHK')}
         >
           3BHK
         </h5> : ""}
 
         {projectDetail.threeFiveBHK && projectDetail.threeFiveBHK.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '3.5BHK' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '3.5BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('3.5BHK')}
         >
           3.5BHK
         </h5> : ""}
 
         {projectDetail.fourBHK && projectDetail.fourBHK.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '4BHK' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '4BHK' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('4BHK')}
         >
           4BHK
         </h5> : ""}
-        
-        
+        {projectDetail.fiveBHK && projectDetail.fiveBHK.length > 0 ? <h5 className='mar'
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '5BHK' ? 'underline' : 'none' }}
+          onClick={() => handlePropertyClick('5BHK')}
+        >
+          5BHK
+        </h5> : ""}
+
+
         {projectDetail.twoBHKVilla && projectDetail.twoBHKVilla.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '2BHKVilla' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '2BHKVilla' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('twoBHKVilla')}
         >
           2BHKVilla
         </h5> : ""}
 
         {projectDetail.threeBHKVilla && projectDetail.threeBHKVilla.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '3BHKVilla' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '3BHKVilla' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('3BHKVilla')}
         >
           3BHKVilla
         </h5> : ""}
 
         {projectDetail.fourBHKVilla && projectDetail.fourBHKVilla.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '4BHKVilla' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '4BHKVilla' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('4BHKVilla')}
         >
           4BHKVilla
         </h5> : ""}
 
         {projectDetail.fiveBHKVilla && projectDetail.fiveBHKVilla.length > 0 ? <h5 className='mar'
-          style={{ cursor: 'pointer',  textDecoration: selectedProperty === '5BHKVilla' ? 'underline' : 'none' }}
+          style={{ cursor: 'pointer', textDecoration: selectedProperty === '5BHKVilla' ? 'underline' : 'none' }}
           onClick={() => handlePropertyClick('5BHKVilla')}
         >
           5BHKVilla
@@ -505,7 +532,7 @@ useEffect(() => {
 
 
       <div>
-        {properties && properties[0]?.bedrooms ? <h3 className='text-muted fw-bold my-5'>Properties listed in {localStorage.getItem('ProjectName')} sales </h3> : "" }
+        {properties && properties[0]?.bedrooms ? <h3 className='text-muted fw-bold my-5'>Properties listed in {projectDetail?.projectName} sales </h3> : ""}
         <div className='row mb-2'>
           {properties.map(property => (
 

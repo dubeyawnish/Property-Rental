@@ -3,14 +3,16 @@ import './Home.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Home = () => {
 
   const [projects, setProjects] = useState([]);
   const [data, setData] = useState([]);
-  //const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
-    //setLoader(true);
+    setLoader(true);
     fetchAllProject();
 
   }, [])
@@ -20,11 +22,11 @@ const Home = () => {
     const resp = await axios.get(`${API_BASE_URL}/getAllLocation`);
     setProjects(res.data);
     setData(resp.data);
-    //setLoader(false);
+    setLoader(false);
     //console.log("hello",projects)
   }
 
-  
+
 
   const categorizeProjects = () => {
     const categories = {
@@ -80,16 +82,82 @@ const Home = () => {
     localStorage.setItem("ProjectName", dataToSend)
   };
 
-  const handleLocationData=(location)=>{
+  const handleLocationData = (location) => {
     localStorage.removeItem("location");
-    localStorage.setItem("location",location);
+    localStorage.setItem("location", location);
   }
+
+
+  const Loading = () => {
+    return (
+      <>
+
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+        <div className="col-12  ">
+          <Skeleton height={30} width={200} />
+        </div>
+
+
+
+      </>
+    );
+  };
 
   return (
     <>
       {/* <div className='background ' >
       </div> */}
-      
+
       <div className='container shadow-none   bg-body-tertiary rounded mt-5 '>
         <div className=' '>
           <h3 className='fw-bold mb-3 text-muted text-center'>Buy By Project</h3>
@@ -97,38 +165,42 @@ const Home = () => {
           <div className="columns">
             <div className="column">
               <h4 className=' text-muted'>A to E</h4>
-              <ul>
-                {categories.AtoE.map(project => (
-                  <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
-                ))}
-              </ul>
+              {loader ? <Loading /> :
+                <ul>
+                  {categories.AtoE.map(project => (
+                    <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
+                  ))}
+                </ul>}
             </div>
             <div className="column">
               <h4 className=' text-muted'>F to M</h4>
-              <ul>
-                {categories.FtoM.map(project => (
-                  <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
-                ))}
-              </ul>
+              {loader ? <Loading /> :
+                <ul>
+                  {categories.FtoM.map(project => (
+                    <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
+                  ))}
+                </ul>}
             </div>
             <div className="column">
               <h4 className=' text-muted'>N to S</h4>
-              <ul >
-                {categories.NtoS.map(project => (
-                  <li key={project._id}>
-                    <Link className='text-muted  text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link>
+              {loader ? <Loading /> :
+                <ul >
+                  {categories.NtoS.map(project => (
+                    <li key={project._id}>
+                      <Link className='text-muted  text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link>
 
-                  </li>
-                ))}
-              </ul>
+                    </li>
+                  ))}
+                </ul>}
             </div>
             <div className="column">
               <h4 className=' text-muted'>T to Z</h4>
-              <ul>
-                {categories.TtoZ.map(project => (
-                  <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
-                ))}
-              </ul>
+              {loader ? <Loading /> :
+                <ul>
+                  {categories.TtoZ.map(project => (
+                    <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
+                  ))}
+                </ul>}
             </div>
           </div>
 
@@ -139,12 +211,13 @@ const Home = () => {
           <div className="Apps">
             {Object.keys(columns).map(columnKey => (
               <div className="columnn" key={columnKey}>
-               <Link className='text-decoration-none' to={`/projectDirection/${columnKey}`}> <h4 className='text-center text-muted'>{columnKey}</h4></Link>
-                <ul>
-                  {columns[columnKey].map(item => (
-                    <li key={item._id}><a className='text-muted test text-decoration-none' onClick={()=>handleLocationData(item.showLocation)}  href={`/builderProjectByLocation/${item.showLocation}`}>{item.showLocation}</a></li>
-                  ))}
-                </ul>
+                <Link className='text-decoration-none' to={`/projectDirection/${columnKey}`}> <h4 className='text-center text-muted'>{columnKey}</h4></Link>
+                {loader ? <Loading /> :
+                  <ul>
+                    {columns[columnKey].map(item => (
+                      <li key={item._id}><Link className='text-muted test text-decoration-none' onClick={() => handleLocationData(item.showLocation)} to={`/builderProjectByLocation/${item.showLocation}`}>{item.showLocation}</Link></li>
+                    ))}
+                  </ul>}
               </div>
             ))}
           </div>

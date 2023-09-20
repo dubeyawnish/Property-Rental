@@ -16,6 +16,35 @@ const Navbar = () => {
     const [builders, setBuilders] = useState([]);
 
 
+
+
+
+
+    function adjustDropdownColumns() {
+        const dropdowns = document.querySelectorAll('.dropdown-buy-by-location');
+        
+        dropdowns.forEach(dropdown => {
+          const dropdownRect = dropdown.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          if (dropdownRect.bottom > windowHeight) {
+            dropdown.style.columnCount = '2';
+          } else {
+            dropdown.style.columnCount = '1';
+          }
+        });
+      }
+      
+      // Call the function after rendering
+      useEffect(() => {
+        adjustDropdownColumns();
+      }, []);
+
+
+
+
+
+
     const fetchData = async () => {
         try {
             //const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
@@ -67,10 +96,10 @@ const Navbar = () => {
         localStorage.setItem("BuilderName", builderName);
 
     }
-  const handleLocationData=(location)=>{
-    localStorage.removeItem("location");
-    localStorage.setItem("location",location);
-  }
+    const handleLocationData = (location) => {
+        localStorage.removeItem("location");
+        localStorage.setItem("location", location);
+    }
 
 
 
@@ -96,20 +125,20 @@ const Navbar = () => {
                         </li>
                         <li >
                             <label for="drop-2" className="toggle">Residential</label>
-                            <a href="/residentialProjects">Residential</a>
+                            <Link to="/residentialProjects">Residential</Link>
                             <input type="checkbox" id="drop-2" />
                             <ul>
                                 <li>
                                     <label for="drop-3" className="toggle">Buy by Builder </label>
                                     <a href="#">Buy by Builder</a>
                                     <input type="checkbox" id="drop-3" />
-                                    <ul>
+                                    <ul   className="dropdown-buy-by-location">
                                         {Array.isArray(builders) && builders.map(builder => (
                                             <>
                                                 <li >
                                                     <a onClick={() => builderPro(builder._id, builder.builderName)} href={`/builderProject/${builder._id}`}><label for="drop-12" className="toggle "> </label></a>
                                                     {/* <Link  onMouseOver={() => projectCall(builder._id)} to="#">{builder.builderName}</Link> */}
-                                                    <a onClick={() => builderPro(builder._id, builder.builderName)} href={`/builderProject/${builder._id}`} >{builder.builderName}</a>
+                                                    <Link onClick={() => builderPro(builder._id, builder.builderName)} to={`/builderProject/${builder._id}`} >{builder.builderName}</Link>
                                                     <input type="checkbox" id="drop-12" />
                                                     <ul>
                                                         {projects?.map(project => (
@@ -122,7 +151,7 @@ const Navbar = () => {
                                                         ))}
                                                         {plotPorject?.map(project => (
                                                             <li>
-                                                            {/* <a className='togg' href={`/getPlotByProject/${project._id}`}>{project.projectName}</a> */}
+                                                                {/* <a className='togg' href={`/getPlotByProject/${project._id}`}>{project.projectName}</a> */}
                                                             </li>
                                                         ))}
                                                     </ul>
@@ -132,13 +161,13 @@ const Navbar = () => {
                                         }
                                     </ul>
                                 </li>
-                                <li>
+                                <li >
                                     <label for="drop-4" className="toggle">Buy by Location </label>
                                     <a href="#">Buy by Location</a>
                                     <input type="checkbox" id="drop-4" />
-                                    <ul>
+                                    <ul className="dropdown-buy-by-location">
                                         {locations.map(location => (
-                                            <li><a onClick={()=>handleLocationData(location.showLocation)} className='togg' href={`/builderProjectByLocation/${location.showLocation}`}>{location.showLocation}</a></li>
+                                            <li><Link onClick={() => handleLocationData(location.showLocation)} className='togg' to={`/builderProjectByLocation/${location.showLocation}`}>{location.showLocation}</Link></li>
                                         ))}
                                         {/* {plotLocation.map(location => (
                                             <li><Link className='togg' to={`/getPlotByLocation/${location._id}`}>{location.location}</Link></li>
@@ -149,7 +178,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <label for="drop-5" className="toggle">Commercial </label>
-                            <a href="/">Commercial</a>
+                            <Link to="/">Commercial</Link>
                             <input type="checkbox" id="drop-5" />
                             <ul>
                                 <li>
@@ -174,7 +203,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <label for="drop-8" className="toggle">Search By Type</label>
-                            <a href="/">Search By Type</a>
+                            <Link to="/">Search By Type</Link>
                             <input type="checkbox" id="drop-8" />
                             <ul>
                                 <li>
@@ -185,7 +214,7 @@ const Navbar = () => {
                                         {locations?.map(location => (
                                             <li>
                                                 {/* <a className='togg' href={`/getPropertiesByLocation/${location._id}`}>{location.location}</a> */}
-                                                </li>
+                                            </li>
                                         ))}
                                     </ul>
                                 </li>
@@ -206,8 +235,8 @@ const Navbar = () => {
                                         {plotLocation?.map(location => (
                                             <li>
                                                 {/* <Link to={`/getPlotByLocation/${location._id}`}>{location.location}</Link> */}
-                                                
-                                                </li>
+
+                                            </li>
                                         ))}
                                     </ul>
                                 </li>

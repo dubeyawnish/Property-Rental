@@ -18,8 +18,8 @@ img {
     display: flex;
     padding: 1rem;
   }
-  
-  @media (min-width: 28rem) {
+ 
+  @media (min-width: 48rem) and (max-width: 62rem) {
     .cards_item {
       width: 50%;
     }
@@ -33,12 +33,16 @@ img {
   
   }
   
-  @media (min-width: 56rem) {
+  @media (min-width: 76rem) {
     .cards_item {
       width: 25%;
     }
   }
-  
+  @media (min-width: 62rem) and (max-width: 75rem) {
+    .cards_item {
+        width: 33%;
+    }
+}
   .card {
     background-color: white;
     border-radius: 0.25rem;

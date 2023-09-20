@@ -6,19 +6,20 @@ import { API_BASE_URL } from '../../config';
 import './ProjectByLocation.css'
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 const ProjectByLocation = () => {
     const [projects, setProjects] = useState([]);
     //const location = localStorage.getItem("location");
-    //const [loader, setLoader] = useState(false);
-    const {location}=useParams();
+    const [loader, setLoader] = useState(false);
+    const { location } = useParams();
 
 
     useEffect(() => {
-        //setLoader(true);
+        setLoader(true);
         //const location = localStorage.getItem("location")
         projectCall(location);
-    }, []);
+    }, [location]);
 
     const projectCall = async (location) => {
         //const reqbody={location};
@@ -28,7 +29,7 @@ const ProjectByLocation = () => {
         const sortedProjects = response.data.sort((a, b) => {
             return a.projectName.localeCompare(b.projectName);
         });
-        //setLoader(false);
+        setLoader(false);
         setProjects(sortedProjects);
         //console.log(projects);
     }
@@ -38,10 +39,43 @@ const ProjectByLocation = () => {
         localStorage.setItem("ProjectName", dataToSend)
     };
 
+    const Loading = () => {
+        return (
+            <>
+                <div className='row mb-4'>
+                    <div className='col-lg-3 col-md-6 col-sm-12 mb-5' >
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                </div>
+            </>
+        );
+    };
+
     return (
         <div className='container'>
 
-   {/* {loader ?
+            {/* {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
           <div className="  spinner-border text-primary" role="status">
             <span className="visually-hidden"></span>
@@ -49,8 +83,10 @@ const ProjectByLocation = () => {
         </div>
         : ""} */}
 
-            
-                <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {location} location  </h3>
+
+            <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {location} location  </h3>
+
+            {loader ? <Loading /> :
                 <ul className="cards dist">
                     {projects?.map(project => (
                         <li className="cards_item">
@@ -65,7 +101,8 @@ const ProjectByLocation = () => {
                         </li>
                     ))}
                 </ul>
-           
+            }
+
 
             {/* <div className='d-flex flex-wrap   mb-3'>
                 {projects?.map(project => (

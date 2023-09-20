@@ -247,8 +247,37 @@ width: 100%;
       }
       
       } 
+     
+     /* Navbar.css   double Column */
+     @media all and (min-width : 992px) {
+     nav ul ul ul {
+      max-height: 600px;
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      min-width: 200px; /* Adjust as needed */
+      white-space: nowrap; /* Prevent wrapping */
+      column-count: 2;
+      column-gap: .5px; /* Set the number of columns */
+    }
+    
+    nav ul ul ul li {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    nav ul li:hover > ul ul ul {
+      display: block;
+    }
+    nav ul ul ul {
+      /* ... */
+      top: 0; /* Adjust as needed */
+      left: 100%; /* Adjust as needed */
+    }
+            
 
-
+  }
 
 
       @media only screen and (max-width: 991px) and (min-width: 769px)  {

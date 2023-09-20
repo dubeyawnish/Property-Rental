@@ -2,46 +2,81 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
-import { useLocation,Link } from 'react-router-dom';
-//import './ResidentailProject.css';
+import { useLocation, Link } from 'react-router-dom';
+import './ResidentailProject.css';
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 
 
 const ResidentailProjects = () => {
     const [projects, setProjects] = useState([]);
-  
-    //const [loader, setLoader] = useState(false);
+
+    const [loader, setLoader] = useState(false);
 
     // const location = useLocation();
     // const { fromHome } = location.state;
-    
+
     // console.log("Hello",fromHome);
 
 
     useEffect(() => {
-        //setLoader(true);
-        
+        setLoader(true);
+
         projectCall();
     }, []);
 
     const projectCall = async () => {
 
         const response = await axios.get(`${API_BASE_URL}/getAllProjects`);
-        //setLoader(false);
+        setLoader(false);
         // setProjects(response.data);
-         // Sort projects alphabetically by projectName
-         const sortedProjects = response.data.sort((a, b) => {
+        // Sort projects alphabetically by projectName
+        const sortedProjects = response.data.sort((a, b) => {
             return a.projectName.localeCompare(b.projectName);
         });
 
         setProjects(sortedProjects);
-       
+
         //console.log(projects);
     }
 
     const handleSendData = (dataToSend) => {
         localStorage.removeItem("ProjectName");
         localStorage.setItem("ProjectName", dataToSend)
+    };
+
+    const Loading = () => {
+        return (
+            <>
+                <div className='row mb-4'>
+                    <div className='col-lg-3 col-md-6 col-sm-12 mb-5' >
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <Skeleton height={300} width={300} />
+                    </div>
+                </div>
+            </>
+        );
     };
 
     return (
@@ -56,8 +91,9 @@ const ResidentailProjects = () => {
 
 
 
-            
-                <h3 className=' my-5 fw-bold text-muted'>Exclusive Residential Project Portfolio  </h3>
+
+            <h3 className=' my-5 fw-bold text-muted'>Exclusive Residential Project Portfolio  </h3>
+            {loader ? <Loading /> :
                 <ul className="cards dist">
                     {projects?.map(project => (
                         <li className="cards_item">
@@ -72,7 +108,8 @@ const ResidentailProjects = () => {
                         </li>
                     ))}
                 </ul>
-           
+            }
+
 
             {/* <div className='d-flex flex-wrap   mb-3'>
                 {projects?.map(project => (

@@ -23,6 +23,7 @@ import PlotDetails from './Pages/PlotDetails/PlotDetails.js'
 import PlotListLocation from './Pages/Listed Location Plot/PlotListLocation.js'
 //import BuilderProjects from './Pages/BuilderProjects/BuilderProjects.js';
 import ProjectByLocation from './Pages/BuilderProjectsByLocation/ProjectByLocation';
+import PageNotFound from './Pages/Page Not Found/PageNotFound';
 //import ResidentailProjects from './Pages/ResidentialProject/ResidentialProject';
 
 //import ProjectDirection from './Pages/ProjectDirection/ProjectDirection';
@@ -76,6 +77,7 @@ function App() {
           <Route exact path='/careers' element={<Carrier />} />
           <Route exact path='/aboutus' element={<AboutUs />} />
           <Route exact path='/interested' element={<Interested />} />
+          <Route  path='*' element={<PageNotFound />} />
         </Routes>
         <Footer />
       </Router>
