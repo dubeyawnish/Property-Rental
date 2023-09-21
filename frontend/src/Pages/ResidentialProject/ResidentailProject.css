@@ -12,34 +12,47 @@ img {
     list-style: none;
     margin: 0;
     padding: 0;
+    
   }
   
   .cards_item {
     display: flex;
     padding: 1rem;
+
   }
  
+  @media all and (max-width : 446px) {
+     .dist{
+     
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      
+     }
+  
+  }
+  @media (min-width:27.8rem)  and (max-width: 48rem) {
+    .cards_item {
+      max-width: 333px;
+      width: 70%;
+      
+    }
+  }
   @media (min-width: 48rem) and (max-width: 62rem) {
     .cards_item {
       width: 50%;
     }
   }
-  @media all and (max-width : 446px) {
-     .dist{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-     }
   
-  }
-  
-  @media (min-width: 76rem) {
+  @media (min-width: 88rem) {
     .cards_item {
+      
       width: 25%;
     }
   }
-  @media (min-width: 62rem) and (max-width: 75rem) {
+  @media (min-width: 62rem) and (max-width: 87.5rem) {
     .cards_item {
+       
         width: 33%;
     }
 }

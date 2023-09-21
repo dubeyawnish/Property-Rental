@@ -19,11 +19,7 @@ img {
   padding: 1rem;
 }
 
-@media (min-width: 28rem) {
-  .cards_item {
-    width: 50%;
-  }
-}
+
 @media all and (max-width : 446px) {
    .dist{
     display: flex;
@@ -33,11 +29,33 @@ img {
 
 }
 
-@media (min-width: 56rem) {
+@media (min-width:27.8rem)  and (max-width: 48rem) {
   .cards_item {
+    max-width: 333px;
+    width: 70%;
+    
+  }
+}
+@media (min-width: 48rem) and (max-width: 62rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 88rem) {
+  .cards_item {
+    
     width: 25%;
   }
 }
+@media (min-width: 62rem) and (max-width: 87.5rem) {
+  .cards_item {
+     
+      width: 33%;
+  }
+}
+
+
 
 .card {
   background-color: white;

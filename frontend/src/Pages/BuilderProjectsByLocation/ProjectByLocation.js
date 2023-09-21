@@ -42,7 +42,7 @@ const ProjectByLocation = () => {
     const Loading = () => {
         return (
             <>
-                <div className='row mb-4'>
+                <div className='row mb-4 text-center'>
                     <div className='col-lg-3 col-md-6 col-sm-12 mb-5' >
                         <Skeleton height={300} width={300} />
                     </div>

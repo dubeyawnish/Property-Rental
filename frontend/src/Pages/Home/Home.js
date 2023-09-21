@@ -162,7 +162,7 @@ const Home = () => {
         <div className=' '>
           <h3 className='fw-bold mb-3 text-muted text-center'>Buy By Project</h3>
 
-          <div className="columns">
+          <div className="columns ">
             <div className="column">
               <h4 className=' text-muted'>A to E</h4>
               {loader ? <Loading /> :
