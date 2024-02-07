@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Helmet } from "react-helmet-async";
 const ProjectByLocation = () => {
     const [projects, setProjects] = useState([]);
     //const location = localStorage.getItem("location");
@@ -82,6 +83,11 @@ const ProjectByLocation = () => {
           </div>
         </div>
         : ""} */}
+         <Helmet>
+        <title>{`${location} - Dharni Properties` }</title>
+        <meta name="description" content="Hemant Dharnidharka as Founder of Dharni Properties, is heading the overall operations of the Group. He has been responsible for developing large strategic business endeavors for Dharni Properties." />
+        <link rel="canonical" href="/" />
+      </Helmet>
 
 
             <h3 className=' my-5 fw-bold text-muted'>  Exclusive Project Portfolio in {location} location  </h3>

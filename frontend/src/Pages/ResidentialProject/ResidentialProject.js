@@ -6,6 +6,7 @@ import { useLocation, Link } from 'react-router-dom';
 import './ResidentailProject.css';
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -88,6 +89,11 @@ const ResidentailProjects = () => {
           </div>
         </div>
         : ""} */}
+         <Helmet>
+        <title>{`Residential - Dharni Properties` }</title>
+        <meta name="description" content="Hemant Dharnidharka as Founder of Dharni Properties, is heading the overall operations of the Group. He has been responsible for developing large strategic business endeavors for Dharni Properties." />
+        <link rel="canonical" href="/" />
+      </Helmet>
 
 
 

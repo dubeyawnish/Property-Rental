@@ -2,11 +2,17 @@ import React from 'react'
 import Rent from '../../Images/ServiceFee/ForRent.jpg'
 import Sale from '../../Images/ServiceFee/forSale.jpg'
 import RentalAgreement from '../../Images/ServiceFee/RentalAgreement.jpg'
+import { Helmet } from "react-helmet-async";
 
 
 const ServiceFee = () => {
     return (
         <>
+            <Helmet>
+                <title>Services & Fee - Dharni Properties</title>
+                <meta name="description" content="Fee*:One month’s rental value + GST, to be paid by the Owner ( excludes legal charges) Fee*:One month’s rental value + GST, to be paid by the Tenant ( excludes legal charges)" />
+                <link rel="canonical" href="/serviceFee" />
+            </Helmet>
             <div className='container'>
                 <div className='container'>
                     <h2 className='text-muted mt-5'>Services & Fee</h2>
@@ -106,7 +112,7 @@ const ServiceFee = () => {
                 </div>
 
 
-                
+
 
 
             </div>

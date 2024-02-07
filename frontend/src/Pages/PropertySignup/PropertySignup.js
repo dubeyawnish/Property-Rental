@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from "react-helmet-async";
 
 
 const PropertySignup = () => {
@@ -216,6 +217,11 @@ const PropertySignup = () => {
 
   return (
     <>
+     <Helmet>
+        <title>{`List Property - Dharni Properties` }</title>
+        <meta name="description" content="Hemant Dharnidharka as Founder of Dharni Properties, is heading the overall operations of the Group. He has been responsible for developing large strategic business endeavors for Dharni Properties." />
+        <link rel="canonical" href="/" />
+      </Helmet>
       <div className='container'>
         <h3 className='text-muted mt-5'>Property Signup</h3>
         <p className='mt-4'>We request you to please share the below details for us begin working on your property.</p>

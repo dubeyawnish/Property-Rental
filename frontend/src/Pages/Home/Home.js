@@ -5,6 +5,7 @@ import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
 
@@ -30,22 +31,22 @@ const Home = () => {
 
   const categorizeProjects = () => {
     const categories = {
-      AtoE: [],
-      FtoM: [],
-      NtoS: [],
-      TtoZ: [],
+      AtoB: [],
+      CtoM: [],
+      NtoR: [],
+      StoZ: [],
     };
 
     projects.forEach(project => {
       const firstLetter = project.projectName.charAt(0).toUpperCase();
-      if (firstLetter >= 'A' && firstLetter <= 'E') {
-        categories.AtoE.push(project);
-      } else if (firstLetter >= 'F' && firstLetter <= 'M') {
-        categories.FtoM.push(project);
-      } else if (firstLetter >= 'N' && firstLetter <= 'S') {
-        categories.NtoS.push(project);
-      } else if (firstLetter >= 'T' && firstLetter <= 'Z') {
-        categories.TtoZ.push(project);
+      if (firstLetter >= 'A' && firstLetter <= 'B') {
+        categories.AtoB.push(project);
+      } else if (firstLetter >= 'C' && firstLetter <= 'M') {
+        categories.CtoM.push(project);
+      } else if (firstLetter >= 'N' && firstLetter <= 'R') {
+        categories.NtoR.push(project);
+      } else if (firstLetter >= 'S' && firstLetter <= 'Z') {
+        categories.StoZ.push(project);
       }
     });
 
@@ -61,7 +62,7 @@ const Home = () => {
   const columns = {
     EastBLR: data.filter(item => item.projectDirection === "East"),
     WestBLR: data.filter(item => item.projectDirection === "West"),
-    CentralBLR: data.filter(item => item.projectDirection === "Central"),
+    // CentralBLR: data.filter(item => item.projectDirection === "Central"),
     NorthBLR: data.filter(item => item.projectDirection === "North"),
     SouthBLR: data.filter(item => item.projectDirection === "South"),
   };
@@ -157,6 +158,11 @@ const Home = () => {
     <>
       {/* <div className='background ' >
       </div> */}
+       <Helmet>
+        <title>{`Home - Dharni Properties` }</title>
+        <meta name="description" content="Hemant Dharnidharka as Founder of Dharni Properties, is heading the overall operations of the Group. He has been responsible for developing large strategic business endeavors for Dharni Properties." />
+        <link rel="canonical" href="/" />
+      </Helmet>
 
       <div className='container shadow-none   bg-body-tertiary rounded mt-5 '>
         <div className=' '>
@@ -164,28 +170,28 @@ const Home = () => {
 
           <div className="columns ">
             <div className="column">
-              <h4 className=' text-muted'>A to E</h4>
+              <h4 className=' text-muted'>A to B</h4>
               {loader ? <Loading /> :
                 <ul>
-                  {categories.AtoE.map(project => (
+                  {categories.AtoB.map(project => (
                     <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
                   ))}
                 </ul>}
             </div>
             <div className="column">
-              <h4 className=' text-muted'>F to M</h4>
+              <h4 className=' text-muted'>C to M</h4>
               {loader ? <Loading /> :
                 <ul>
-                  {categories.FtoM.map(project => (
+                  {categories.CtoM.map(project => (
                     <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
                   ))}
                 </ul>}
             </div>
             <div className="column">
-              <h4 className=' text-muted'>N to S</h4>
+              <h4 className=' text-muted'>N to R</h4>
               {loader ? <Loading /> :
                 <ul >
-                  {categories.NtoS.map(project => (
+                  {categories.NtoR.map(project => (
                     <li key={project._id}>
                       <Link className='text-muted  text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link>
 
@@ -194,10 +200,10 @@ const Home = () => {
                 </ul>}
             </div>
             <div className="column">
-              <h4 className=' text-muted'>T to Z</h4>
+              <h4 className=' text-muted'>S to Z</h4>
               {loader ? <Loading /> :
                 <ul>
-                  {categories.TtoZ.map(project => (
+                  {categories.StoZ.map(project => (
                     <li key={project._id}><Link className='text-muted text-decoration-none test' onClick={() => handleSendData(project.projectName)} to={`/getPropertiesByProject/${project._id}`}>{project.projectName}</Link></li>
                   ))}
                 </ul>}

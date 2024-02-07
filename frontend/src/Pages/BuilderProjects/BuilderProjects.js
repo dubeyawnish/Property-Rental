@@ -7,7 +7,7 @@ import './BuilderProject.css'
 import { useParams } from 'react-router-dom';
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-
+import { Helmet } from "react-helmet-async";
 
 
 const BuilderProjects = () => {
@@ -90,6 +90,11 @@ const BuilderProjects = () => {
           </div>
         </div>
         : ""} */}
+         <Helmet>
+        <title>{`${BuilderName} - Dharni Properties` }</title>
+        <meta name="description" content="Hemant Dharnidharka as Founder of Dharni Properties, is heading the overall operations of the Group. He has been responsible for developing large strategic business endeavors for Dharni Properties." />
+        <link rel="canonical" href="/" />
+      </Helmet>
 
 
 

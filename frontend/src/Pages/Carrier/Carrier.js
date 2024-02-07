@@ -1,8 +1,14 @@
 import React from 'react'
+import { Helmet } from "react-helmet-async";
 
 const Carrier = () => {
   return (
     <>
+     <Helmet>
+        <title>{`Careers - Dharni Properties` }</title>
+        <meta name="description" content="Hemant Dharnidharka as Founder of Dharni Properties, is heading the overall operations of the Group. He has been responsible for developing large strategic business endeavors for Dharni Properties." />
+        <link rel="canonical" href="/" />
+      </Helmet>
 
       <div className='container'>
         <div className='container'>

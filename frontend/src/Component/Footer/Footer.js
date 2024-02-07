@@ -57,7 +57,7 @@ const Footer = () => {
 
             </div>
             <div className=' mt-5' style={{ minHeight: '4rem' }}>
-                <p className='text-dark  text-center fw-bold'>Copyright © 2023 Dharni Capital Services Limited. All rights reserved</p>
+                <p className='text-dark  text-center fw-bold'>Copyright © {new Date().getFullYear()} Dharni Capital Services Limited. All rights reserved</p>
 
 
             </div>

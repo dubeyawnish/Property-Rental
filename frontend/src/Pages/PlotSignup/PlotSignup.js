@@ -3,6 +3,7 @@ import { API_BASE_URL } from '../../config';
 import { useState } from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
+import { Helmet } from "react-helmet-async";
 
 const PlotSignup = () => {
 
@@ -91,6 +92,11 @@ const PlotSignup = () => {
 
     return (
         <div className='container'>
+             <Helmet>
+        <title>{`List Plot - Dharni Properties` }</title>
+        <meta name="description" content="Hemant Dharnidharka as Founder of Dharni Properties, is heading the overall operations of the Group. He has been responsible for developing large strategic business endeavors for Dharni Properties." />
+        <link rel="canonical" href="/" />
+      </Helmet>
             <h3 className='text-muted mt-5'>Plot Signup</h3>
             <p className='mt-4'>We request you to please share the below details for us begin working on your property.</p>
             <p>For any issues with the form, please mail us on properties@dharnigroup.com</p>

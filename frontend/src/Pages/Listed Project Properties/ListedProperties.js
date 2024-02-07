@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 //import myGif from '../../Images/Profile/Spinner.gif'
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -239,6 +240,11 @@ const ListedProperties = () => {
 
   return (
     <div className=' container '>
+      <Helmet>
+        <title>{`${projectDetail?.projectName} `}- Dharni Properties</title>
+        <meta name="description" content="Hemant Dharnidharka as Founder of Dharni Properties, is heading the overall operations of the Group. He has been responsible for developing large strategic business endeavors for Dharni Properties." />
+        <link rel="canonical" href="/" />
+      </Helmet>
 
       {/* {loader ?
         <div className='mb-3 mt-3 col-md-12 text-center'>
@@ -248,17 +254,20 @@ const ListedProperties = () => {
         </div>
         : ""} */}
 
-{loading ? <Loading /> :
-      <div className="text-center mt-3">
+      {loading ? <Loading /> :
+        <div className="text-center mt-3">
 
-        <img onClick={() => openModal(projectDetail.projectImg)}
-          style={{ cursor: 'pointer' }}
-          src={projectDetail.projectImg ? `${projectDetail.projectImg}` : "https://t3.ftcdn.net/jpg/01/91/95/30/240_F_191953033_gehQATeDoh5z6PyRDbeKyBZuS83CjMEF.jpg"} loading='lazy' className='img-size img-fluid rounded' alt="Project Image" />
+          <img onClick={() => openModal(projectDetail.projectImg)}
+            style={{
+              cursor: 'pointer',
+              objectFit: 'cover'
+            }}
+            src={projectDetail.projectImg ? `${projectDetail.projectImg}` : "https://t3.ftcdn.net/jpg/01/91/95/30/240_F_191953033_gehQATeDoh5z6PyRDbeKyBZuS83CjMEF.jpg"} loading='lazy' className='img-size img-fluid rounded' alt="Project Image" />
 
-        {modalImageUrl && <ImageModal imageUrl={modalImageUrl} onClose={closeModal} />}
+          {modalImageUrl && <ImageModal imageUrl={modalImageUrl} onClose={closeModal} />}
 
-      </div>
-       }
+        </div>
+      }
 
 
       <div className=' text-center mt-5'>
@@ -272,6 +281,7 @@ const ListedProperties = () => {
       <div className='mt-5 text-muted textCeter '>
         <h3 className='fw-bold'>Overview</h3>
         <div className='row '>
+
           <div className='col-md-3 col-lg-3 col-sm-6  textCeter'>
             <h5 className='  mt-3'>{projectDetail.startDate}</h5>
             <p className=' mt-0 fs-6'>Possession start date</p>

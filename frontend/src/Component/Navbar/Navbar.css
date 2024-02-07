@@ -280,7 +280,7 @@ width: 100%;
   }
 
 
-      @media only screen and (max-width: 991px) and (min-width: 769px)  {
+      @media only screen and (max-width: 992px) and (min-width: 769px)  {
         nav { margin: 0; }
 
       .togg{
@@ -350,6 +350,13 @@ width: 100%;
       nav ul ul ul li { position: static;
       
       }
+      }
+
+      @media only screen and (max-width: 1200px) and (min-width: 992px)  {
+        .fsize{
+          font-size: 12px;
+        }
+
       }
 
      /* @media only screen and (max-width: 1199px) and (min-width: 769px)  {
